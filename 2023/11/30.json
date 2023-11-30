@@ -1,4 +1,8 @@
 {
   "startDate": "2023/11/30",
-  "solution": "ಸಮಾಚಾರ"
+  "solution": "ಸಮಾಚಾರ",
+  "notification" : {
+    "title": "Hello",
+    "body": "Test notification message from Padaku"
+  }
 }
