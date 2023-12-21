@@ -77,7 +77,7 @@ function getWordsInApi() {
             if (word != null)
                 wordsInApi.push(word)
         } catch (e) {
-            console.log(e)
+            console.log("Done")
             return wordsInApi
         }
 
@@ -101,10 +101,13 @@ function getDaysInMonth(year, month) {
     return new Date(year, month, 0).getDate();
 }
 
+const VALID_DATE_REGEX = /[0-9]{4}-([0][0-9]|[1][0-2])-[0-9]{2}/g
+
 module.exports = {
     getDate,
     getWordsInApi,
-    getDaysInMonth
+    getDaysInMonth,
+    VALID_DATE_REGEX
 }
 
 // console.log(getDate('./'))

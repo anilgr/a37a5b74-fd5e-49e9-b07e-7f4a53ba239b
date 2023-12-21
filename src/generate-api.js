@@ -1,7 +1,7 @@
 function generateAPI() {
   const fs = require('fs');
   const path = require('path');
-  const { getDate, getDaysInMonth } = require('./util')
+  const { getDate, getDaysInMonth, VALID_DATE_REGEX } = require('./util')
   require('./extension_functions')
   // Get the current date
   // const currentDate = getDate(false, "./");
@@ -9,7 +9,19 @@ function generateAPI() {
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
 
-  const currentDate = tomorrow;
+  // let currentDate = today;
+
+  let currentDate = getDate(false, "../");
+
+  if (!!process.argv[2]) {
+    if (process.argv[2].toString().match(VALID_DATE_REGEX)) {
+      currentDate = new Date(process.argv[2])
+      console.log("Will be generating api's from " + currentDate)
+    } else {
+      console.log("Please pass a valid date string (yyyy-mm-dd)")
+    }
+  }
+
   const startDate = getDate(true, "./");
   console.log(startDate);
   let year = currentDate.getFullYear();
@@ -21,7 +33,7 @@ function generateAPI() {
   let words = Array.deserialize('../selected-words.txt')
 
   // Get the number of words to consider from command-line arguments
-  const numberOfWordsToConsider = process.argv[2] || 30; // Default to 5 if no argument is provided
+  const numberOfWordsToConsider = words.length; // Default to 5 if no argument is provided
   const wordsToWrite = words.slice(0, numberOfWordsToConsider);
 
   // Loop through the words to write array and create folders and files
@@ -69,14 +81,15 @@ function generateAPI() {
     // removeWordFromFile(dataFilePath, word);
   }
 
-  words = words.filter((v) => wordsWritten.indexOf(v) == -1)
+  words = words.filter((v) => { return wordsWritten.indexOf(v) == -1 })
+  console.log(words.length, wordsWritten.length)
   words.serialize('../selected-words.txt')
 
   // let apiWords = Array.deserialize('words-in-api.txt') || [];
   // apiWords = [...apiWords, ...wordsWritten]
   // apiWords.serialize('words-in-api.txt')
 
-  console.log(`Words have been written to the files and removed from "data.txt".`);
+  console.log(`Words have been written to the files.`);
 
 }
 module.exports = {
