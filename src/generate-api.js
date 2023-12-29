@@ -10,8 +10,9 @@ function generateAPI() {
   tomorrow.setDate(today.getDate() + 1);
 
   // let currentDate = today;
+  let currentDate = tomorrow;
 
-  let currentDate = getDate(false, "../");
+  // let currentDate = getDate(false, "../");
 
   if (!!process.argv[2]) {
     if (process.argv[2].toString().match(VALID_DATE_REGEX)) {
