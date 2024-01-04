@@ -26,7 +26,7 @@ function generateAPI() {
   // const startDate = getDate(true, "./");
   const newYear = new Date(today)
   newYear.setDate(today.getDate() + 3);
-  const startDate = newYear
+  const startDate = today 
   console.log(startDate);
   let year = currentDate.getFullYear();
   let month = currentDate.getMonth() + 1;
