@@ -9,7 +9,7 @@ function generateAPI() {
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
 
-  let currentDate = today;
+  let currentDate = tomorrow;
   // let currentDate = tomorrow;
 
   // let currentDate = getDate(false, "../");
@@ -26,7 +26,7 @@ function generateAPI() {
   // const startDate = getDate(true, "./");
   const newYear = new Date(today)
   newYear.setDate(today.getDate() + 3);
-  const startDate = today 
+  const startDate = new Date('2024/01/05') 
   console.log(startDate);
   let year = currentDate.getFullYear();
   let month = currentDate.getMonth() + 1;
