@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const { API_BASE_PATH } = require('../globals');
 
 class Route {
@@ -27,7 +28,11 @@ class Route {
     }
 
     saveToDisk() {
-        fs.writeFileSync(this.path, JSON.stringify(this.response, null, 2))
+        const dirname = path.dirname(this.path);
+        if (!fs.existsSync(dirname)) {
+            fs.mkdirSync(dirname, { recursive: true });
+        }
+        fs.writeFileSync(this.path, JSON.stringify(this.response, null, 2), {})
     }
 }
 

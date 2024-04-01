@@ -24,13 +24,16 @@ const dictornaryWords = parrayOf(
 
 let selectedWords = PArray.deserialize(path.join(API_BASE_PATH, 'selected-words.txt'));
 
-selectedWords = selectedWords.randomize().map((s) => s.trim()).filter(w => {
+selectedWords = selectedWords.map((s) => s.trim()).filter(w => {
     const isInApi = wordsInAPI.contains(w)
     const isNotInDictionary = !dictornaryWords.contains(w)
     if (isNotInDictionary) { wordsNotInDictionary.push(w) }
     if (isInApi) { inAPIWords.push(w) }
     return (isInApi || isNotInDictionary) ? false : true;
 })
+
+wordsNotInDictionary.serialize("not-in-dictionary.txt");
+// selectedWords.serialize(path.join(API_BASE_PATH, 'selected-words.txt'))
 
 // report stats
 if (inAPIWords.length > 0)
