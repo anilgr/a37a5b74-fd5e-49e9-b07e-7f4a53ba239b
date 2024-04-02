@@ -32,6 +32,8 @@ selectedWords = selectedWords.map((s) => s.trim()).filter(w => {
     return (isInApi || isNotInDictionary) ? false : true;
 })
 
+inAPIWords.serialize("in-api.txt")
+
 wordsNotInDictionary.serialize("not-in-dictionary.txt");
 // selectedWords.serialize(path.join(API_BASE_PATH, 'selected-words.txt'))
 
