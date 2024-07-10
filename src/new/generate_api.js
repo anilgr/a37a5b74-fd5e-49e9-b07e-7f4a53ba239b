@@ -46,7 +46,7 @@ console.log(`${selectedWords.length} new words will be written to API.`);
 
 // generate API from the selected words.
 const apiStartDate = new PDate("2024-01-05")
-const apiWriteStartDate = new PDate('2024-04-05');
+const apiWriteStartDate = new PDate('2024-07-12');
 const date = new PDate(apiWriteStartDate);
 
 selectedWords.forEach(word => {
