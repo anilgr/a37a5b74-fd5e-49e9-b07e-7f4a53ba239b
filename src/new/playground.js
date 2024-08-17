@@ -23,6 +23,7 @@ const { API } = require("./api");
 // })
 // words.serialize(path.join(API_BASE_PATH, "api-words.txt"))
 
+// insert five letter words in between the current selected words.
 // const _5w = PArray.deserialize(rootFile('_5w.txt'));
 // const selected = PArray.deserialize(rootFile('selected-words-grped.txt')).randomize()
 // for(let i = 0; i < selected.length; i++) {
@@ -30,8 +31,8 @@ const { API } = require("./api");
 //         selected.push(selected.splice(i, 1, _5w.pop()));
 //     }
 // }
-
 // _5w.serialize(rootFile('a.txt'))
 // selected.serialize(rootFile('b.txt'))
+
 const SELECTED_WORDS_PATH = path.join(API_BASE_PATH, 'selected-words.txt');
 PArray.deserialize(SELECTED_WORDS_PATH).randomize().serialize(SELECTED_WORDS_PATH);
