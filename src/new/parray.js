@@ -33,7 +33,8 @@ class PArray extends Array {
     }
 
     static deserialize(pathStr) {
-        let words = PArray.from(fs.readFileSync(pathStr, 'utf8').trim().split('\n'));
+        let words = Array.from(new Set(fs.readFileSync(pathStr, 'utf8').trim().split('\n')))
+        words = PArray.from(words);
         return words || new PArray(0)
     }
 
@@ -45,6 +46,7 @@ class PArray extends Array {
 }
 
 function parrayOf(...args) {
+    args = args.flat()
     return PArray.from(args || [])
 }
 

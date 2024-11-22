@@ -9,11 +9,11 @@ const { API } = require("./api");
 // parrayOf(...(PArray.deserialize("../../bk_data_4.txt").map(w=>w.trim()))).serialize("../../data_4.txt")
 // parrayOf(...(PArray.deserialize("../../bk_data_5.txt").map(w=>w.trim()))).serialize("../../data_5.txt")
 
-/* Group selected words into 3 4 and 5 letter words. */
+// /* Group selected words into 3 4 and 5 letter words. */
 // const words = parrayOf(parrayOf(), parrayOf(), parrayOf())
-// PArray.deserialize(path.join(API_BASE_PATH, 'selected-words.txt')).forEach(w=>{
-    // const l = knTokenize(w).length
-    // words[l-3].push(w)
+// PArray.deserialize(path.join(API_BASE_PATH, 'src', 'new', 'valid-selection.txt')).forEach(w=>{
+//     const l = knTokenize(w).length
+//     words[l-3].push(w)
 // })
 // words.forEach(a=>a.push("-----------"))
 // parrayOf(...words.flat()).serialize(path.join(API_BASE_PATH, 'selected-words-grped.txt'))
@@ -44,3 +44,4 @@ PArray.deserialize(SELECTED_WORDS_PATH).randomize().serialize(SELECTED_WORDS_PAT
 /* Export from Alar export json */
 // const bm = require('./alar_export.json').bookmarks;
 // PArray.from(bm.map(b=>b.word)).serialize("./exp-words.txt");
+

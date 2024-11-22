@@ -41,13 +41,15 @@ wordsNotInDictionary.serialize("not-in-dictionary.txt");
 if (inAPIWords.length > 0)
     console.log(`Total ${inAPIWords.length} words in the selected word list are already used in API.`);
 if (wordsNotInDictionary.length > 0)
-    console.log(`${wordsNotInDictionary.length} selected words are not in dictironary: `, wordsNotInDictionary)
+    console.log(`${wordsNotInDictionary.length} selected words are not in dictironary.`)
 console.log(`${selectedWords.length} new words will be written to API.`);
 
 // generate API from the selected words.
 const apiStartDate = new PDate("2024-01-05")
-const apiWriteStartDate = new PDate('2024-09-01');
+const apiWriteStartDate = new PDate('2024-11-26');
 const date = new PDate(apiWriteStartDate);
+
+selectedWords.serialize("valid-selection.txt")
 
 selectedWords.forEach(word => {
     let route = new Route(pathFromDate(date), { startDate: apiStartDate.toString(), solution: word })
