@@ -1,0 +1,64 @@
+const { Route } = require("../../utils/route");
+const { pathFromDate } = require("../../utils/util");
+const path = require('path');
+const { API } = require("../../utils/api");
+const { PArray, parrayOf } = require("../../utils/parray");
+const { PDate } = require("../../utils/pdate");
+const { Command } = require('commander');
+
+module.exports = new Command('generate-api')
+    .description('Generate static api for the words in the selected-words.txt !')
+    .action(() => {
+        // get words in api 
+        const wordsInAPI = parrayOf();
+        API.forEachRoute(route => {
+            wordsInAPI.push(route.response.solution);
+        })
+
+        // randomize, sanitize, and filter selected words
+        const inAPIWords = parrayOf();
+        const wordsNotInDictionary = parrayOf();
+        const dictornaryWords = parrayOf(
+            ...[
+                ...PArray.deserialize('../../../data_3.txt'),
+                ...PArray.deserialize('../../../data_4.txt'),
+                ...PArray.deserialize('../../../data_5.txt')
+            ])
+
+        let selectedWords = PArray.deserialize(path.join('selected.txt')).randomize();
+
+        selectedWords = selectedWords.map((s) => s.trim()).filter(w => {
+            const isInApi = wordsInAPI.contains(w)
+            const isNotInDictionary = !dictornaryWords.contains(w)
+            if (isNotInDictionary) { wordsNotInDictionary.push(w) }
+            if (isInApi) { inAPIWords.push(w) }
+            return (isInApi || isNotInDictionary) ? false : true;
+        })
+
+        inAPIWords.serialize("in-api.txt")
+
+        wordsNotInDictionary.serialize("not-in-dictionary.txt");
+        // selectedWords.serialize(path.join(API_BASE_PATH, 'selected-words.txt'))
+
+        // report stats
+        if (inAPIWords.length > 0)
+            console.log(`Total ${inAPIWords.length} words in the selected word list are already used in API.`);
+        if (wordsNotInDictionary.length > 0)
+            console.log(`${wordsNotInDictionary.length} selected words are not in dictironary.`)
+        console.log(`${selectedWords.length} new words will be written to API.`);
+
+        // generate API from the selected words.
+        const apiStartDate = new PDate("2024-01-05")
+        const apiWriteStartDate = new PDate('2025-05-28');
+        const date = new PDate(apiWriteStartDate);
+
+        selectedWords.serialize("valid-selection.txt")
+
+        selectedWords.forEach(word => {
+            let route = new Route(pathFromDate(date), { startDate: apiStartDate.toString(), solution: word })
+            route.saveToDisk();
+            date.increment();
+        })
+
+        console.log("Done.")
+    });
