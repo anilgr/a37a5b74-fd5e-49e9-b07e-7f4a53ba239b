@@ -5,7 +5,8 @@ const { knTokenize } = require("../../utils/util");
 const prompt = require("inquirer").createPromptModule();
 const { Command } = require("commander");
 
-module.exports = new Command('select <file>')
+module.exports = new Command('select')
+    .argument('<file>', 'remaining words text file')
     .description('Select words from selected-words.txt')
     .option("-wl, --wordLength <wordLength>", "List word of specific word length.", 3)
     .action((file, options) => {

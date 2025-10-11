@@ -1,8 +1,8 @@
 const path = require("path");
-const { PArray, parrayOf } = require("./parray");
-const { API_BASE_PATH } = require("./globals");
-const { knTokenize } = require("./util");
-const { API } = require("./api");
+const { PArray, parrayOf } = require("./utils/parray");
+// const { API_BASE_PATH } = require("./globals");
+// const { knTokenize } = require("./util");
+// const { API } = require("./api");
 
 // const rootFile = (fileName)=>path.join(API_BASE_PATH, fileName);
 // parrayOf(...(PArray.deserialize("../../bk_data_3.txt").map(w=>w.trim()))).serialize("../../data_3.txt")

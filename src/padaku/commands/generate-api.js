@@ -20,12 +20,13 @@ module.exports = new Command('generate-api')
         const wordsNotInDictionary = parrayOf();
         const dictornaryWords = parrayOf(
             ...[
-                ...PArray.deserialize('../../../data_3.txt'),
-                ...PArray.deserialize('../../../data_4.txt'),
-                ...PArray.deserialize('../../../data_5.txt')
+                ...PArray.deserialize('../data_3.txt'),
+                ...PArray.deserialize('../data_4.txt'),
+                ...PArray.deserialize('../data_5.txt')
             ])
 
-        let selectedWords = PArray.deserialize(path.join('selected.txt')).randomize();
+        let selectedWords = PArray.deserialize(path.join('selected.txt'))
+        // .randomize();
 
         selectedWords = selectedWords.map((s) => s.trim()).filter(w => {
             const isInApi = wordsInAPI.contains(w)
@@ -49,7 +50,7 @@ module.exports = new Command('generate-api')
 
         // generate API from the selected words.
         const apiStartDate = new PDate("2024-01-05")
-        const apiWriteStartDate = new PDate('2025-05-28');
+        const apiWriteStartDate = new PDate('2025-10-16');
         const date = new PDate(apiWriteStartDate);
 
         selectedWords.serialize("valid-selection.txt")
