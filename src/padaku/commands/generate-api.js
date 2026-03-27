@@ -18,12 +18,7 @@ module.exports = new Command('generate-api')
         // randomize, sanitize, and filter selected words
         const inAPIWords = parrayOf();
         const wordsNotInDictionary = parrayOf();
-        const dictornaryWords = parrayOf(
-            ...[
-                ...PArray.deserialize('../data_3.txt'),
-                ...PArray.deserialize('../data_4.txt'),
-                ...PArray.deserialize('../data_5.txt')
-            ])
+        const {DICTIONARY_WORDS: dictornaryWords } = require('../../dictionary_words'); 
 
         let selectedWords = PArray.deserialize(path.join('selected.txt'))
         // .randomize();
@@ -36,9 +31,9 @@ module.exports = new Command('generate-api')
             return (isInApi || isNotInDictionary) ? false : true;
         })
 
-        inAPIWords.serialize("in-api.txt")
+        inAPIWords.serialize(path.join(__dirname, "in-api.txt"))
 
-        wordsNotInDictionary.serialize("not-in-dictionary.txt");
+        wordsNotInDictionary.serialize(path.join(__dirname, "not-in-dictionary.txt"));
         // selectedWords.serialize(path.join(API_BASE_PATH, 'selected-words.txt'))
 
         // report stats
@@ -50,10 +45,10 @@ module.exports = new Command('generate-api')
 
         // generate API from the selected words.
         const apiStartDate = new PDate("2024-01-05")
-        const apiWriteStartDate = new PDate('2025-10-16');
+        const apiWriteStartDate = new PDate('2025-12-29');
         const date = new PDate(apiWriteStartDate);
 
-        selectedWords.serialize("valid-selection.txt")
+        selectedWords.serialize(path.join(__dirname, "valid-selection.txt"))
 
         selectedWords.forEach(word => {
             let route = new Route(pathFromDate(date), { startDate: apiStartDate.toString(), solution: word })

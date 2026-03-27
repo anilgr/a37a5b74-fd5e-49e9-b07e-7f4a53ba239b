@@ -5,7 +5,7 @@ const { API_BASE_PATH } = require('../../globals');
 const { Command } = require('commander');
 const sqlite3 = require('sqlite3').verbose();
 
-const START_DATE = new Date("2025-03-12");
+const START_DATE = new Date("2026-01-06");
 
 module.exports = new Command('generate-api')
   .description('Generate static API based on dates as path names in API_BASE_PATH')
@@ -25,7 +25,14 @@ module.exports = new Command('generate-api')
       const ids = PArray.deserialize(path.join(__dirname, 'freq.txt'))
 
       db.serialize(() => {
-        db.all(`SELECT id, center_letter, letters FROM padagoodu WHERE id IN (${ids.join(", ")}) ORDER BY RANDOM() LIMIT 300`, (err, rows) => {
+        if (!ids || ids.length === 0) {
+          console.log("No ids found in freq.txt. Exiting.");
+          db.close();
+          return;
+        }
+
+        // Select remaining unassigned games (game_date NULL or empty) from the set in freq.txt
+        db.all(`SELECT id, center_letter, letters FROM padagoodu WHERE (game_date IS NULL OR game_date = '') AND id IN (${ids.join(", ")}) ORDER BY id ASC`, (err, rows) => {
           if (err) {
             console.error("Error selecting data:", err.message);
             db.close();
@@ -43,7 +50,7 @@ module.exports = new Command('generate-api')
             }
 
             const filePath = path.join(datePath, `${day}.json`);
-            fs.writeFileSync(filePath, JSON.stringify({ id: row.id, centerLetter: row.center_letter, letters: row.letters, startDate: `${START_DATE.getFullYear()}/${String(START_DATE.getMonth()).padStart(2, '0')}/${String(START_DATE.getDate()).padStart(2, '0')}` }, null, 2));
+            fs.writeFileSync(filePath, JSON.stringify({ id: row.id, centerLetter: row.center_letter, letters: row.letters, startDate: `${START_DATE.getFullYear()}/${String(START_DATE.getMonth() + 1).padStart(2, '0')}/${String(START_DATE.getDate()).padStart(2, '0')}` }, null, 2));
 
             // Collect the update for the row
             updates.push({ id: row.id, game_date: currentDate.toISOString().split('T')[0] });
