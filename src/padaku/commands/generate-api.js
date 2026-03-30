@@ -45,7 +45,7 @@ module.exports = new Command('generate-api')
 
         // generate API from the selected words.
         const apiStartDate = new PDate("2024-01-05")
-        const apiWriteStartDate = new PDate('2025-12-29');
+        const apiWriteStartDate = new PDate('2026-03-30');
         const date = new PDate(apiWriteStartDate);
 
         selectedWords.serialize(path.join(__dirname, "valid-selection.txt"))
