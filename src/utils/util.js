@@ -63,7 +63,6 @@ const kannadaAlphabet = [
 ];
 
 module.exports = {
-    pathFromDate,
     knTokenize,
     diacriticToVowelMap,
     volwelToVowelMap,

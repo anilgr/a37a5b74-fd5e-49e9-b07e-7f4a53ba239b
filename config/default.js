@@ -17,7 +17,7 @@ const SELECTED_WORDS_PATH = path.join(DATA_DIR, 'selected.txt');
 const REMAINING_WORDS_PATH = path.join(DATA_DIR, 'remaining.txt');
 const ALL_WORDS_IN_API_PATH = path.join(DATA_DIR, 'all-words-in-api.txt');
 // Padaku intermediate/temp output paths
-const PADAKU_TEMP_DIR = path.join(PROJECT_ROOT, 'src', 'padaku', 'temp');
+const PADAKU_TEMP_DIR = path.join(PROJECT_ROOT, 'src', 'commands', 'padaku', 'temp');
 const IN_API_PATH = path.join(PADAKU_TEMP_DIR, 'in-api.txt');
 const NOT_IN_DICTIONARY_PATH = path.join(PADAKU_TEMP_DIR, 'not-in-dictionary.txt');
 const VALID_SELECTION_PATH = path.join(PADAKU_TEMP_DIR, 'valid-selection.txt');
