@@ -32,7 +32,7 @@ module.exports = new Command('generate-api')
       }
 
       // Select remaining unassigned games (game_date NULL or empty) from the set in freq.txt
-      db.all(`SELECT id, center_letter, letters FROM padagoodu WHERE (game_date IS NULL OR game_date = '') AND id IN (${ids.join(", ")}) ORDER BY id ASC`, (err, rows) => {
+      db.all(`SELECT id, center_letter, letters FROM padagoodu WHERE (game_date IS NULL OR game_date = '') AND id IN (${ids.join(", ")}) ORDER BY RANDOM()`, (err, rows) => {
         if (err) {
           console.error("Error selecting data:", err.message);
           closeDatabase(db);
