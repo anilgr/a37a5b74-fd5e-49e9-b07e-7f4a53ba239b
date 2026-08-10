@@ -26,7 +26,7 @@ const WORDS_DATA_PATH = path.join(DATA_DIR, 'words_data.txt');
 
 // Default game start dates
 const PADAKU_START_DATE = '2024-01-05';
-const PADAGOODU_START_DATE = '2026-01-06';
+const PADAGOODU_START_DATE = '2025-03-12';
 
 module.exports = {
     PROJECT_ROOT,
