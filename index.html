@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <title>Padanoolu Puzzles Viewer & Generator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: sans-serif;
+            margin: 16px;
+        }
+        .editable-cell {
+            outline: none;
+            padding: 6px;
+            word-break: break-word;
+        }
+        .editable-cell:focus {
+            background-color: #fff9c4;
+        }
+        tr.selected-row {
+            background-color: #e0f2fe;
+        }
+        .btn {
+            padding: 5px 10px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .icon-btn {
+            background: none;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 2px 6px;
+            font-size: 14px;
+        }
+        .icon-btn:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <h2>ಪದನೂಲು ಒಗಟುಗಳು (Padanoolu Puzzles & Generator)</h2>
+
+    <div style="margin-bottom: 12px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+        <button class="btn" onclick="addNewRow()">+ Add New Puzzle</button>
+        <button class="btn" onclick="saveToData()">Save to Data</button>
+        <button class="btn" onclick="downloadOutput()">Download TXT</button>
+        <button class="btn" onclick="copyOutput()">Copy Raw Text</button>
+        <label style="margin-left: 8px; font-size: 13px;">
+            Import TXT: <input type="file" id="file-input" accept=".txt" onchange="importFile(event)">
+        </label>
+        <span id="copy-msg" style="color: green; margin-left: 8px; font-size: 13px; font-weight: 500;"></span>
+    </div>
+
+    <div style="display: flex; gap: 20px; align-items: flex-start; max-width: 100%;">
+        <!-- Left Section: Puzzles Table -->
+        <div style="flex: 1 1 auto; min-width: 0; overflow-x: auto;">
+            <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+                <thead>
+                    <tr style="background-color: #f0f0f0;">
+                        <th style="padding: 6px 8px; width: 35px;">#</th>
+                        <th style="padding: 6px 10px; width: 28%;">Theme Hint</th>
+                        <th style="padding: 6px 8px; width: 95px;">Words Count</th>
+                        <th style="padding: 6px 10px;">Words List (1st is Theme Word)</th>
+                    </tr>
+                </thead>
+                <tbody id="puzzle-tbody"></tbody>
+            </table>
+            <div style="margin-top: 8px; display: flex; justify-content: space-between; align-items: center;">
+                <button class="btn" onclick="addNewRow()">+ Add New Puzzle</button>
+                <p style="font-size: 13px; color: #555; margin: 0;">
+                    💡 <em>Use <strong>↑ / ↓</strong> arrow keys or click a row to preview. Click <strong>🔄</strong> on the right to shuffle/generate snake path grid!</em>
+                </p>
+            </div>
+        </div>
+
+        <!-- Right Section: Grid Preview with Refresh/Generator -->
+        <div style="flex: 0 0 280px; width: 280px; border: 1px solid #ccc; padding: 10px; background-color: #fafafa;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <h3 id="grid-title" style="margin: 0; font-size: 15px;">Grid Preview</h3>
+                <button class="icon-btn" id="generate-btn" title="Generate / Shuffle Grid" onclick="runGenerator()">🔄</button>
+            </div>
+            <div id="grid-meta" style="margin-bottom: 8px; font-size: 12px; color: #444;"></div>
+            <div id="grid-container" style="display: flex; justify-content: center; width: 100%;"></div>
+            <div id="word-legend" style="margin-top: 10px; font-size: 12px; line-height: 1.5; word-break: break-word;"></div>
+        </div>
+    </div>
+
+    <script>
+        const AKSHARA_REGEX = /(?:[\u0c95-\u0cb9\u0cde](?:\u0ccd[\u0c95-\u0cb9\u0cde])*[\u0cbe-\u0cc4\u0cc6-\u0ccc\u0cd5\u0cd6]?\u0ccd?|[\u0c85-\u0c94\u0ce0\u0ce1])[\u0c82\u0c83]?/g;
+
+        function splitAksharas(word) {
+            return word.match(AKSHARA_REGEX) || Array.from(word);
+        }
+
+        const rawData = `ಜ್ಯೂಸ್ ಕುಡಿಯುವಿರಾ?|ಹಣ್ಣುಗಳು|ಹಣ್ಣುಗಳು,ಬೆಟ್ಟದನೆಲ್ಲಿ,ಕಲ್ಲಂಗಡಿ,ಸೀತಾಫಲ,ಅನಾನಸ್,ಸೀಬೆಕಾಯಿ|1,0;0,0;0,1;0,2|2,3;1,2;1,1;2,2;3,2|4,0;4,1;4,2;3,3|4,4;4,3;3,4;2,4|2,0;2,1;3,0;3,1|0,4;0,3;1,4;1,3
+ಅಡುಗೆಮನೆಯ ಪರಿಮಳ|ಸಾಂಬಾರಪದಾರ್ಥ|ಸಾಂಬಾರಪದಾರ್ಥ,ಏಲಕ್ಕಿ,ಲವಂಗ,ದಾಲ್ಚಿನ್ನಿ,ಜೀರಿಗೆ,ಸಾಸಿವೆ,ಮೆಣಸು,ಅರಿಶಿನ|3,0;2,0;1,0;0,0;0,1;0,2|5,4;5,3;5,2|4,2;3,3;4,4|5,0;4,0;5,1|2,4;2,3;2,2|3,1;4,1;3,2|1,1;2,1;1,2|0,3;0,4;1,4;1,3
+ಕಾಡಿನ ಪ್ರಾಣಿಗಳು|ವನ್ಯಮೃಗಗಳು|ವನ್ಯಮೃಗಗಳು,ಹುಲಿ,ಸಿಂಹ,ಕರಡಿ,ಜಿಂಕೆ,ಆನೆ,ಚಿರತೆ,ಕಾಡುಕೋಣ|4,1;4,2;4,3;4,4;3,4;2,4|0,1;1,1|1,0;0,0|3,3;3,2;2,1|0,2;1,2|2,2;2,3|1,3;0,3;1,4|4,0;3,0;3,1;2,0
+ಬಾನಂಗಳದ ಕೌತುಕ|ಖಗೋಳಶಾಸ್ತ್ರ|ಖಗೋಳಶಾಸ್ತ್ರ,ಸೂರ್ಯ,ಚಂದ್ರ,ನಕ್ಷತ್ರ,ಧ್ರುವತಾರೆ,ಗ್ರಹಗಳು,ಉಲ್ಕಾಪಾತ,ಧೂಮಕೇತು,ಬ್ರಹ್ಮಾಂಡ|1,5;2,5;3,5;4,5;5,5|0,5;0,4|0,1;0,2|5,0;4,0;5,1|5,4;5,3;4,4;4,3|0,0;1,0;2,1;1,1|5,2;4,1;3,0;2,0|0,3;1,4;1,3;1,2|4,2;3,1;3,2
+ಹಸಿರೇ ನಮ್ಮ ಉಸಿರು|ವೃಕ್ಷಸಂಪತ್ತು|ವೃಕ್ಷಸಂಪತ್ತು,ಬೇವು,ಅರಳಿ,ಹಲಸು,ಮಾವಿನಮರ,ಶ್ರೀಗಂಧ,ತೆಂಗಿನಮರ,ಬಿದಿರು|3,4;4,4;5,4;5,3;5,2|4,3;4,2|0,0;0,1;1,0|3,2;3,1;2,0|5,0;5,1;4,0;4,1;3,0|2,2;2,1;1,1|2,4;3,3;2,3;1,3;0,2|0,4;1,4;0,3`;
+
+        const parsedPuzzles = [];
+        let selectedIndex = 0;
+        let isDraftMode = false;
+        const COLORS = ['#FFE082', '#B3E5FC', '#C8E6C9', '#FFCDD2', '#D1C4E9', '#FFE0B2', '#B2DFDB', '#F8BBD0'];
+
+        // ── Deterministic dimension calculation from total tokens ──────────────
+        function calculateDimensions(totalTokens) {
+            if (totalTokens === 48) return { rows: 8, cols: 6 };
+            if (totalTokens <= 4) return { rows: Math.max(1, totalTokens), cols: 1 };
+
+            const minCols = totalTokens >= 24 ? 5 : 2;
+            let bestRows = 0, bestCols = 0, bestScore = Infinity;
+
+            for (let capacity = totalTokens; capacity <= Math.min(48, totalTokens + 15); capacity++) {
+                for (let c = 2; c <= Math.floor(Math.sqrt(capacity)); c++) {
+                    if (capacity % c === 0) {
+                        let r = capacity / c;
+                        let valid1 = (r <= 8 && c <= 6);
+                        let valid2 = (c <= 8 && r <= 6);
+                        if (valid1 || valid2) {
+                            let finalR = (valid1 && valid2) ? Math.max(r, c) : (valid1 ? r : c);
+                            let finalC = (valid1 && valid2) ? Math.min(r, c) : (valid1 ? c : r);
+
+                            if (finalC < minCols) continue;
+                            const aspectRatio = finalR / finalC;
+                            if (aspectRatio > 1.5) continue;
+
+                            let score = (capacity - totalTokens) + (Math.abs(aspectRatio - 1.0) * 3);
+                            if (score < bestScore) {
+                                bestScore = score;
+                                bestRows = finalR;
+                                bestCols = finalC;
+                            }
+                        }
+                    }
+                }
+            }
+            return {
+                rows: bestRows || Math.min(8, Math.ceil(totalTokens / 6)),
+                cols: bestCols || Math.min(6, totalTokens)
+            };
+        }
+
+        // ── Serpentine (creation mode) Draft Layout ───────────────────────────
+        function computeSerpentinePaths(wordsList, totalTokens) {
+            const { rows, cols } = calculateDimensions(totalTokens);
+            let r = 0, c = 0, dir = 1;
+            const pathsList = [];
+
+            wordsList.forEach(w => {
+                const aksharas = splitAksharas(w);
+                const path = [];
+                aksharas.forEach(() => {
+                    if (r < rows) {
+                        path.push([r, c]);
+                        c += dir;
+                        if (c >= cols) { c = cols - 1; r++; dir = -1; }
+                        else if (c < 0) { c = 0; r++; dir = 1; }
+                    }
+                });
+                pathsList.push(path);
+            });
+            return pathsList;
+        }
+
+        function renderDraftLayout() {
+            isDraftMode = true;
+            renderGrid(selectedIndex);
+        }
+
+        // ── Exact Algorithm & Generator from mobile app (algorithm.ts + generator.ts) ──
+
+        function canFormSize(targetSize, wordLengths, surplus = 0) {
+            if (targetSize === 0) return true;
+            if (targetSize < 0) return false;
+            let dp = new Array(targetSize + 1).fill(false);
+            dp[0] = true;
+            for (let len of wordLengths) {
+                for (let i = targetSize; i >= len; i--) {
+                    if (dp[i - len]) dp[i] = true;
+                }
+            }
+            for (let s = 0; s <= surplus && targetSize - s >= 0; s++) {
+                if (dp[targetSize - s]) return true;
+            }
+            return false;
+        }
+
+        function getMinWords(targetSize, wordLengths, surplus = 0) {
+            if (targetSize === 0) return 0;
+            if (targetSize < 0) return Infinity;
+            let dp = new Array(targetSize + 1).fill(Infinity);
+            dp[0] = 0;
+            for (let len of wordLengths) {
+                for (let i = targetSize; i >= len; i--) {
+                    if (dp[i - len] !== Infinity) {
+                        dp[i] = Math.min(dp[i], dp[i - len] + 1);
+                    }
+                }
+            }
+            let minWords = Infinity;
+            for (let s = 0; s <= surplus && targetSize - s >= 0; s++) {
+                minWords = Math.min(minWords, dp[targetSize - s]);
+            }
+            return minWords;
+        }
+
+        function isCrossingSegment(x1, y1, x2, y2, currentPath, solutionPaths) {
+            if (Math.abs(x1 - x2) !== 1 || Math.abs(y1 - y2) !== 1) return false;
+            const checkSegments = (p) => {
+                for (let i = 0; i < p.length - 1; i++) {
+                    const px1 = p[i][0], py1 = p[i][1];
+                    const px2 = p[i + 1][0], py2 = p[i + 1][1];
+                    if ((px1 === x1 && py1 === y2 && px2 === x2 && py2 === y1) ||
+                        (px1 === x2 && py1 === y1 && px2 === x1 && py2 === y2)) {
+                        return true;
+                    }
+                }
+                return false;
+            };
+
+            if (checkSegments(currentPath)) return true;
+            for (const sp of solutionPaths) {
+                if (sp.path && checkSegments(sp.path)) return true;
+            }
+            return false;
+        }
+
+        function hasDeadEndTrap(cluster, touchesHead, remaining, futureWordLengths, surplus, currentPath, solutionPaths) {
+            let deadEnds = 0;
+            for (let p1 of cluster) {
+                let neighbors = 0;
+                for (let p2 of cluster) {
+                    if (p1[0] === p2[0] && p1[1] === p2[1]) continue;
+                    if (Math.abs(p1[0] - p2[0]) <= 1 && Math.abs(p1[1] - p2[1]) <= 1) {
+                        if (!isCrossingSegment(p1[0], p1[1], p2[0], p2[1], currentPath, solutionPaths)) {
+                            neighbors++;
+                        }
+                    }
+                }
+                if (neighbors <= 1) deadEnds++;
+            }
+
+            let maxAllowedDeadEnds = 0;
+            let futureOnlyMin = getMinWords(cluster.length, futureWordLengths, surplus);
+            if (futureOnlyMin !== Infinity) {
+                maxAllowedDeadEnds = Math.max(maxAllowedDeadEnds, 2 * futureOnlyMin);
+            }
+
+            if (touchesHead && cluster.length >= remaining) {
+                let comboMin = getMinWords(cluster.length - remaining, futureWordLengths, surplus);
+                if (comboMin !== Infinity) {
+                    maxAllowedDeadEnds = Math.max(maxAllowedDeadEnds, 2 * (comboMin + 1));
+                }
+            }
+
+            return deadEnds > maxAllowedDeadEnds;
+        }
+
+        function canAssignClusters(clusterSizes, wordLengths, surplus = 0) {
+            if (clusterSizes.length === 0) return true;
+            if (wordLengths.length > 12) return true;
+
+            let target = clusterSizes[0];
+            let rest = clusterSizes.slice(1);
+            let n = wordLengths.length;
+
+            let limit = 1 << n;
+            for (let mask = 0; mask < limit; mask++) {
+                let sum = 0;
+                for (let i = 0; i < n; i++) {
+                    if (mask & (1 << i)) sum += wordLengths[i];
+                }
+                let blanksUsed = target - sum;
+                if (sum <= target && blanksUsed >= 0 && blanksUsed <= surplus) {
+                    let leftover = [];
+                    for (let i = 0; i < n; i++) {
+                        if (!(mask & (1 << i))) leftover.push(wordLengths[i]);
+                    }
+                    if (canAssignClusters(rest, leftover, surplus - blanksUsed)) return true;
+                }
+            }
+            return false;
+        }
+
+        function getEmptyClusters(grid, gridRows, gridCols, currentPath, solutionPaths) {
+            let visited = Array.from({ length: gridRows }, () => Array(gridCols).fill(false));
+            let clusters = [];
+
+            for (let y = 0; y < gridRows; y++) {
+                for (let x = 0; x < gridCols; x++) {
+                    if (grid[y][x] === "" && !visited[y][x]) {
+                        let cluster = [];
+                        let stack = [[x, y]];
+                        visited[y][x] = true;
+
+                        const dirs = [[1,0],[0,1],[-1,0],[0,-1],[1,1],[-1,1],[1,-1],[-1,-1]];
+                        while (stack.length > 0) {
+                            let [cx, cy] = stack.pop();
+                            cluster.push([cx, cy]);
+
+                            for (let [dx, dy] of dirs) {
+                                let nx = cx + dx, ny = cy + dy;
+                                if (nx >= 0 && nx < gridCols && ny >= 0 && ny < gridRows && grid[ny][nx] === "" && !visited[ny][nx]) {
+                                    if (!isCrossingSegment(cx, cy, nx, ny, currentPath, solutionPaths)) {
+                                        visited[ny][nx] = true;
+                                        stack.push([nx, ny]);
+                                    }
+                                }
+                            }
+                        }
+                        clusters.push(cluster);
+                    }
+                }
+            }
+
+            clusters.sort((a, b) => b.length - a.length);
+            return clusters;
+        }
+
+        function hasRedHole(grid, gridRows, gridCols, headX, headY, remaining, futureWordLengths, currentPath, solutionPaths) {
+            let clusters = getEmptyClusters(grid, gridRows, gridCols, currentPath, solutionPaths);
+            let totalEmpty = clusters.reduce((sum, c) => sum + c.length, 0);
+            let totalNeeded = remaining + futureWordLengths.reduce((a, b) => a + b, 0);
+
+            if (totalNeeded > totalEmpty) return true;
+
+            let surplus = totalEmpty - totalNeeded;
+            let traps = [];
+            let requiresCurrentWord = [];
+
+            for (let c of clusters) {
+                let touchesHead = c.some(p => Math.abs(p[0] - headX) <= 1 && Math.abs(p[1] - headY) <= 1);
+                let futureOnly = canFormSize(c.length, futureWordLengths, surplus);
+                let currentPlusFuture = touchesHead && c.length >= remaining && canFormSize(c.length - remaining, futureWordLengths, surplus);
+
+                if (!futureOnly && !currentPlusFuture) {
+                    traps.push(c);
+                } else {
+                    if (hasDeadEndTrap(c, touchesHead, remaining, futureWordLengths, surplus, currentPath, solutionPaths)) {
+                        traps.push(c);
+                    } else if (!futureOnly && currentPlusFuture) {
+                        requiresCurrentWord.push(c);
+                    }
+                }
+            }
+
+            if (traps.length > 0) return true;
+            if (requiresCurrentWord.length > 1) return true;
+
+            let isolatedSizes = [];
+            for (let c of clusters) {
+                let isRequiresCurrent = requiresCurrentWord.includes(c);
+                if (isRequiresCurrent) {
+                    isolatedSizes.push(c.length - remaining);
+                } else {
+                    isolatedSizes.push(c.length);
+                }
+            }
+
+            isolatedSizes = isolatedSizes.filter(s => s > 0);
+            if (isolatedSizes.length > 1) {
+                if (!canAssignClusters(isolatedSizes, [...futureWordLengths], surplus)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        const DIRS = [[1,0],[0,1],[-1,0],[0,-1],[1,1],[-1,1],[1,-1],[-1,-1]];
+
+        function canReachEnough(grid, gridRows, gridCols, x, y, needed, currentPath, solutionPaths) {
+            if (needed <= 0) return true;
+            const visited = Array.from({ length: gridRows }, () => Array(gridCols).fill(false));
+            const stack = [[x, y]];
+            visited[y][x] = true;
+            let count = 0;
+
+            while (stack.length > 0) {
+                const [cx, cy] = stack.pop();
+                for (const [dx, dy] of DIRS) {
+                    const nx = cx + dx, ny = cy + dy;
+                    if (nx >= 0 && nx < gridCols && ny >= 0 && ny < gridRows && grid[ny][nx] === "" && !visited[ny][nx]) {
+                        if (!isCrossingSegment(cx, cy, nx, ny, currentPath, solutionPaths)) {
+                            visited[ny][nx] = true;
+                            if (++count >= needed) return true;
+                            stack.push([nx, ny]);
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        function countEmptyNeighbors(grid, gridRows, gridCols, cx, cy, currentPath, solutionPaths) {
+            let count = 0;
+            for (const [dx, dy] of DIRS) {
+                const nx = cx + dx, ny = cy + dy;
+                if (nx >= 0 && nx < gridCols && ny >= 0 && ny < gridRows && grid[ny][nx] === "") {
+                    if (!isCrossingSegment(cx, cy, nx, ny, currentPath, solutionPaths)) {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+        // ── Full App Generator Implementation ──
+        function generateSnakePaths(wordsList, themeWord, maxAttempts = 15) {
+            const wordObjects = wordsList.map((w, idx) => ({
+                id: `w${idx}`,
+                tokens: splitAksharas(w),
+                isThemeWord: (w === themeWord)
+            }));
+
+            const totalTokens = wordObjects.reduce((s, w) => s + w.tokens.length, 0);
+            const { rows: gridRows, cols: gridCols } = calculateDimensions(totalTokens);
+
+            for (let attempt = 0; attempt < maxAttempts; attempt++) {
+                let stepCount = 0;
+                const MAX_STEPS = 5000;
+                let grid = Array.from({ length: gridRows }, () => Array(gridCols).fill(""));
+                let paths = [];
+
+                // Sort: theme word first, then longest
+                let words = [...wordObjects].sort((a, b) => 
+                    (b.isThemeWord ? 1 : 0) - (a.isThemeWord ? 1 : 0) || b.tokens.length - a.tokens.length
+                );
+                if (words.length > 1) {
+                    const first = words[0];
+                    const rest = shuffle(words.slice(1));
+                    words = [first, ...rest];
+                }
+
+                function solvePuzzle(wordIndex) {
+                    if (stepCount > MAX_STEPS) return false;
+                    if (wordIndex >= words.length) return true;
+
+                    const currentWord = words[wordIndex];
+                    const tokens = currentWord.tokens;
+
+                    const futureWordLengths = [];
+                    for (let i = wordIndex + 1; i < words.length; i++) {
+                        futureWordLengths.push(words[i].tokens.length);
+                    }
+
+                    const emptyCells = [];
+                    for (let y = 0; y < gridRows; y++) {
+                        for (let x = 0; x < gridCols; x++) {
+                            if (grid[y][x] === "") emptyCells.push([x, y]);
+                        }
+                    }
+
+                    shuffle(emptyCells);
+                    if (!currentWord.isThemeWord) {
+                        emptyCells.sort((a, b) => 
+                            countEmptyNeighbors(grid, gridRows, gridCols, a[0], a[1], [], paths) - 
+                            countEmptyNeighbors(grid, gridRows, gridCols, b[0], b[1], [], paths)
+                        );
+                    }
+
+                    for (const [sx, sy] of emptyCells) {
+                        if (stepCount > MAX_STEPS) return false;
+                        if (currentWord.isThemeWord && !(sx === 0 || sx === gridCols - 1 || sy === 0 || sy === gridRows - 1)) {
+                            continue;
+                        }
+                        stepCount++;
+
+                        grid[sy][sx] = tokens[0];
+                        const remaining = tokens.length - 1;
+                        const path = [[sx, sy]];
+
+                        const hasEnough = remaining === 0 || canReachEnough(grid, gridRows, gridCols, sx, sy, remaining, path, paths);
+                        const isHole = hasEnough && hasRedHole(grid, gridRows, gridCols, sx, sy, remaining, futureWordLengths, path, paths);
+
+                        if (hasEnough && !isHole) {
+                            if (placeNextChar(tokens, 1, sx, sy, path, wordIndex, futureWordLengths)) {
+                                return true;
+                            }
+                        }
+
+                        grid[sy][sx] = "";
+                    }
+                    return false;
+                }
+
+                function placeNextChar(tokens, charIndex, x, y, path, wordIndex, futureWordLengths) {
+                    if (charIndex >= tokens.length) {
+                        paths.push({ wordId: words[wordIndex].id, path: [...path] });
+
+                        if (futureWordLengths.length > 0) {
+                            const lastCell = path[path.length - 1];
+                            if (hasRedHole(grid, gridRows, gridCols, lastCell[0], lastCell[1], 0, futureWordLengths, path, paths)) {
+                                paths.pop();
+                                return false;
+                            }
+                        }
+
+                        if (solvePuzzle(wordIndex + 1)) return true;
+
+                        paths.pop();
+                        return false;
+                    }
+
+                    const validMoves = [];
+                    for (const [dx, dy] of DIRS) {
+                        const nx = x + dx, ny = y + dy;
+                        if (nx < 0 || nx >= gridCols || ny < 0 || ny >= gridRows) continue;
+                        if (grid[ny][nx] !== "") continue;
+                        if (isCrossingSegment(x, y, nx, ny, path, paths)) continue;
+                        if (words[wordIndex].isThemeWord) {
+                            const isHorizontalWallStep = (ny === y && (y === 0 || y === gridRows - 1));
+                            const isVerticalWallStep = (nx === x && (x === 0 || x === gridCols - 1));
+                            if (!isHorizontalWallStep && !isVerticalWallStep) continue;
+                        }
+
+                        validMoves.push({ nx, ny, emptyCount: countEmptyNeighbors(grid, gridRows, gridCols, nx, ny, path, paths) });
+                    }
+
+                    shuffle(validMoves);
+                    if (!words[wordIndex].isThemeWord) {
+                        validMoves.sort((a, b) => {
+                            const weightA = a.emptyCount + (Math.random() * 1.5);
+                            const weightB = b.emptyCount + (Math.random() * 1.5);
+                            return weightA - weightB;
+                        });
+                    }
+
+                    for (const move of validMoves) {
+                        if (stepCount > MAX_STEPS) return false;
+                        const nx = move.nx, ny = move.ny;
+                        stepCount++;
+
+                        grid[ny][nx] = tokens[charIndex];
+                        path.push([nx, ny]);
+
+                        const remaining = tokens.length - charIndex - 1;
+                        const hasEnough = remaining === 0 || canReachEnough(grid, gridRows, gridCols, nx, ny, remaining, path, paths);
+                        const shouldCheckHole = remaining <= 2 || remaining % 2 === 0;
+                        const isHole = shouldCheckHole && hasEnough && hasRedHole(grid, gridRows, gridCols, nx, ny, remaining, futureWordLengths, path, paths);
+
+                        if (hasEnough && !isHole) {
+                            if (placeNextChar(tokens, charIndex + 1, nx, ny, path, wordIndex, futureWordLengths)) {
+                                return true;
+                            }
+                        }
+
+                        path.pop();
+                        grid[ny][nx] = "";
+                    }
+                    return false;
+                }
+
+                if (solvePuzzle(0)) {
+                    // Mobile app Point is [x, y] = [col, row].
+                    // Convert to [row, col] format used by puzzles.txt / table viewer:
+                    return wordsList.map((_, idx) => {
+                        const sp = paths.find(p => p.wordId === `w${idx}`);
+                        return sp ? sp.path.map(([col, row]) => [row, col]) : [];
+                    });
+                }
+            }
+
+            return null;
+        }
+
+        let isRunningGenerator = false;
+
+        function runGenerator() {
+            if (isRunningGenerator) return;
+            const p = parsedPuzzles[selectedIndex];
+            const btn = document.getElementById('generate-btn');
+            btn.innerText = '⏳';
+            isRunningGenerator = true;
+
+            setTimeout(() => {
+                const newPaths = generateSnakePaths(p.wordsList, p.themeWord, 15);
+                if (newPaths && newPaths.length === p.wordsList.length) {
+                    p.pathsList = newPaths;
+                    isDraftMode = false;
+                    renderGrid(selectedIndex);
+                    showStatus('Grid generated & solved!');
+                } else {
+                    showStatus('Could not find snake layout. Applied serpentine.');
+                    p.pathsList = computeSerpentinePaths(p.wordsList, p.wordsList.reduce((s, w) => s + splitAksharas(w).length, 0));
+                    isDraftMode = false;
+                    renderGrid(selectedIndex);
+                }
+                btn.innerText = '🔄';
+                isRunningGenerator = false;
+            }, 30);
+        }
+
+        function onCellEdit(idx, field, rawText) {
+            const text = rawText.trim();
+            const p = parsedPuzzles[idx];
+            if (field === 'hint') {
+                p.themeHint = text;
+            } else if (field === 'words') {
+                const words = text.split(',').map(w => w.trim()).filter(w => w.length > 0);
+                p.wordsList = words;
+                // The first word in the word list is always the theme word
+                p.themeWord = words[0] || '';
+                const totalLetters = words.reduce((sum, w) => sum + splitAksharas(w).length, 0);
+                const countCell = document.getElementById(`count-cell-${idx}`);
+                if (countCell) countCell.innerText = `${words.length} (${totalLetters})`;
+
+                // Update paths to draft serpentine for newly edited words
+                p.pathsList = computeSerpentinePaths(p.wordsList, totalLetters);
+            }
+
+            if (idx === selectedIndex) {
+                renderGrid(idx);
+            }
+        }
+
+        function selectPuzzle(index) {
+            selectedIndex = index;
+            isDraftMode = false;
+
+            parsedPuzzles.forEach((_, idx) => {
+                const tr = document.getElementById(`puzzle-row-${idx}`);
+                if (tr) {
+                    if (idx === index) {
+                        tr.classList.add('selected-row');
+                    } else {
+                        tr.classList.remove('selected-row');
+                    }
+                }
+            });
+
+            renderGrid(index);
+        }
+
+        function renderGrid(index) {
+            const p = parsedPuzzles[index];
+            document.getElementById('grid-title').innerText = `ಜಾಲ (Grid): ${p.themeHint} (${p.themeWord})`;
+
+            const totalTokens = p.wordsList.reduce((sum, w) => sum + splitAksharas(w).length, 0);
+            const activePaths = (isDraftMode || !p.pathsList || p.pathsList.length === 0)
+                ? computeSerpentinePaths(p.wordsList, totalTokens)
+                : p.pathsList;
+
+            let maxRow = 0, maxCol = 0;
+            activePaths.forEach(path => {
+                path.forEach(([r, c]) => {
+                    if (r > maxRow) maxRow = r;
+                    if (c > maxCol) maxCol = c;
+                });
+            });
+
+            const rows = maxRow + 1;
+            const cols = maxCol + 1;
+            const modeLabel = isDraftMode ? ' (Draft Serpentine 〰️)' : '';
+            document.getElementById('grid-meta').innerText = `ಆಯಾಮ: ${cols} x ${rows} (${cols * rows} ಕೋಶಗಳು)${modeLabel}`;
+
+            const grid = Array.from({ length: rows }, () => Array(cols).fill({ letter: '', color: '#FFF' }));
+
+            p.wordsList.forEach((word, wIdx) => {
+                const aksharas = splitAksharas(word);
+                const path = activePaths[wIdx] || [];
+                const isTheme = (word === p.themeWord);
+                const color = isTheme ? '#FFD54F' : COLORS[wIdx % COLORS.length];
+
+                path.forEach(([r, c], aIdx) => {
+                    if (r < rows && c < cols) {
+                        grid[r][c] = {
+                            letter: aksharas[aIdx] || '?',
+                            color: color,
+                            isTheme: isTheme
+                        };
+                    }
+                });
+            });
+
+            const availableWidth = 256;
+            const cellSize = Math.floor(availableWidth / cols);
+            const fontSize = Math.max(12, Math.min(16, Math.floor(cellSize * 0.45)));
+
+            let tableHtml = `<table border="1" cellpadding="0" cellspacing="0" style="text-align: center; font-size: ${fontSize}px; font-weight: bold; border-collapse: collapse; margin: 0 auto;">`;
+            for (let r = 0; r < rows; r++) {
+                tableHtml += '<tr>';
+                for (let c = 0; c < cols; c++) {
+                    const cell = grid[r][c];
+                    tableHtml += `<td style="width: ${cellSize}px; height: ${cellSize}px; min-width: ${cellSize}px; max-width: ${cellSize}px; background-color: ${cell.color}; line-height: 1;">${cell.letter}</td>`;
+                }
+                tableHtml += '</tr>';
+            }
+            tableHtml += '</table>';
+            document.getElementById('grid-container').innerHTML = tableHtml;
+
+            let legendHtml = '<strong>ಪದಗಳು (Words):</strong><br>';
+            legendHtml += p.wordsList.map((w, wIdx) => {
+                const isTheme = (w === p.themeWord);
+                const color = isTheme ? '#FFD54F' : COLORS[wIdx % COLORS.length];
+                return `<span style="display: inline-block; margin: 2px 6px 2px 0; padding: 2px 6px; background-color: ${color}; border: 1px solid #aaa;">${isTheme ? '⭐ ' : ''}${w}</span>`;
+            }).join(' ');
+            document.getElementById('word-legend').innerHTML = legendHtml;
+        }
+
+        function getOutputText() {
+            return parsedPuzzles.map(p => {
+                const pathsStr = p.pathsList.map(coords => coords.map(c => c.join(',')).join(';')).join('|');
+                return `${p.themeHint}|${p.themeWord}|${p.wordsList.join(',')}|${pathsStr}`;
+            }).join('\n');
+        }
+
+        function downloadOutput() {
+            const text = getOutputText();
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'puzzles.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showStatus('Downloaded puzzles.txt!');
+        }
+
+        function copyOutput() {
+            const text = getOutputText();
+            navigator.clipboard.writeText(text).then(() => {
+                showStatus('Copied to clipboard!');
+            });
+        }
+
+        function showStatus(msg) {
+            const el = document.getElementById('copy-msg');
+            el.innerText = msg;
+            setTimeout(() => el.innerText = '', 2500);
+        }
+
+        function importFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const text = e.target.result;
+                loadFromText(text);
+                showStatus(`Imported ${file.name}!`);
+            };
+            reader.readAsText(file, 'utf-8');
+        }
+
+        function loadFromText(text) {
+            parsedPuzzles.length = 0;
+            const lines = text.trim().split('\n').filter(l => l.trim().length > 0 && !l.trim().startsWith('#'));
+
+            lines.forEach((line, index) => {
+                const parts = line.split('|');
+                const themeHint = parts[0] || '';
+                const wordsList = (parts[2] || '').split(',').map(w => w.trim()).filter(w => w.length > 0);
+                const themeWord = wordsList[0] || parts[1] || '';
+                const pathsList = parts.slice(3).map(p => 
+                    p.split(';').map(coord => coord.split(',').map(Number))
+                );
+
+                parsedPuzzles.push({ index, themeHint, themeWord, wordsList, pathsList });
+            });
+
+            renderTable();
+            if (parsedPuzzles.length > 0) {
+                selectPuzzle(0);
+            }
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('puzzle-tbody');
+            tbody.innerHTML = '';
+
+            parsedPuzzles.forEach((p, index) => {
+                const totalLetters = p.wordsList.reduce((sum, w) => sum + splitAksharas(w).length, 0);
+
+                const row = document.createElement('tr');
+                row.id = `puzzle-row-${index}`;
+                row.style.cursor = 'pointer';
+                if (index === selectedIndex) {
+                    row.classList.add('selected-row');
+                }
+                row.onclick = () => selectPuzzle(index);
+
+                row.innerHTML = `
+                    <td align="center" style="padding: 6px 10px; font-weight: 500;">${index + 1}</td>
+                    <td class="editable-cell" contenteditable="true" 
+                        onfocus="selectPuzzle(${index})" 
+                        onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}" 
+                        onblur="onCellEdit(${index}, 'hint', this.innerText)">${p.themeHint}</td>
+                    <td align="center" style="padding: 6px 10px;" id="count-cell-${index}">${p.wordsList.length} (${totalLetters})</td>
+                    <td class="editable-cell" contenteditable="true" 
+                        onfocus="selectPuzzle(${index})" 
+                        onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}" 
+                        onblur="onCellEdit(${index}, 'words', this.innerText)">${p.wordsList.join(', ')}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function addNewRow() {
+            const newIndex = parsedPuzzles.length;
+            const newPuzzle = {
+                index: newIndex,
+                themeHint: 'ಹೊಸ ಸುಳಿವು',
+                themeWord: 'ಉದಾಹರಣೆ',
+                wordsList: ['ಉದಾಹರಣೆ', 'ಪದ'],
+                pathsList: []
+            };
+
+            const totalTokens = newPuzzle.wordsList.reduce((sum, w) => sum + splitAksharas(w).length, 0);
+            newPuzzle.pathsList = computeSerpentinePaths(newPuzzle.wordsList, totalTokens);
+
+            parsedPuzzles.push(newPuzzle);
+            renderTable();
+            selectPuzzle(newIndex);
+
+            // Scroll to the newly added row and focus its hint cell for immediate typing
+            const newRow = document.getElementById(`puzzle-row-${newIndex}`);
+            if (newRow) {
+                newRow.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                const hintCell = newRow.querySelector('.editable-cell');
+                if (hintCell) {
+                    hintCell.focus();
+                    // Select all text in the cell for quick replacement
+                    const range = document.createRange();
+                    range.selectNodeContents(hintCell);
+                    const sel = window.getSelection();
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+            }
+            showStatus('Added new puzzle row! Edit hint and words.');
+        }
+
+        // Keyboard navigation (ArrowUp / ArrowDown) when not editing text
+        window.addEventListener('keydown', (e) => {
+            const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+            const isEditing = document.activeElement && document.activeElement.isContentEditable;
+            if (activeTag === 'input' || activeTag === 'textarea' || isEditing) {
+                return;
+            }
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (selectedIndex < parsedPuzzles.length - 1) {
+                    selectPuzzle(selectedIndex + 1);
+                    const nextRow = document.getElementById(`puzzle-row-${selectedIndex}`);
+                    if (nextRow) nextRow.scrollIntoView({ block: 'nearest' });
+                }
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (selectedIndex > 0) {
+                    selectPuzzle(selectedIndex - 1);
+                    const prevRow = document.getElementById(`puzzle-row-${selectedIndex}`);
+                    if (prevRow) prevRow.scrollIntoView({ block: 'nearest' });
+                }
+            }
+        });
+
+        async function saveToData() {
+            showStatus('⏳ Saving, committing & pushing to GitHub...');
+
+            try {
+                const header = '# ThemeHint|ThemeWord|WordsList|Paths...\n';
+                const content = header + getOutputText() + '\n';
+
+                const response = await fetch('/api/save-padanoolu', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ content })
+                });
+
+                const resJson = await response.json();
+                if (response.ok && resJson.success) {
+                    if (resJson.gitPushed) {
+                        showStatus('✅ ' + (resJson.message || 'Saved, committed, and pushed!'));
+                    } else if (resJson.warning) {
+                        showStatus('⚠️ ' + resJson.warning);
+                    } else {
+                        showStatus('✅ Saved to data/padanoolu/puzzles.txt!');
+                    }
+                } else {
+                    showStatus('❌ Failed: ' + (resJson.error || 'Server error'));
+                }
+            } catch (err) {
+                console.error(err);
+                showStatus('❌ Error: ' + err.message + ' (Make sure server is running)');
+            }
+        }
+
+        // Initialize: Try fetching latest saved puzzles from server, fallback to default rawData
+        fetch('/data/padanoolu/puzzles.txt')
+            .then(res => {
+                if (!res.ok) throw new Error('Not found');
+                return res.text();
+            })
+            .then(text => {
+                if (text && text.trim().length > 0) {
+                    loadFromText(text);
+                    showStatus('Loaded latest puzzles from data/padanoolu/puzzles.txt');
+                } else {
+                    loadFromText(rawData);
+                }
+            })
+            .catch(() => {
+                loadFromText(rawData);
+            });
+    </script>
+</body>
+</html>

@@ -5,6 +5,7 @@ const program = new Command("")
     .version('1.0.0')
 
 program.addCommand(require("./commands/padaku"));
-program.addCommand(require("./commands/padagoodu"))
+program.addCommand(require("./commands/padagoodu"));
+program.addCommand(require("./commands/padanoolu"));
 
 program.parse(process.argv);
