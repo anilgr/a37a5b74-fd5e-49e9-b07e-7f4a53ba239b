@@ -774,11 +774,12 @@
 
         function getOutputText() {
             return parsedPuzzles.map(p => {
-                const pathsStr = p.pathsList.map(coords => coords.map(c => c.join(',')).join(';')).join('|');
+                const hasPaths = p.pathsList && p.pathsList.length > 0 && p.pathsList.some(coords => coords.length > 0);
+                const pathsStr = hasPaths ? '|' + p.pathsList.map(coords => coords.map(c => c.join(',')).join(';')).join('|') : '';
                 if (currentLoadedSource === 'in_api' && p.assignedDate) {
-                    return `${p.assignedDate}|${p.themeHint}|${p.themeWord}|${p.wordsList.join(',')}|${pathsStr}`;
+                    return `${p.assignedDate}|${p.themeHint}|${p.themeWord}|${p.wordsList.join(',')}${pathsStr}`;
                 }
-                return `${p.themeHint}|${p.themeWord}|${p.wordsList.join(',')}|${pathsStr}`;
+                return `${p.themeHint}|${p.themeWord}|${p.wordsList.join(',')}${pathsStr}`;
             }).join('\n');
         }
 
