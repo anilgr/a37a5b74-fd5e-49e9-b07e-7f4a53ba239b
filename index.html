@@ -25,9 +25,11 @@
             outline: none;
             padding: 6px;
             word-break: break-word;
+            cursor: pointer;
         }
-        .editable-cell:focus {
-            background-color: #fff9c4;
+        .editable-cell[contenteditable="true"] {
+            background-color: #fff9c4 !important;
+            cursor: text;
         }
         tr.selected-row {
             background-color: #e0f2fe;
@@ -616,6 +618,45 @@
             }, 30);
         }
 
+        function enableCellEdit(cell, idx, field) {
+            selectPuzzle(idx);
+            if (cell.getAttribute('contenteditable') === 'true') return;
+
+            cell.setAttribute('contenteditable', 'true');
+            cell.focus();
+
+            // Set up Enter key listener to finish editing
+            cell.onkeydown = (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    cell.blur();
+                }
+            };
+
+            // Select all text in the cell for convenient typing
+            const range = document.createRange();
+            range.selectNodeContents(cell);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+
+        function disableCellEdit(cell, idx, field) {
+            cell.removeAttribute('contenteditable');
+            cell.onkeydown = null;
+            onCellEdit(idx, field, cell.innerText);
+            // Re-render row text cleanly to ensure any date formatting is intact
+            const p = parsedPuzzles[idx];
+            if (p) {
+                if (field === 'hint') {
+                    const dateLine = p.assignedDate ? `<br>${p.assignedDate}` : '';
+                    cell.innerHTML = `${p.themeHint}${dateLine}`;
+                } else if (field === 'words') {
+                    cell.innerText = p.wordsList.join(', ');
+                }
+            }
+        }
+
         function onCellEdit(idx, field, rawText) {
             const text = rawText.trim();
             const p = parsedPuzzles[idx];
@@ -836,18 +877,39 @@
                         onpointerup="handleRowNumberPointerUp(event)"
                         onpointercancel="handleRowNumberPointerUp(event)"
                         onpointerleave="handleRowNumberPointerUp(event)">${index + 1}</td>
-                    <td class="editable-cell" contenteditable="true" 
-                        onfocus="selectPuzzle(${index})" 
-                        onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}" 
-                        onblur="onCellEdit(${index}, 'hint', this.innerText)">${p.themeHint}${dateLine}</td>
+                    <td class="editable-cell" 
+                        title="Double click / double tap to edit"
+                        ondblclick="enableCellEdit(this, ${index}, 'hint')"
+                        onpointerdown="handleCellPointerDown(event, this, ${index}, 'hint')"
+                        onblur="disableCellEdit(this, ${index}, 'hint')">${p.themeHint}${dateLine}</td>
                     <td align="center" style="padding: 6px 10px;" id="count-cell-${index}">${p.wordsList.length} (${totalLetters})</td>
-                    <td class="editable-cell" contenteditable="true" 
-                        onfocus="selectPuzzle(${index})" 
-                        onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}" 
-                        onblur="onCellEdit(${index}, 'words', this.innerText)">${p.wordsList.join(', ')}</td>
+                    <td class="editable-cell" 
+                        title="Double click / double tap to edit"
+                        ondblclick="enableCellEdit(this, ${index}, 'words')"
+                        onpointerdown="handleCellPointerDown(event, this, ${index}, 'words')"
+                        onblur="disableCellEdit(this, ${index}, 'words')">${p.wordsList.join(', ')}</td>
                 `;
                 tbody.appendChild(row);
             });
+        }
+
+        let lastTapTime = 0;
+        let lastTapCell = null;
+
+        function handleCellPointerDown(e, cell, idx, field) {
+            // Check for double tap on touch devices
+            const currentTime = new Date().getTime();
+            const tapGap = currentTime - lastTapTime;
+
+            if (tapGap < 350 && tapGap > 0 && lastTapCell === cell) {
+                // Double tap detected
+                enableCellEdit(cell, idx, field);
+                lastTapTime = 0;
+                lastTapCell = null;
+            } else {
+                lastTapTime = currentTime;
+                lastTapCell = cell;
+            }
         }
 
         let longPressTimer = null;
