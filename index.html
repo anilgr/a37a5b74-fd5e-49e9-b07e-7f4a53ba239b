@@ -53,25 +53,10 @@
     </style>
 </head>
 <body>
-    <h2>ಪದನೂಲು ಒಗಟುಗಳು (Padanoolu Puzzles & Generator)</h2>
-
-    <div style="margin-bottom: 12px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-        <button class="btn" id="load-puzzles-btn" onclick="loadPuzzlesSource('puzzles')">Load puzzles.txt</button>
-        <button class="btn" id="load-in-api-btn" onclick="loadPuzzlesSource('in_api')">Load in_api_puzzles.txt</button>
-        <span style="border-left: 1px solid #ccc; height: 20px; margin: 0 4px;"></span>
-        <button class="btn" onclick="addNewRow()">+ Add New Puzzle</button>
-        <button class="btn" onclick="saveToData()">Save to Data</button>
-        <button class="btn" onclick="downloadOutput()">Download TXT</button>
-        <button class="btn" onclick="copyOutput()">Copy Raw Text</button>
-        <label style="margin-left: 8px; font-size: 13px;">
-            Import TXT: <input type="file" id="file-input" accept=".txt" onchange="importFile(event)">
-        </label>
-        <span id="copy-msg" style="color: green; margin-left: 8px; font-size: 13px; font-weight: 500;"></span>
-    </div>
-
-    <div style="display: flex; gap: 20px; align-items: flex-start; max-width: 100%;">
+    <div style="display: flex; gap: 20px; align-items: flex-start; max-width: 100%; flex-wrap: wrap;">
         <!-- Left Section: Puzzles Table -->
-        <div style="flex: 1 1 auto; min-width: 0; overflow-x: auto;">
+        <div style="flex: 1 1 500px; min-width: 320px; overflow-x: auto;">
+            <h2 style="margin-top: 0; margin-bottom: 12px;">ಪದನೂಲು ಒಗಟುಗಳು (Padanoolu Puzzles & Generator)</h2>
             <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 100%;">
                 <thead>
                     <tr style="background-color: #f0f0f0;">
@@ -83,23 +68,40 @@
                 </thead>
                 <tbody id="puzzle-tbody"></tbody>
             </table>
-            <div style="margin-top: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="margin-top: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
                 <button class="btn" onclick="addNewRow()">+ Add New Puzzle</button>
                 <p style="font-size: 13px; color: #555; margin: 0;">
-                    💡 <em>Use <strong>↑ / ↓</strong> arrow keys or click a row to preview. Click <strong>🔄</strong> on the right to shuffle/generate snake path grid!</em>
+                    💡 <em>Click row to preview, double tap/click cell to edit. Long-press # to delete.</em>
                 </p>
             </div>
         </div>
 
-        <!-- Right Section: Grid Preview with Refresh/Generator -->
-        <div style="flex: 0 0 280px; width: 280px; border: 1px solid #ccc; padding: 10px; background-color: #fafafa;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <h3 id="grid-title" style="margin: 0; font-size: 15px;">Grid Preview</h3>
-                <button class="icon-btn" id="generate-btn" title="Generate / Shuffle Grid" onclick="runGenerator()">🔄</button>
+        <!-- Right Section: Toolbar Buttons above Preview -->
+        <div style="flex: 0 0 290px; width: 290px; display: flex; flex-direction: column; gap: 12px;">
+            <!-- Action buttons container (wraps neatly) -->
+            <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center; background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 8px; border-radius: 4px;">
+                <button class="btn" id="load-puzzles-btn" onclick="loadPuzzlesSource('puzzles')">puzzles.txt</button>
+                <button class="btn" id="load-in-api-btn" onclick="loadPuzzlesSource('in_api')">in_api_puzzles.txt</button>
+                <button class="btn" style="background-color: #dcfce7; border: 1px solid #86efac; font-weight: 600;" onclick="saveToData()">Save to Data</button>
+                <button class="btn" onclick="addNewRow()">+ Add Row</button>
+                <button class="btn" onclick="downloadOutput()">Download</button>
+                <button class="btn" onclick="copyOutput()">Copy Text</button>
+                <label style="font-size: 12px; display: flex; align-items: center; gap: 4px;">
+                    Import: <input type="file" id="file-input" accept=".txt" onchange="importFile(event)" style="font-size: 11px; max-width: 140px;">
+                </label>
+                <span id="copy-msg" style="color: #16a34a; font-size: 12px; font-weight: 500; width: 100%; min-height: 16px;"></span>
             </div>
-            <div id="grid-meta" style="margin-bottom: 8px; font-size: 12px; color: #444;"></div>
-            <div id="grid-container" style="display: flex; justify-content: center; width: 100%;"></div>
-            <div id="word-legend" style="margin-top: 10px; font-size: 12px; line-height: 1.5; word-break: break-word;"></div>
+
+            <!-- Grid Preview Box -->
+            <div style="border: 1px solid #ccc; padding: 10px; background-color: #fafafa; border-radius: 4px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <h3 id="grid-title" style="margin: 0; font-size: 15px;">Grid Preview</h3>
+                    <button class="icon-btn" id="generate-btn" title="Generate / Shuffle Grid" onclick="runGenerator()">🔄</button>
+                </div>
+                <div id="grid-meta" style="margin-bottom: 8px; font-size: 12px; color: #444;"></div>
+                <div id="grid-container" style="display: flex; justify-content: center; width: 100%;"></div>
+                <div id="word-legend" style="margin-top: 10px; font-size: 12px; line-height: 1.5; word-break: break-word;"></div>
+            </div>
         </div>
     </div>
 
