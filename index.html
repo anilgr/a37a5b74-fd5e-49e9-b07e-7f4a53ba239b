@@ -14,6 +14,8 @@
         .row-num-cell {
             user-select: none;
             -webkit-user-select: none;
+            -webkit-touch-callout: none;
+            touch-action: manipulation;
             transition: background-color 0.2s;
         }
         .row-num-cell:active {
@@ -829,8 +831,10 @@
                 row.innerHTML = `
                     <td class="row-num-cell" align="center" style="padding: 6px 10px; font-weight: 500;" 
                         title="Long press to delete this row"
+                        oncontextmenu="return false;"
                         onpointerdown="handleRowNumberPointerDown(event, ${index})"
                         onpointerup="handleRowNumberPointerUp(event)"
+                        onpointercancel="handleRowNumberPointerUp(event)"
                         onpointerleave="handleRowNumberPointerUp(event)">${index + 1}</td>
                     <td class="editable-cell" contenteditable="true" 
                         onfocus="selectPuzzle(${index})" 
