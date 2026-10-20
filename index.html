@@ -11,6 +11,14 @@
             font-family: sans-serif;
             margin: 16px;
         }
+        .row-num-cell {
+            user-select: none;
+            -webkit-user-select: none;
+            transition: background-color 0.2s;
+        }
+        .row-num-cell:active {
+            background-color: #ffcdd2 !important;
+        }
         .editable-cell {
             outline: none;
             padding: 6px;
@@ -819,7 +827,11 @@
 
                 const dateLine = p.assignedDate ? `<br>${p.assignedDate}` : '';
                 row.innerHTML = `
-                    <td align="center" style="padding: 6px 10px; font-weight: 500;">${index + 1}</td>
+                    <td class="row-num-cell" align="center" style="padding: 6px 10px; font-weight: 500;" 
+                        title="Long press to delete this row"
+                        onpointerdown="handleRowNumberPointerDown(event, ${index})"
+                        onpointerup="handleRowNumberPointerUp(event)"
+                        onpointerleave="handleRowNumberPointerUp(event)">${index + 1}</td>
                     <td class="editable-cell" contenteditable="true" 
                         onfocus="selectPuzzle(${index})" 
                         onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}" 
@@ -832,6 +844,64 @@
                 `;
                 tbody.appendChild(row);
             });
+        }
+
+        let longPressTimer = null;
+
+        function handleRowNumberPointerDown(e, index) {
+            // Only trigger on primary touch or left click
+            if (e.button !== undefined && e.button !== 0) return;
+            clearTimeout(longPressTimer);
+            const targetCell = e.currentTarget;
+
+            longPressTimer = setTimeout(() => {
+                if (navigator.vibrate) navigator.vibrate(50);
+                confirmDeleteRow(index);
+            }, 600); // 600ms long press threshold
+        }
+
+        function handleRowNumberPointerUp(e) {
+            clearTimeout(longPressTimer);
+        }
+
+        function confirmDeleteRow(index) {
+            clearTimeout(longPressTimer);
+            const p = parsedPuzzles[index];
+            if (!p) return;
+
+            const label = p.assignedDate ? `[${p.assignedDate}] ${p.themeHint}` : `${p.themeHint}`;
+            const confirmed = window.confirm(`Delete puzzle #${index + 1} (${label})?`);
+            if (confirmed) {
+                deleteRow(index);
+            }
+        }
+
+        function deleteRow(index) {
+            if (index < 0 || index >= parsedPuzzles.length) return;
+            parsedPuzzles.splice(index, 1);
+
+            // Re-index remaining puzzles
+            parsedPuzzles.forEach((p, idx) => p.index = idx);
+
+            if (parsedPuzzles.length === 0) {
+                selectedIndex = 0;
+                renderTable();
+                document.getElementById('grid-container').innerHTML = '<em>No puzzles left. Click "+ Add New Puzzle" to add one.</em>';
+                document.getElementById('word-legend').innerHTML = '';
+                document.getElementById('grid-meta').innerText = '';
+                showStatus('Deleted row. No puzzles remaining.');
+                return;
+            }
+
+            if (selectedIndex >= parsedPuzzles.length) {
+                selectedIndex = parsedPuzzles.length - 1;
+            } else if (selectedIndex === index) {
+                selectedIndex = Math.min(index, parsedPuzzles.length - 1);
+            }
+
+            renderTable();
+            selectPuzzle(selectedIndex);
+            showStatus(`Deleted puzzle #${index + 1}. Remember to click 'Save to Data' to persist.`);
         }
 
         function addNewRow() {
