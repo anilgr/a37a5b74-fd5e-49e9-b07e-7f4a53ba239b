@@ -44,6 +44,9 @@
     <h2>ಪದನೂಲು ಒಗಟುಗಳು (Padanoolu Puzzles & Generator)</h2>
 
     <div style="margin-bottom: 12px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+        <button class="btn" id="load-puzzles-btn" onclick="loadPuzzlesSource('puzzles')">Load puzzles.txt</button>
+        <button class="btn" id="load-in-api-btn" onclick="loadPuzzlesSource('in_api')">Load in_api_puzzles.txt</button>
+        <span style="border-left: 1px solid #ccc; height: 20px; margin: 0 4px;"></span>
         <button class="btn" onclick="addNewRow()">+ Add New Puzzle</button>
         <button class="btn" onclick="saveToData()">Save to Data</button>
         <button class="btn" onclick="downloadOutput()">Download TXT</button>
@@ -607,7 +610,13 @@
             const text = rawText.trim();
             const p = parsedPuzzles[idx];
             if (field === 'hint') {
-                p.themeHint = text;
+                if (p.assignedDate) {
+                    // Extract text preceding the date string if present
+                    const datePattern = new RegExp(`(?:\\s*${p.assignedDate})?$`);
+                    p.themeHint = text.replace(datePattern, '').trim();
+                } else {
+                    p.themeHint = text;
+                }
             } else if (field === 'words') {
                 const words = text.split(',').map(w => w.trim()).filter(w => w.length > 0);
                 p.wordsList = words;
@@ -713,22 +722,26 @@
         function getOutputText() {
             return parsedPuzzles.map(p => {
                 const pathsStr = p.pathsList.map(coords => coords.map(c => c.join(',')).join(';')).join('|');
+                if (currentLoadedSource === 'in_api' && p.assignedDate) {
+                    return `${p.assignedDate}|${p.themeHint}|${p.themeWord}|${p.wordsList.join(',')}|${pathsStr}`;
+                }
                 return `${p.themeHint}|${p.themeWord}|${p.wordsList.join(',')}|${pathsStr}`;
             }).join('\n');
         }
 
         function downloadOutput() {
+            const fileName = currentLoadedSource === 'in_api' ? 'in_api_puzzles.txt' : 'puzzles.txt';
             const text = getOutputText();
             const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'puzzles.txt';
+            a.download = fileName;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
-            showStatus('Downloaded puzzles.txt!');
+            showStatus(`Downloaded ${fileName}!`);
         }
 
         function copyOutput() {
@@ -757,12 +770,22 @@
             reader.readAsText(file, 'utf-8');
         }
 
+        let currentLoadedSource = 'puzzles';
+
         function loadFromText(text) {
             parsedPuzzles.length = 0;
             const lines = text.trim().split('\n').filter(l => l.trim().length > 0 && !l.trim().startsWith('#'));
 
             lines.forEach((line, index) => {
-                const parts = line.split('|');
+                let parts = line.split('|');
+                let assignedDate = '';
+
+                // If loaded from in_api_puzzles.txt format: Date|ThemeHint|ThemeWord|WordsList|Paths...
+                if (/^\d{4}-\d{2}-\d{2}$/.test(parts[0].trim())) {
+                    assignedDate = parts[0].trim();
+                    parts = parts.slice(1);
+                }
+
                 const themeHint = parts[0] || '';
                 const wordsList = (parts[2] || '').split(',').map(w => w.trim()).filter(w => w.length > 0);
                 const themeWord = wordsList[0] || parts[1] || '';
@@ -770,7 +793,7 @@
                     p.split(';').map(coord => coord.split(',').map(Number))
                 );
 
-                parsedPuzzles.push({ index, themeHint, themeWord, wordsList, pathsList });
+                parsedPuzzles.push({ index, assignedDate, themeHint, themeWord, wordsList, pathsList });
             });
 
             renderTable();
@@ -794,12 +817,13 @@
                 }
                 row.onclick = () => selectPuzzle(index);
 
+                const dateLine = p.assignedDate ? `<br>${p.assignedDate}` : '';
                 row.innerHTML = `
                     <td align="center" style="padding: 6px 10px; font-weight: 500;">${index + 1}</td>
                     <td class="editable-cell" contenteditable="true" 
                         onfocus="selectPuzzle(${index})" 
                         onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}" 
-                        onblur="onCellEdit(${index}, 'hint', this.innerText)">${p.themeHint}</td>
+                        onblur="onCellEdit(${index}, 'hint', this.innerText)">${p.themeHint}${dateLine}</td>
                     <td align="center" style="padding: 6px 10px;" id="count-cell-${index}">${p.wordsList.length} (${totalLetters})</td>
                     <td class="editable-cell" contenteditable="true" 
                         onfocus="selectPuzzle(${index})" 
@@ -871,26 +895,32 @@
         });
 
         async function saveToData() {
-            showStatus('⏳ Saving, committing & pushing to GitHub...');
+            const fileName = currentLoadedSource === 'in_api' ? 'in_api_puzzles.txt' : 'puzzles.txt';
+            showStatus(`⏳ Saving ${fileName}, committing & pushing to GitHub...`);
 
             try {
-                const header = '# ThemeHint|ThemeWord|WordsList|Paths...\n';
+                const header = currentLoadedSource === 'in_api'
+                    ? '# Date|ThemeHint|ThemeWord|WordsList|Paths...\n'
+                    : '# ThemeHint|ThemeWord|WordsList|Paths...\n';
                 const content = header + getOutputText() + '\n';
 
                 const response = await fetch('/api/save-padanoolu', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ content })
+                    body: JSON.stringify({ 
+                        file: currentLoadedSource,
+                        content 
+                    })
                 });
 
                 const resJson = await response.json();
                 if (response.ok && resJson.success) {
                     if (resJson.gitPushed) {
-                        showStatus('✅ ' + (resJson.message || 'Saved, committed, and pushed!'));
+                        showStatus('✅ ' + (resJson.message || `Saved, committed, and pushed ${fileName}!`));
                     } else if (resJson.warning) {
                         showStatus('⚠️ ' + resJson.warning);
                     } else {
-                        showStatus('✅ Saved to data/padanoolu/puzzles.txt!');
+                        showStatus(`✅ Saved to data/padanoolu/${fileName}!`);
                     }
                 } else {
                     showStatus('❌ Failed: ' + (resJson.error || 'Server error'));
@@ -901,23 +931,50 @@
             }
         }
 
-        // Initialize: Try fetching latest saved puzzles from server, fallback to default rawData
-        fetch('/data/padanoolu/puzzles.txt')
-            .then(res => {
-                if (!res.ok) throw new Error('Not found');
-                return res.text();
-            })
-            .then(text => {
+        function updateSourceButtons() {
+            const btnPuzzles = document.getElementById('load-puzzles-btn');
+            const btnInApi = document.getElementById('load-in-api-btn');
+            if (btnPuzzles) {
+                btnPuzzles.style.fontWeight = currentLoadedSource === 'puzzles' ? 'bold' : 'normal';
+                btnPuzzles.style.backgroundColor = currentLoadedSource === 'puzzles' ? '#e0f2fe' : '';
+            }
+            if (btnInApi) {
+                btnInApi.style.fontWeight = currentLoadedSource === 'in_api' ? 'bold' : 'normal';
+                btnInApi.style.backgroundColor = currentLoadedSource === 'in_api' ? '#e0f2fe' : '';
+            }
+        }
+
+        async function loadPuzzlesSource(source) {
+            currentLoadedSource = source;
+            updateSourceButtons();
+
+            const url = source === 'in_api' 
+                ? '/data/padanoolu/in_api_puzzles.txt' 
+                : '/data/padanoolu/puzzles.txt';
+            const fileName = source === 'in_api' ? 'in_api_puzzles.txt' : 'puzzles.txt';
+
+            showStatus(`Loading ${fileName}...`);
+            try {
+                const res = await fetch(url);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const text = await res.text();
                 if (text && text.trim().length > 0) {
                     loadFromText(text);
-                    showStatus('Loaded latest puzzles from data/padanoolu/puzzles.txt');
+                    showStatus(`Loaded ${fileName} (${parsedPuzzles.length} puzzles)`);
                 } else {
+                    showStatus(`File ${fileName} is empty.`);
+                }
+            } catch (err) {
+                console.error(err);
+                showStatus(`❌ Could not load ${fileName}: ${err.message}`);
+                if (source === 'puzzles') {
                     loadFromText(rawData);
                 }
-            })
-            .catch(() => {
-                loadFromText(rawData);
-            });
+            }
+        }
+
+        // Initialize: by default the page loads puzzles.txt like before
+        loadPuzzlesSource('puzzles');
     </script>
 </body>
 </html>

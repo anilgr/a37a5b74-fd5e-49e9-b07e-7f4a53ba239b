@@ -37,7 +37,7 @@ const server = http.createServer((req, res) => {
   // API Routes
   // ---------------------------------------------------------------------------
 
-  // POST /api/save-padanoolu: Save padanoolu puzzles content directly to data/padanoolu/puzzles.txt
+  // POST /api/save-padanoolu: Save padanoolu puzzles content directly to data/padanoolu/<file>
   if (req.method === 'POST' && parsedUrl.pathname === '/api/save-padanoolu') {
     let body = '';
     req.on('data', chunk => { body += chunk; });
@@ -45,6 +45,7 @@ const server = http.createServer((req, res) => {
       try {
         const payload = JSON.parse(body || '{}');
         const content = payload.content;
+        const targetFilename = payload.file === 'in_api' ? 'in_api_puzzles.txt' : 'puzzles.txt';
 
         if (typeof content !== 'string') {
           res.writeHead(400, { 'Content-Type': 'application/json' });
@@ -58,8 +59,8 @@ const server = http.createServer((req, res) => {
           fs.mkdirSync(targetDir, { recursive: true });
         }
 
-        // Write content to puzzles.txt
-        const targetFile = path.join(targetDir, 'puzzles.txt');
+        // Write content to target file
+        const targetFile = path.join(targetDir, targetFilename);
         fs.writeFileSync(targetFile, content, 'utf8');
 
         // Helper function to run git commands sequentially
@@ -72,15 +73,16 @@ const server = http.createServer((req, res) => {
           });
         });
 
-        // Stage, commit, and push data/padanoolu/puzzles.txt
+        // Stage, commit, and push data/padanoolu/<targetFilename>
         (async () => {
           try {
-            await runGit(['add', 'data/padanoolu/puzzles.txt']);
+            const relFilePath = path.posix.join('data', 'padanoolu', targetFilename);
+            await runGit(['add', relFilePath]);
 
             // Only commit if there are staged changes
             let commitOutput = 'No changes to commit';
             try {
-              commitOutput = await runGit(['commit', '-m', 'Update Padanoolu puzzles data']);
+              commitOutput = await runGit(['commit', '-m', `Update Padanoolu ${targetFilename} data`]);
               console.log(`[Git Commit] ${commitOutput}`);
             } catch (commitErr) {
               if (commitErr.message.includes('nothing to commit')) {
@@ -97,9 +99,9 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({ 
               success: true, 
-              path: 'data/padanoolu/puzzles.txt',
+              path: `data/padanoolu/${targetFilename}`,
               gitPushed: true,
-              message: 'Saved, committed, and pushed to GitHub!'
+              message: `Saved, committed, and pushed ${targetFilename} to GitHub!`
             }));
           } catch (gitErr) {
             console.error('[Git Error]', gitErr);
@@ -107,9 +109,9 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({ 
               success: true, 
-              path: 'data/padanoolu/puzzles.txt',
+              path: `data/padanoolu/${targetFilename}`,
               gitPushed: false,
-              warning: 'Saved locally, but Git push failed: ' + gitErr.message
+              warning: `Saved ${targetFilename} locally, but Git push failed: ` + gitErr.message
             }));
           }
         })();

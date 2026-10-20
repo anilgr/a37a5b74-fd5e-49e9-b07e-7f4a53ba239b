@@ -29,6 +29,7 @@ const PADAKU_START_DATE = '2024-01-05';
 const PADAGOODU_START_DATE = '2025-03-12';
 const PADANOOLU_START_DATE = '2026-10-15';
 const PADANOOLU_DATA_PATH = path.join(DATA_DIR, 'padanoolu', 'puzzles.txt');
+const PADANOOLU_IN_API_PATH = path.join(DATA_DIR, 'padanoolu', 'in_api_puzzles.txt');
 
 module.exports = {
     PROJECT_ROOT,
@@ -48,4 +49,5 @@ module.exports = {
     PADAGOODU_START_DATE,
     PADANOOLU_START_DATE,
     PADANOOLU_DATA_PATH,
+    PADANOOLU_IN_API_PATH,
 };

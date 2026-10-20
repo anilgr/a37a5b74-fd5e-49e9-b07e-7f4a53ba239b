@@ -5,12 +5,54 @@ const { Route } = require('../../../core/route');
 const {
     PADANOOLU_DATA_PATH,
     PADANOOLU_START_DATE,
+    PADANOOLU_IN_API_PATH,
 } = require('../../../../config/default');
 
+function formatDateKey(date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+}
+
+function parseDateKey(dateStr) {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    return new Date(y, m - 1, d);
+}
+
+function getNextAvailableDate(inApiPath, fallbackStartDateStr) {
+    if (fs.existsSync(inApiPath)) {
+        const inApiRaw = fs.readFileSync(inApiPath, 'utf-8');
+        const inApiLines = inApiRaw.split('\n')
+            .map(l => l.trim())
+            .filter(l => l.length > 0 && !l.startsWith('#'));
+
+        const dates = [];
+        for (const line of inApiLines) {
+            const dateStr = line.split('|')[0].trim();
+            if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+                dates.push(dateStr);
+            }
+        }
+
+        if (dates.length > 0) {
+            // Sort to find the latest recorded date
+            dates.sort();
+            const latestDate = parseDateKey(dates[dates.length - 1]);
+            latestDate.setDate(latestDate.getDate() + 1);
+            return latestDate;
+        }
+    }
+
+    return parseDateKey(fallbackStartDateStr);
+}
+
 module.exports = new Command('generate-api')
-    .description('Generate daily static JSON API for Padanoolu puzzles based on data/padanoolu/puzzles.txt')
-    .option('--start-date <date>', 'Game start date (YYYY-MM-DD)', PADANOOLU_START_DATE)
+    .description('Generate daily static JSON API from puzzles.txt, append to in_api_puzzles.txt, and consume (clear) puzzles.txt')
+    .option('--start-date <date>', 'Game start date (YYYY-MM-DD); if omitted, continues from latest date in in_api_puzzles.txt')
     .option('--input <file>', 'Input puzzles file', PADANOOLU_DATA_PATH)
+    .option('--output-in-api <file>', 'Output in_api_puzzles file', PADANOOLU_IN_API_PATH)
+    .option('--no-consume', 'Do not consume (empty) the input puzzles.txt file')
     .action((options) => {
         const inputPath = path.resolve(options.input);
         if (!fs.existsSync(inputPath)) {
@@ -18,23 +60,32 @@ module.exports = new Command('generate-api')
             process.exit(1);
         }
 
+        const outInApiPath = path.resolve(options.outputInApi);
         const rawContent = fs.readFileSync(inputPath, 'utf-8');
         const lines = rawContent.split('\n')
             .map(line => line.trim())
             .filter(line => line.length > 0 && !line.startsWith('#'));
 
         if (lines.length === 0) {
-            console.log('No valid puzzle lines found in input file.');
+            console.log(`No puzzles found to consume in ${inputPath}.`);
             return;
         }
 
-        const [startYear, startMonth, startDay] = options.startDate.split('-').map(Number);
-        let currentDate = new Date(startYear, startMonth - 1, startDay);
+        // Determine starting date
+        let currentDate;
+        if (options.startDate) {
+            currentDate = parseDateKey(options.startDate);
+        } else {
+            currentDate = getNextAvailableDate(outInApiPath, PADANOOLU_START_DATE);
+        }
+
+        const [startYear, startMonth, startDay] = PADANOOLU_START_DATE.split('-').map(Number);
         const defaultStartDate = `${startYear}/${String(startMonth).padStart(2, '0')}/${String(startDay).padStart(2, '0')}`;
 
-        console.log(`Starting generation from ${options.startDate} for ${lines.length} puzzle(s)...`);
+        console.log(`Consuming ${lines.length} puzzle(s) from ${inputPath} starting from date ${formatDateKey(currentDate)}...`);
 
         let generatedCount = 0;
+        const newInApiLines = [];
 
         lines.forEach((line, index) => {
             const parts = line.split('|');
@@ -48,8 +99,10 @@ module.exports = new Command('generate-api')
                 });
             });
 
+            const dateStr = formatDateKey(currentDate);
+
             const response = {
-                id: `padanoolu_${index + 1}`,
+                id: `padanoolu_${dateStr.replace(/-/g, '_')}`,
                 themeHint,
                 themeWord,
                 words: wordsList,
@@ -62,12 +115,38 @@ module.exports = new Command('generate-api')
             const route = new Route(targetPath, response);
             route.saveToDisk();
 
-            console.log(`[Generated] ${currentDate.toISOString().split('T')[0]} -> ${targetPath}`);
+            console.log(`[Generated] ${dateStr} -> ${targetPath}`);
+
+            newInApiLines.push(`${dateStr}|${line}`);
 
             // Increment to next day
             currentDate.setDate(currentDate.getDate() + 1);
             generatedCount++;
         });
 
-        console.log(`\nSuccessfully generated ${generatedCount} Padanoolu daily puzzle API file(s).`);
+        // Ensure target directory exists for in_api_puzzles.txt
+        const outDir = path.dirname(outInApiPath);
+        if (!fs.existsSync(outDir)) {
+            fs.mkdirSync(outDir, { recursive: true });
+        }
+
+        // Append to in_api_puzzles.txt (or initialize with header if new)
+        const inApiHeader = '# Date|ThemeHint|ThemeWord|WordsList|Paths...\n';
+        if (!fs.existsSync(outInApiPath) || fs.readFileSync(outInApiPath, 'utf-8').trim().length === 0) {
+            fs.writeFileSync(outInApiPath, inApiHeader + newInApiLines.join('\n') + '\n', 'utf-8');
+        } else {
+            let existing = fs.readFileSync(outInApiPath, 'utf-8');
+            if (!existing.endsWith('\n')) existing += '\n';
+            fs.writeFileSync(outInApiPath, existing + newInApiLines.join('\n') + '\n', 'utf-8');
+        }
+        console.log(`[Appended] Added ${newInApiLines.length} puzzle(s) to ${outInApiPath}`);
+
+        // Consume (empty) input puzzles.txt file
+        if (options.consume !== false) {
+            const puzzlesHeader = '# ThemeHint|ThemeWord|WordsList|Paths...\n';
+            fs.writeFileSync(inputPath, puzzlesHeader, 'utf-8');
+            console.log(`[Consumed] Cleared ${lines.length} consumed puzzle(s) from ${inputPath}`);
+        }
+
+        console.log(`\nSuccessfully processed and generated ${generatedCount} Padanoolu daily puzzle API file(s).`);
     });
