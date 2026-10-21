@@ -167,7 +167,12 @@
             Open JSON: <input type="file" id="file-input" accept=".json" onchange="loadFile(event)">
         </label>
         <button onclick="downloadJson()">Download JSON</button>
+        <button id="save-server-btn" onclick="saveToServer()">Save all_groups.json</button>
         <button onclick="addNewGroup()">+ Add New Group</button>
+        <label style="font-size: 13px; cursor: pointer; user-select: none; display: inline-flex; align-items: center; gap: 4px;">
+            <input type="checkbox" id="hide-reviewed-checkbox" onchange="toggleHideReviewed(this.checked)">
+            Hide Reviewed
+        </label>
         <input type="text" class="search-box" id="search-input" placeholder="Search groups or words..." oninput="onSearch()">
         <span style="font-size: 13px; color: #555;">Total: <strong id="group-count">0</strong></span>
         <span style="font-size: 13px; color: #15803d;">Reviewed: <strong id="reviewed-count">0</strong></span>
@@ -181,6 +186,7 @@
         let groupsData = [];
         let expandedIndex = null;
         let searchQuery = '';
+        let hideReviewed = false;
         let originalFileName = 'all_groups.json';
 
         const defaultSample = [
@@ -251,6 +257,11 @@
             render();
         }
 
+        function toggleHideReviewed(checked) {
+            hideReviewed = Boolean(checked);
+            render();
+        }
+
         function render() {
             const container = document.getElementById('groups-container');
             document.getElementById('group-count').innerText = groupsData.length;
@@ -264,6 +275,9 @@
             let displayedCount = 0;
 
             groupsData.forEach((item, index) => {
+                // Filter out reviewed groups if toggle is checked
+                if (hideReviewed && item.reviewed) return;
+
                 // Filter matching search query if any
                 if (searchQuery) {
                     const matchGroup = (item.group || '').toLowerCase().includes(searchQuery);
@@ -470,6 +484,55 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
             showStatus('Downloaded ' + a.download);
+        }
+
+        async function saveToServer() {
+            if (!groupsData || groupsData.length === 0) {
+                alert('No groups data to save.');
+                return;
+            }
+            const saveBtn = document.getElementById('save-server-btn');
+            const originalText = saveBtn.innerText;
+            saveBtn.disabled = true;
+            saveBtn.innerText = 'Saving...';
+            showStatus('Saving to server...');
+
+            try {
+                const jsonStr = JSON.stringify(groupsData, null, 2);
+                const res = await fetch('/api/save-padanantu', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        content: jsonStr,
+                        file: 'all_groups.json'
+                    })
+                });
+
+                let data = null;
+                const text = await res.text();
+                try {
+                    data = JSON.parse(text);
+                } catch (parseErr) {
+                    throw new Error(`Server returned HTTP ${res.status} (${res.statusText || 'Error'}): ${text.slice(0, 150)}`);
+                }
+
+                if (res.ok && data.success) {
+                    showStatus(data.message || 'Saved all_groups.json successfully!');
+                    if (data.warning) {
+                        alert(data.warning);
+                    }
+                } else {
+                    alert('Error saving: ' + (data.error || text || 'Unknown error'));
+                    showStatus('Failed to save');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Could not save to server: ' + err.message);
+                showStatus('Error saving');
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.innerText = originalText;
+            }
         }
 
         // Initialize with default sample or try loading all_groups.json if served

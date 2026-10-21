@@ -34,6 +34,9 @@
         tr.selected-row {
             background-color: #e0f2fe;
         }
+        tr.preview-row {
+            background-color: #f8fafc;
+        }
         .btn {
             padding: 5px 10px;
             font-size: 13px;
@@ -53,10 +56,25 @@
     </style>
 </head>
 <body>
-    <div style="display: flex; gap: 20px; align-items: flex-start; max-width: 100%; flex-wrap: wrap;">
-        <!-- Left Section: Puzzles Table -->
-        <div style="flex: 1 1 500px; min-width: 320px; overflow-x: auto;">
-            <h2 style="margin-top: 0; margin-bottom: 12px;">ಪದನೂಲು ಒಗಟುಗಳು (Padanoolu Puzzles & Generator)</h2>
+    <div style="max-width: 100%;">
+        <h2 style="margin-top: 0; margin-bottom: 12px;">ಪದನೂಲು ಒಗಟುಗಳು (Padanoolu Puzzles & Generator)</h2>
+
+        <!-- Action buttons container (top of table) -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center; background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 12px; border-radius: 4px; margin-bottom: 12px;">
+            <button class="btn" id="load-puzzles-btn" onclick="loadPuzzlesSource('puzzles')">puzzles.txt</button>
+            <button class="btn" id="load-in-api-btn" onclick="loadPuzzlesSource('in_api')">in_api_puzzles.txt</button>
+            <button class="btn" style="background-color: #dcfce7; border: 1px solid #86efac; font-weight: 600;" onclick="saveToData()">Save to Data</button>
+            <button class="btn" onclick="addNewRow()">+ Add New Puzzle</button>
+            <button class="btn" onclick="downloadOutput()">Download</button>
+            <button class="btn" onclick="copyOutput()">Copy Text</button>
+            <label style="font-size: 12px; display: flex; align-items: center; gap: 4px;">
+                Import: <input type="file" id="file-input" accept=".txt" onchange="importFile(event)" style="font-size: 11px; max-width: 140px;">
+            </label>
+            <span id="copy-msg" style="color: #16a34a; font-size: 12px; font-weight: 500; min-height: 16px;"></span>
+        </div>
+
+        <!-- Puzzles Table -->
+        <div style="overflow-x: auto;">
             <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse; width: 100%;">
                 <thead>
                     <tr style="background-color: #f0f0f0;">
@@ -71,36 +89,8 @@
             <div style="margin-top: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
                 <button class="btn" onclick="addNewRow()">+ Add New Puzzle</button>
                 <p style="font-size: 13px; color: #555; margin: 0;">
-                    💡 <em>Click row to preview, double tap/click cell to edit. Long-press # to delete.</em>
+                    💡 <em>Click row to expand preview, double tap/click cell to edit. Long-press # to delete.</em>
                 </p>
-            </div>
-        </div>
-
-        <!-- Right Section: Toolbar Buttons above Preview -->
-        <div style="flex: 0 0 290px; width: 290px; display: flex; flex-direction: column; gap: 12px;">
-            <!-- Action buttons container (wraps neatly) -->
-            <div style="display: flex; gap: 6px; flex-wrap: wrap; align-items: center; background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 8px; border-radius: 4px;">
-                <button class="btn" id="load-puzzles-btn" onclick="loadPuzzlesSource('puzzles')">puzzles.txt</button>
-                <button class="btn" id="load-in-api-btn" onclick="loadPuzzlesSource('in_api')">in_api_puzzles.txt</button>
-                <button class="btn" style="background-color: #dcfce7; border: 1px solid #86efac; font-weight: 600;" onclick="saveToData()">Save to Data</button>
-                <button class="btn" onclick="addNewRow()">+ Add Row</button>
-                <button class="btn" onclick="downloadOutput()">Download</button>
-                <button class="btn" onclick="copyOutput()">Copy Text</button>
-                <label style="font-size: 12px; display: flex; align-items: center; gap: 4px;">
-                    Import: <input type="file" id="file-input" accept=".txt" onchange="importFile(event)" style="font-size: 11px; max-width: 140px;">
-                </label>
-                <span id="copy-msg" style="color: #16a34a; font-size: 12px; font-weight: 500; width: 100%; min-height: 16px;"></span>
-            </div>
-
-            <!-- Grid Preview Box -->
-            <div style="border: 1px solid #ccc; padding: 10px; background-color: #fafafa; border-radius: 4px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                    <h3 id="grid-title" style="margin: 0; font-size: 15px;">Grid Preview</h3>
-                    <button class="icon-btn" id="generate-btn" title="Generate / Shuffle Grid" onclick="runGenerator()">🔄</button>
-                </div>
-                <div id="grid-meta" style="margin-bottom: 8px; font-size: 12px; color: #444;"></div>
-                <div id="grid-container" style="display: flex; justify-content: center; width: 100%;"></div>
-                <div id="word-legend" style="margin-top: 10px; font-size: 12px; line-height: 1.5; word-break: break-word;"></div>
             </div>
         </div>
     </div>
@@ -119,7 +109,7 @@
 ಹಸಿರೇ ನಮ್ಮ ಉಸಿರು|ವೃಕ್ಷಸಂಪತ್ತು|ವೃಕ್ಷಸಂಪತ್ತು,ಬೇವು,ಅರಳಿ,ಹಲಸು,ಮಾವಿನಮರ,ಶ್ರೀಗಂಧ,ತೆಂಗಿನಮರ,ಬಿದಿರು|3,4;4,4;5,4;5,3;5,2|4,3;4,2|0,0;0,1;1,0|3,2;3,1;2,0|5,0;5,1;4,0;4,1;3,0|2,2;2,1;1,1|2,4;3,3;2,3;1,3;0,2|0,4;1,4;0,3`;
 
         const parsedPuzzles = [];
-        let selectedIndex = 0;
+        let selectedIndex = null;
         let isDraftMode = false;
         const COLORS = ['#FFE082', '#B3E5FC', '#C8E6C9', '#FFCDD2', '#D1C4E9', '#FFE0B2', '#B2DFDB', '#F8BBD0'];
 
@@ -689,8 +679,24 @@
         }
 
         function selectPuzzle(index) {
+            // If already open on the same row, toggle it closed
+            if (selectedIndex === index) {
+                const existingPreview = document.getElementById('expanded-preview-row');
+                if (existingPreview) existingPreview.remove();
+                const tr = document.getElementById(`puzzle-row-${index}`);
+                if (tr) tr.classList.remove('selected-row');
+                selectedIndex = null;
+                return;
+            }
+
             selectedIndex = index;
             isDraftMode = false;
+
+            // Remove previous preview row if any
+            const existingPreview = document.getElementById('expanded-preview-row');
+            if (existingPreview) {
+                existingPreview.remove();
+            }
 
             parsedPuzzles.forEach((_, idx) => {
                 const tr = document.getElementById(`puzzle-row-${idx}`);
@@ -703,12 +709,39 @@
                 }
             });
 
+            // Insert expanded preview row immediately under selected row
+            const targetRow = document.getElementById(`puzzle-row-${index}`);
+            if (targetRow) {
+                const previewRow = document.createElement('tr');
+                previewRow.id = 'expanded-preview-row';
+                previewRow.className = 'preview-row';
+                previewRow.innerHTML = `
+                    <td colspan="4" style="padding: 12px 16px;">
+                        <div style="border: 1px solid #cbd5e1; padding: 12px; background-color: #ffffff; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); max-width: 600px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                                <h3 id="grid-title" style="margin: 0; font-size: 15px;">Grid Preview</h3>
+                                <button class="icon-btn" id="generate-btn" title="Generate / Shuffle Grid" onclick="runGenerator()">🔄 Shuffle / Generate</button>
+                            </div>
+                            <div id="grid-meta" style="margin-bottom: 8px; font-size: 12px; color: #444;"></div>
+                            <div id="grid-container" style="display: flex; justify-content: center; width: 100%; margin: 8px 0;"></div>
+                            <div id="word-legend" style="margin-top: 10px; font-size: 12px; line-height: 1.5; word-break: break-word;"></div>
+                        </div>
+                    </td>
+                `;
+                targetRow.after(previewRow);
+            }
+
             renderGrid(index);
         }
 
         function renderGrid(index) {
+            const gridTitleEl = document.getElementById('grid-title');
+            if (!gridTitleEl) return;
+
             const p = parsedPuzzles[index];
-            document.getElementById('grid-title').innerText = `ಜಾಲ (Grid): ${p.themeHint} (${p.themeWord})`;
+            if (!p) return;
+
+            gridTitleEl.innerText = `ಜಾಲ (Grid): ${p.themeHint} (${p.themeWord})`;
 
             const totalTokens = p.wordsList.reduce((sum, w) => sum + splitAksharas(w).length, 0);
             const activePaths = (isDraftMode || !p.pathsList || p.pathsList.length === 0)
@@ -726,7 +759,10 @@
             const rows = maxRow + 1;
             const cols = maxCol + 1;
             const modeLabel = isDraftMode ? ' (Draft Serpentine 〰️)' : '';
-            document.getElementById('grid-meta').innerText = `ಆಯಾಮ: ${cols} x ${rows} (${cols * rows} ಕೋಶಗಳು)${modeLabel}`;
+            const gridMetaEl = document.getElementById('grid-meta');
+            if (gridMetaEl) {
+                gridMetaEl.innerText = `ಆಯಾಮ: ${cols} x ${rows} (${cols * rows} ಕೋಶಗಳು)${modeLabel}`;
+            }
 
             const grid = Array.from({ length: rows }, () => Array(cols).fill({ letter: '', color: '#FFF' }));
 
@@ -747,7 +783,7 @@
                 });
             });
 
-            const availableWidth = 256;
+            const availableWidth = Math.min(320, window.innerWidth - 60);
             const cellSize = Math.floor(availableWidth / cols);
             const fontSize = Math.max(12, Math.min(16, Math.floor(cellSize * 0.45)));
 
@@ -761,7 +797,8 @@
                 tableHtml += '</tr>';
             }
             tableHtml += '</table>';
-            document.getElementById('grid-container').innerHTML = tableHtml;
+            const gridContainerEl = document.getElementById('grid-container');
+            if (gridContainerEl) gridContainerEl.innerHTML = tableHtml;
 
             let legendHtml = '<strong>ಪದಗಳು (Words):</strong><br>';
             legendHtml += p.wordsList.map((w, wIdx) => {
@@ -769,7 +806,8 @@
                 const color = isTheme ? '#FFD54F' : COLORS[wIdx % COLORS.length];
                 return `<span style="display: inline-block; margin: 2px 6px 2px 0; padding: 2px 6px; background-color: ${color}; border: 1px solid #aaa;">${isTheme ? '⭐ ' : ''}${w}</span>`;
             }).join(' ');
-            document.getElementById('word-legend').innerHTML = legendHtml;
+            const wordLegendEl = document.getElementById('word-legend');
+            if (wordLegendEl) wordLegendEl.innerHTML = legendHtml;
         }
 
         function getOutputText() {
@@ -1018,16 +1056,18 @@
 
             if (e.key === 'ArrowDown') {
                 e.preventDefault();
-                if (selectedIndex < parsedPuzzles.length - 1) {
-                    selectPuzzle(selectedIndex + 1);
-                    const nextRow = document.getElementById(`puzzle-row-${selectedIndex}`);
+                const nextIdx = (selectedIndex === null) ? 0 : Math.min(selectedIndex + 1, parsedPuzzles.length - 1);
+                if (nextIdx < parsedPuzzles.length) {
+                    selectPuzzle(nextIdx);
+                    const nextRow = document.getElementById(`puzzle-row-${nextIdx}`);
                     if (nextRow) nextRow.scrollIntoView({ block: 'nearest' });
                 }
             } else if (e.key === 'ArrowUp') {
                 e.preventDefault();
-                if (selectedIndex > 0) {
-                    selectPuzzle(selectedIndex - 1);
-                    const prevRow = document.getElementById(`puzzle-row-${selectedIndex}`);
+                const prevIdx = (selectedIndex === null) ? 0 : Math.max(selectedIndex - 1, 0);
+                if (prevIdx >= 0) {
+                    selectPuzzle(prevIdx);
+                    const prevRow = document.getElementById(`puzzle-row-${prevIdx}`);
                     if (prevRow) prevRow.scrollIntoView({ block: 'nearest' });
                 }
             }
