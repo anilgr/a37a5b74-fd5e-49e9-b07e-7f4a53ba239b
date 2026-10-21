@@ -1,0 +1,230 @@
+
+--- PALINDROMES ---
+PALINDROMES {ಕನ್ನಡದ ವಾಕ್ಯ-ಪದಗಳು}: ['KAYAK {ಕಟಕ}', 'LEVEL {ನಯನ}', 'MOM {ಸರಸ}', 'RACECAR {ಕಿಟಕಿ}']
+PALINDROMES: ['EVE', 'HANNAH', 'OTTO', 'NATAN']
+PALINDROMES: ['BIB', 'EYE', 'GAG', 'POP']
+
+--- UNITS OF LENGTH ---
+UNITS OF LENGTH {ಉದ್ದದ ಅಳತೆಗಳು}: ['FOOT {ಅಡಿ}', 'LEAGUE {ಗಜ}', 'MILE {ಮೈಲಿ}', 'YARD {ಮೀಟರ್}']
+UNITS OF LENGTH {ಉದ್ದದ ಅಳತೆಗಳು}: ['FOOT {ಅಡಿ}', 'INCH {ಇಂಚು}', 'MILE {ಮೈಲಿ}', 'YARD {ಗಜ}']
+
+--- MAGAZINES ---
+MAGAZINES {ಕನ್ನಡದ ನಿಯತಕಾಲಿಕೆಗಳು}: ['ESSENCE {ಸುಧಾ}', 'PEOPLE {ತರಂಗ}', 'TIME {ಮಯೂರ}', 'US {ರೂಪತಾರ}']
+MAGAZINES: ['FORTUNE', 'ROLLING STONE', 'VOGUE', 'WIRED']
+MAGAZINES: ['O', 'OK', 'US', 'W']
+
+--- LETTER HOMOPHONES ---
+LETTER HOMOPHONES {ಒಂದೇ ಅರ್ಥದ ಪದಗಳು}: ['ARE {ಕಮಲ}', 'QUEUE {ಪಂಕಜ}', 'SEA {ರಾಜೀವ}', 'WHY {ಸರೋಜ}']
+LETTER HOMOPHONES: ['🐝', '🐑', '👁️', '🫖']
+
+--- SNEAKER BRANDS ---
+SNEAKER BRANDS {ಶೂ ಬ್ರಾಂಡ್‌ಗಳು}: ['CONVERSE {ಬಾಟಾ}', 'JORDAN {ಪ್ಯಾರಾಗಾನ್}', 'PUMA {ಲಖಾನಿ}', 'VANS {ವಿ.ಕೆ.ಸಿ}']
+SNEAKER BRANDS {ಶೂ ಬ್ರಾಂಡ್‌ಗಳು}: ['CONVERSE {ಬಾಟಾ}', 'JORDAN {ಪ್ಯಾರಾಗಾನ್}', 'PUMA {ಲಖಾನಿ}', 'VANS {ವಿ.ಕೆ.ಸಿ}']
+
+--- BOARD GAMES ---
+BOARD GAMES {ಮಣೆ ಆಟಗಳು}: ['BACKGAMMON {ಚದುರಂಗ}', 'CHECKERS {ಚೌಕಾಬಾರ}', 'CHESS {ಅಳಗುಳಿ ಮನೆ}', 'GO {ಹಾವು ಏಣಿ}']
+BOARD GAMES {ಮಣೆ ಆಟಗಳು}: ['CLUE {ಚೆಸ್}', 'RISK {ಲೂಡೋ}', 'SORRY {ಕ್ಯಾರಮ್}', 'TROUBLE {ಚೌಕಾಬಾರ}']
+BOARD GAMES {ಮಣೆ ಆಟಗಳು}: ['RISK {ಚೆಸ್}', 'SORRY {ಲೂಡೋ}', 'TABOO {ಕ್್ಯಾರಮ್}', 'TROUBLE {ಚೌಕಾಬಾರ}']
+
+--- THINGS THAT ARE RED ---
+THINGS THAT ARE RED {ಕೆಂಪು ಬಣ್ಣದ ವಸ್ತುಗಳು}: ['CHERRY {ರಕ್ತ}', 'FIRE TRUCK {ಟೊಮೆಟೊ}', 'RUBY {ಕುಂಕುಮ}', 'STOP SIGN {ಸೇಬು}']
+THINGS THAT ARE RED {ಕೆಂಪು ಬಣ್ಣದ ವಸ್ತುಗಳು}: ['BEET {ಬೀಟ್\u200cರೂಟ್}', 'BRICK {ಇಟ್ಟಿಗೆ}', 'CARDINAL {ಕಾರ್ಡಿನಲ್ ಪಕ್ಷಿ}', 'POPPY {ಗಸಗಸೆ ಹೂವು}']
+
+--- BIRDS ---
+BIRDS {ಪಕ್ಷಿಗಳು}: ['CRANE {ಕಾಗೆ}', 'JAY {ಗಿಳಿ}', 'SWALLOW {ನವಿಲು}', 'TURKEY {ಕೋಗಿಲೆ}']
+BIRDS {ಪಕ್ಷಿಗಳು}: ['CARDINAL {ಗುಬ್ಬಚ್ಚಿ}', 'JAY {ಪಾರಿವಾಳ}', 'LARK {ಗೂಬೆ}', 'SWIFT {ಮರಕುಟಿಗ}']
+
+--- ZODIAC SYMBOLS ---
+ZODIAC SYMBOLS {ರಾಶಿಗಳು}: ['FISH {ಮೀನ}', 'GOAT {ಮಕರ}', 'SCALES {ತುಲಾ}', 'TWINS {ಮಿಥುನ}']
+ZODIAC SYMBOLS {ರಾಶಿಚಕ್ರದ ಚಿಹ್ನೆಗಳು}: ['BULL {ವೃಷಭ}', 'CRAB {ಕರ್ಕಾಟಕ}', 'SCALES {ತುಲಾ}', 'TWINS {ಮಿಥುನ}']
+
+--- ANIMAL GROUP NAMES ---
+ANIMAL GROUP NAMES {ಪ್ರಾಣಿಗಳ ಗುಂಪುಗಳು}: ['FLOCK {ಹಿಂಡು}', 'PACK {ಮಂದೆ}', 'POD {ಗುಂಪು}', 'SCHOOL {ಪಾಳಯ}']
+ANIMAL GROUP NAMES {ಪ್ರಾಣಿಗಳ ಗುಂಪುಗಳು}: ['COLONY {ವಸಾಹತು}', 'HERD {ಹಿಂಡು}', 'PRIDE {ಗುಂಪು}', 'SWARM {ಮುತ್ತಿಗೆ}']
+
+--- AIRLINES ---
+AIRLINES {ಭಾರತೀಯ ವಿಮಾನಯಾನ ಸಂಸ್ಥೆಗಳು}: ['FRONTIER {ಏರ್ ಇಂಡಿಯಾ}', 'SPIRIT {ಇಂಡಿಗೋ}', 'UNITED {ಸ್ಪೈಸ್\u200cಜೆಟ್}', 'VIRGIN {ಆಕಾಶ ಏರ್}']
+AIRLINES {ಭಾರತೀಯ ವಿಮಾನಯಾನ ಸಂಸ್ಥೆಗಳು}: ['ALASKA {ಇಂಡಿಗೋ}', 'FRONTIER {ವಿಸ್ತಾರಾ}', 'SOUTHWEST {ಏರ್ ಇಂಡಿಯಾ}', 'SPIRIT {ಸ್ಪೈಸ್\u200cಜೆಟ್}']
+
+--- GREEK LETTERS ---
+GREEK LETTERS {ಕನ್ನಡದ ಸ್ವರಗಳು}: ['BETA {ಅ}', 'CHI {ಆ}', 'DELTA {ಇ}', 'IOTA {ಈ}']
+GREEK LETTERS: ['MU', 'NU', 'PI', 'XI']
+
+--- HOMOPHONES ---
+HOMOPHONES {ನೀರಿಗೆ ಸಮಾನಾರ್ಥಕಗಳು}: ['GNU {ನೀರು}', 'KNEW {ಜಲ}', 'NEW {ಉದಕ}', 'NU {ಸಲಿಲ}']
+HOMOPHONES: ['EWE', 'U', 'YEW', 'YOU']
+HOMOPHONES: ['OUI', 'WE', 'WEE', 'WII']
+HOMOPHONES: ['PEAK', 'PEEK', 'PEKE', 'PIQUE']
+HOMOPHONES: ['HOLEY', 'HOLI', 'HOLY', 'WHOLLY']
+
+--- SHADES OF GREEN ---
+SHADES OF GREEN {ಹಸಿರಿನ ಛಾಯೆಗಳು}: ['EMERALD {ಗಿಳಿಹಸಿರು}', 'FOREST {ಕಡುಹಸಿರು}', 'KELLY {ಎಲೆಹಸಿರು}', 'OLIVE {ತಿಳಿಹಸಿರು}']
+SHADES OF GREEN {ಹಸಿರು ಬಣ್ಣದ ಛಾಯೆಗಳು}: ['OLIVE {ಆಲಿವ್}', 'FOREST {ಫಾರೆಸ್ಟ್}', 'LIME {ಲೈಮ್}', 'MINT {ಮಿಂಟ್}']
+
+--- NFL PLAYERS ---
+NFL PLAYERS: ['BEAR', 'BILL', 'BROWN', 'COMMANDER']
+NFL PLAYERS: ['BRONCO', 'COWBOY', 'PACKER', 'RAVEN']
+
+--- LOCAL MUSIC GENRES ---
+LOCAL MUSIC GENRES {ಸ್ಥಳೀಯ ಸಂಗೀತ ಪ್ರಕಾರಗಳು}: ['JAZZ {ಶಾಸ್ತ್ರೀಯ}', 'POP {ಭಾವಗೀತೆ}', 'PUNK {ಜಾನಪದ}', 'RAP {ಸುಗಮ ಸಂಗೀತ}']
+LOCAL MUSIC GENRES {ಸ್ಥಳೀಯ ಸಂಗೀತ ಪ್ರಕಾರಗಳು}: ['BLUES {ಹಿಂದೂಸ್ತಾನಿ}', 'COUNTRY {ಕರ್ನಾಟಕಿ}', 'FUNK {ಸುಗಮ ಸಂಗೀತ}', 'SOUL {ಜಾನಪದ}']
+
+--- LOCAL SWEETS ---
+LOCAL SWEETS {ಸ್ಥಳೀಯ ಸಿಹಿತಿಂಡಿಗಳು}: ['BOUNTY {ಕಡಲೆಕಾಯಿ ಮಿಠಾಯಿ}', 'CRUNCH {ಎಳ್ಳುಂಡೆ}', 'HEATH {ಕೊಬ್ಬರಿ ಮಿಠಾಯಿ}', 'MILKY WAY {ಬರ್ಫಿ}']
+LOCAL SWEETS {ಸ್ಥಳೀಯ ಸಿಹಿತಿಂಡಿಗಳು}: ['CHOCOLATE {ಕಡಲೆ ಮಿಠಾಯಿ}', 'GUM {ಬತ್ತಾಸು}', 'LICORICE {ಕೊಬ್ಬರಿ ಮಿಠಾಯಿ}', 'LOLLIPOP {ಬಾಂಬೆ ಮಿಠಾಯಿ}']
+
+--- DESSERTS ---
+DESSERTS {ಸಿಹಿ ತಿಂಡಿಗಳು}: ['CHEESECAKE {ಪಾಯಸ}', 'FLAN {ಮೈಸೂರ್ ಪಾಕ್}', 'MOUSSE {ಹೋಳಿಗೆ}', 'TIRAMISU {ಲಾಡು}']
+DESSERTS {ಸಿಹಿ ತಿಂಡಿಗಳು}: ['CAKE {ಪೇಡ}', 'COBBLER {ಜಿಲೇಬಿ}', 'PIE {ರಸಗುಲ್ಲ}', 'TART {ಬರ್ಫಿ}']
+
+--- MILD OATHS ---
+MILD OATHS: ['DARN', 'FUDGE', 'HECK', 'SHOOT']
+MILD OATHS {ಸಿಟ್ಟಿನ ಉದ್ಗಾರಗಳು}: ['FIDDLESTICKS {ಅಯ್ಯೋ}', 'FIE {ಥೂ}', 'FRICK {ಛೇ}', 'FUDGE {ಶಿಟ್}']
+
+--- FISH ---
+FISH: ['TANG', 'TETRA', 'SKATE', 'SOLE']
+FISH {ಮೀನಿನ ಪ್ರಕಾರಗಳು}: ['CHAR {ಬಂಗುಡೆ}', 'EEL {ಭೂತಾಯಿ}', 'PERCH {ಅಂಜಲ್}', 'SHARK {ಮೋಸಗಾರ}']
+
+--- ___ CAT ---
+___ CAT: ['ALLEY', 'COOL', 'COPY', 'LAP']
+___ CAT: ['DOJA', 'FAT', 'HOUSE', 'JUNGLE']
+
+--- PASTA SHAPES ---
+PASTA SHAPES {ಪಾಸ್ತಾ ಆಕಾರಗಳು}: ['BOWTIE {ಚಕ್ಕುಲಿ}', 'ELBOW {ಕೋಡುಬಳೆ}', 'SHELL {ನಿಪ್ಪಟ್ಟು}', 'SPIRAL {ಮುರುಕು}']
+PASTA SHAPES {ಪಾಸ್ತಾ ಆಕಾರಗಳು}: ['BOWTIE {ಮುರುಕು}', 'ELBOW {ಕೋಡುಬಳೆ}', 'TUBE {ಖಾರಾಸೇವ್}', 'WHEEL {ಚಕ್ಕುಲಿ}']
+
+--- SHOE PARTS ---
+SHOE PARTS {ಶೂ ನ ಭಾಗಗಳು}: ['HEEL {ಹಿಮ್ಮಡಿ}', 'LACE {ಲೇಸ್}', 'SOLE {ಅಡಿಭಾಗ}', 'TONGUE {ನಾಲಿಗೆ}']
+SHOE PARTS {ಶೂ ಭಾಗಗಳು}: ['EYELET {ಐಲೆಟ್}', 'LACE {ಲೇಸ್}', 'SOLE {ತಳ}', 'TONGUE {ನಾಲಿಗೆ}']
+
+--- BOATS ---
+BOATS {ದೋಣಿಯ ಪ್ರಕಾರಗಳು}: ['FERRY {ದೋಣಿ}', 'JUNK {ಹಡಗು}', 'TUG {ನಾವೆ}', 'YACHT {ಜಲನೌಕೆ}']
+BOATS {ದೋಣಿಗಳು}: ['BARGE {ಬಾರ್ಜ್}', 'DORY {ಡೋರಿ}', 'SCOW {ಸ್ಕೌ}', 'SLOOP {ಸ್ಲೂಪ್}']
+
+--- MALE ANIMALS ---
+MALE ANIMALS {ಗಂಡು ಪ್ರಾಣಿಗಳು}: ['BOAR {ಕಾಡುಹಂದಿ}', 'BUCK {ಗಂಡು ಜಿಂಕೆ}', 'BULL {ಹೋರಿ}', 'JACK {ಗಂಡು ಕತ್ತೆ}']
+MALE ANIMALS {ಗಂಡು ಪ್ರಾಣಿಗಳು}: ['BUCK {ಗಂಡು ಜಿಂಕೆ}', 'BULL {ಹೋರಿ}', 'JACK {ಗಂಡು ಕತ್ತೆ}', 'TOM {ಗಂಡು ಬೆಕ್ಕು}']
+
+--- METAL ELEMENTS ---
+METAL ELEMENTS {ಲೋಹಗಳು}: ['IRON {ಕಬ್ಬಿಣ}', 'LEAD {ಸೀಸ}', 'TIN {ತವರ}', 'ZINC {ಸತು}']
+METAL ELEMENTS {ಲೋಹಗಳು}: ['COPPER {ತಾಮ್ರ}', 'GOLD {ಚಿನ್ನ}', 'NICKEL {ನಿಕಲ್}', 'SILVER {ಬೆಳ್ಳಿ}']
+
+--- BIKE PARTS ---
+BIKE PARTS {ಸೈಕಲ್ ಭಾಗಗಳು}: ['BRAKE {ತಡೆಯು}', 'CHAIN {ಸರಪಳಿ}', 'SADDLE {ಸೀಟು}', 'SPOKE {ಕಡ್ಡಿ}']
+BIKE PARTS {ಸೈಕಲ್ ಭಾಗಗಳು}: ['GEAR {ಗೇರ್}', 'HANDLEBAR {ಹ್ಯಾಂಡಲ್}', 'PEDAL {ಪೆಡಲ್}', 'WHEEL {ಚಕ್ರ}']
+
+--- WOODWINDS ---
+WOODWINDS {ಊದುವ ವಾದ್ಯಗಳು}: ['BASSOON {ಶಂಖ}', 'CLARINET {ಶಹನಾಯ್}', 'FLUTE {ಕೊಳಲು}', 'OBOE {ಕಹಳೆ}']
+WOODWINDS {ಊದುವ ವಾದ್ಯಗಳು}: ['CLARINET {ಶಹನಾಯ್}', 'FLUTE {ಕೊಳಲು}', 'OBOE {ಶಹನಾಯ್}', 'SAXOPHONE {ಶಂಖ}']
+
+--- STATES OF MATTER ---
+STATES OF MATTER {ವಸ್ತುವಿನ ಸ್ಥಿತಿಗಳು}: ['GAS {ಅನಿಲ}', 'LIQUID {ದ್ರವ}', 'PLASMA {ಪ್ಲಾಸ್ಮಾ}', 'SOLID {ಘನ}']
+STATES OF MATTER {ವಸ್ತುವಿನ ಸ್ಥಿತಿಗಳು}: ['GAS {ಅನಿಲ}', 'LIQUID {ದ್ರವ}', 'PLASMA {ಪ್ಲಾಸ್ಮಾ}', 'SOLID {ಘನ}']
+STATES OF MATTER {ವಸ್ತುವಿನ ಸ್ಥಿತಿಗಳು}: ['GAS {ಅನಿಲ}', 'LIQUID {ದ್ರವ}', 'PLASMA {ಪ್ಲಾಸ್ಮಾ}', 'SOLID {ಘನ}']
+
+--- ANAGRAMS ---
+ANAGRAMS: ['LEAST', 'SLATE', 'STALE', 'TESLA']
+ANAGRAMS: ['NOPE', 'OPEN', 'PEON', 'PONE']
+
+--- YOGA POSES ---
+YOGA POSES {ಯೋಗಾಸನಗಳು}: ['COBRA {ಭುಜಂಗಾಸನ}', 'LOTUS {ಪದ್ಮಾಸನ}', 'TREE {ವೃಕ್ಷಾಸನ}', 'WARRIOR {ವೀರಭದ್ರಾಸನ}']
+YOGA POSES {ಯೋಗಾಸನಗಳು}: ['CAT {ಮಾರ್ಜಾಲ}', 'COW {ಗೋಮುಖ}', 'MOUNTAIN {ತಾಡಾಸನ}', 'TRIANGLE {ತ್ರಿಕೋನಾಸನ}']
+
+--- DISNEY CHARACTERS ---
+DISNEY CHARACTERS: ['BEAST', 'GENIE', 'SCAR', 'STITCH']
+DISNEY CHARACTERS {ಡಿಸ್ನಿ ಪಾತ್ರಗಳು}: ['DAISY {ಡೈಸಿ}', 'GOOFY {ಗೂಫಿ}', 'HAPPY {ಹ್ಯಾಪಿ}', 'LADY {ಲೇಡಿ}']
+
+--- MUSICAL INSTRUMENTS ---
+MUSICAL INSTRUMENTS {ಸಂಗೀತ ವಾದ್ಯಗಳು}: ['HARP {ವೀಣೆ}', 'HORN {ಕೊಂಬು}', 'ORGAN {ಹಾರ್ಮೋನಿಯಂ}', 'TRIANGLE {ತಾಳ}']
+MUSICAL INSTRUMENTS {ಸಂಗೀತ ವಾದ್ಯಗಳು}: ['BASS {ತಬಲ}', 'HARP {ವೀಣೆ}', 'HORN {ಕೊಂಬು}', 'ORGAN {ಹಾರ್ಮೋನಿಯಂ}']
+MUSICAL INSTRUMENTS {ವಾದ್ಯಗಳು}: ['BASS {ಬಾಸ್}', 'BASSOON {ಬಾಸೂನ್}', 'HARP {ಹಾರ್ಪ್}', 'RECORDER {ರೆಕಾರ್ಡರ್}']
+
+--- SPORTS VENUES ---
+SPORTS VENUES {ಆಟದ ಮೈದಾನಗಳು}: ['COURT {ಮೈದಾನ}', 'DIAMOND {ಪಿಚ್}', 'FIELD {ಕ್ರೀಡಾಂಗಣ}', 'RINK {ಅಖಾಡ}']
+SPORTS VENUES {ಕ್ರೀಡಾ ಸ್ಥಳಗಳು}: ['ARENA {ಕ್ರೀಡಾಂಗಣ}', 'BOWL {ಮೈದಾನ}', 'DOME {ಸ್ಟೇಡಿಯಂ}', 'FIELD {ಪಿಚ್}']
+
+--- MAKE HAPPY ---
+MAKE HAPPY {ಸಂತೋಷಪಡಿಸು}: ['CHARM {ರಂಜಿಸು}', 'DELIGHT {ಖುಷಿಪಡಿಸು}', 'PLEASE {ಮುದನೀಡು}', 'TICKLE {ನಗಿಸು}']
+MAKE HAPPY {ಸಂತೋಷಪಡಿಸು}: ['AMUSE {ರಂಜಿಸು}', 'DELIGHT {ಆನಂದಿಸು}', 'PLEASE {ಮೆಚ್ಚಿಸು}', 'TICKLE {ಕಿಚಗುಳಿ}']
+
+--- STATE ABBREVIATIONS ---
+STATE ABBREVIATIONS: ['CO', 'MA', 'ME', 'PA']
+STATE ABBREVIATIONS: ['HI', 'LA', 'MA', 'OK']
+
+--- SLANG FOR ZERO ---
+SLANG FOR ZERO {ಸೊನ್ನೆಗೆ ಬಳಸುವ ಪದಗಳು}: ['JACK {ಶೂನ್ಯ}', 'NADA {ಸೊನ್ನೆ}', 'NOTHING {ಏನೂ ಇಲ್ಲ}', 'SQUAT {ಖಾಲಿ}']
+SLANG FOR ZERO {ಸೊನ್ನೆ}: ['JACK {ಜಾಕ್}', 'LOVE {ಶೂನ್ಯ}', 'SQUAT {ಸ್ಕ್ವಾಟ್}', 'ZIP {ಜಿಪ್}']
+
+--- CLASSIC DOG NAMES ---
+CLASSIC DOG NAMES {ನಾಯಿಯ ಹೆಸರುಗಳು}: ['FIDO {ಟಾಮಿ}', 'LUCKY {ಲಕ್ಕಿ}', 'ROVER {ರಾಕಿ}', 'SPOT {ಸಿಂಬಾ}']
+CLASSIC DOG NAMES {ಮುದ್ದಿನ ನಾಯಿ ಹೆಸರುಗಳು}: ['FLUFFY {ಫ್ಲಫಿ}', 'REX {ರೆಕ್ಸ್}', 'ROVER {ರೋವರ್}', 'SPOT {ಸ್ಪಾಟ್}']
+
+--- PURSUE ---
+PURSUE {ಹಿಂಬಾಲಿಸು}: ['DOG {ಬೆನ್ನಟ್ಟು}', 'FOLLOW {ಹಿಂಬಾಲಿಸು}', 'TAIL {ಕಾವಲು}', 'TRACK {ಹುಡುಕು}']
+PURSUE {ಬೆನ್ನಟ್ಟು}: ['HUNT {ಹಂಟ್}', 'TRACK {ಟ್ರಾಕ್}', 'TRAIL {ಟ್ರೈಲ್}', 'STALK {ಸ್ಟಾಕ್}']
+PURSUE {ಹಿಂಬಾಲಿಸು}: ['CHASE {ಬೆನ್ನಟ್ಟು}', 'TAIL {ಬಾಲ}', 'TRACK {ಜಾಡು}', 'SHADOW {ನೆರಳು}']
+
+--- FEMALE ANIMALS ---
+FEMALE ANIMALS {ಹೆಣ್ಣು ಪ್ರಾಣಿಗಳು}: ['COW {ಹಸು}', 'DOE {ಹೆಣ್ಣು ಜಿಂಕೆ}', 'HEN {ಕೋಳಿ}', 'MARE {ಹೆಣ್ಣು ಕುದುರೆ}']
+FEMALE ANIMALS {ಹೆಣ್ಣು ಪ್ರಾಣಿಗಳು}: ['COW {ಹಸು}', 'DOE {ಹೆಣ್ಣು ಜಿಂಕೆ}', 'EWE {ಹೆಣ್ಣು ಕುರಿ}', 'HEN {ಕೋಳಿ}']
+
+--- PRONOUNS ---
+PRONOUNS {ಸರ್ವನಾಮಗಳು}: ['I {ನಾನು}', 'IT {ಅದು}', 'THEY {ಅವರು}', 'WE {ನಾವು}']
+PRONOUNS {ಸರ್ವನಾಮಗಳು}: ['ME {ನಾನು}', 'THEM {ಅವರು}', 'US {ನಾವು}', 'YOU {ನೀವು}']
+
+--- TV SHOWS ---
+TV SHOWS {ಕನ್ನಡದ ಟಿವಿ ಶೋಗಳು}: ['24 {ಬಿಗ್ ಬಾಸ್}', 'BONES {ಮಜಾ ಟಾಕೀಸ್}', 'FIREFLY {ವೀಕೆಂಡ್ ವಿತ್ ರಮೇಶ್}', 'WEEDS {ಸರಿಗಮಪ}']
+TV SHOWS {ಕನ್ನಡದ ಟಿವಿ ಧಾರಾವಾಹಿಗಳು}: ['FARGO {ಜೊತೆ ಜೊತೆಯಲಿ}', 'FIREFLY {ಗಟ್ಟಿಮೇಳ}', 'FLEABAG {ಪುಟ್ಟಗೌರಿ ಮದುವೆ}', 'FLIPPER {ಮಂಗಳಗೌರಿ}']
+
+--- INSIDE INFO ---
+INSIDE INFO {ಗುಪ್ತ ಮಾಹಿತಿ}: ['DIRT {ಸುದ್ದಿ}', 'DISH {ಗುಟ್ಟು}', 'SCOOP {ಬೆರಗು}', 'SKINNY {ಮಾಹಿತಿ}']
+INSIDE INFO {ಒಳಗಿನ ಮಾಹಿತಿ}: ['DOPE {ಡೋಪ್}', 'SCOOP {ಸ್ಕೂಪ್}', 'SKINNY {ಸ್ಕಿನ್ನಿ}', 'WORD {ಮಾತು}']
+
+--- INTELLIGENT ---
+INTELLIGENT {ಬುದ್ಧಿವಂತ}: ['BRIGHT {ಪ್ರಕಾಶಮಾನ}', 'CLEVER {ಚಾಣಾಕ್ಷ}', 'QUICK {ಚುರುಕು}', 'SHARP {ತೀಕ್ಷ್ಣ}']
+INTELLIGENT {ಬುದ್ಧಿವಂತ}: ['BRIGHT {ಪ್ರಕಾಶಮಾನ}', 'QUICK {ಚುರುಕು}', 'SHARP {ತೀಕ್ಷ್ಣ}', 'SMART {ಸ್ಮಾರ್ಟ್}']
+
+--- DECLINE ---
+DECLINE {ಕುಸಿತ}: ['DIP {ಇಳಿಕೆ}', 'DROP {ಬೀಳು}', 'FALL {ಕುಸಿತ}', 'SINK {ಮುಳುಗು}']
+DECLINE {ಕ್ಷೀಣಿಸು}: ['EBB {ಇಳಿಕೆ}', 'FADE {ಮಸುಕಾಗು}', 'FLAG {ಕುಗ್ಗುವಿಕೆ}', 'WANE {ಕ್ಷೀಣಿಸು}']
+DECLINE {ಇಳಿಕೆ}: ['DIP {ಇಳಿಕೆ}', 'DROP {ಬೀಳು}', 'FALL {ಕುಸಿತ}', 'SINK {ಮುಳುಗು}']
+
+--- SUMMARY ---
+SUMMARY {ಸಾರಾಂಶ}: ['ABSTRACT {ಸಾರ}', 'BRIEF {ಸಂಕ್ಷಿಪ್ತ}', 'DIGEST {ಸಂಗ್ರಹ}', 'RUNDOWN {ವಿವರಣೆ}']
+SUMMARY {ಸಾರಾಂಶ}: ['ABSTRACT {ಸಾರ}', 'BRIEF {ಸಂಕ್ಷಿಪ್ತ}', 'DIGEST {ಸಂಗ್ರಹ}', 'OUTLINE {ವಿವರಣೆ}']
+
+--- RHYMES ---
+RHYMES: ['DARREN', 'KAREN', 'SHARON', 'AARON']
+RHYMES: ['CHOIR', 'FIRE', 'LIAR', 'FRYER']
+
+--- ORIGIN ---
+ORIGIN {ಮೂಲ}: ['GENESIS {ಉಗಮ}', 'GERM {ಅಂಕುರ}', 'SEED {ಬೀಜ}', 'SOURCE {ಮೂಲ}']
+ORIGIN {ಮೂಲ}: ['CRADLE {ತೊಟ್ಟಿಲು}', 'FONT {ಫಾಂಟ್}', 'ROOT {ಬೇರು}', 'SOURCE {ಮೂಲ}']
+
+--- FOREMOST ---
+FOREMOST {ಪ್ರಮುಖ}: ['HEAD {ಮುಖ್ಯ}', 'LEAD {ನಾಯಕ}', 'PRIME {ಪ್ರಧಾನ}', 'TOP {ಉನ್ನತ}']
+FOREMOST {ಅಗ್ರಗಣ್ಯ}: ['MAIN {ಮುಖ್ಯ}', 'PARAMOUNT {ಅತ್ಯುನ್ನತ}', 'PRIME {ಪ್ರಧಾನ}', 'SUPREME {ಪರಮ}']
+
+--- CONCEAL ---
+CONCEAL {ಮರೆಮಾಚು}: ['BLOCK {ತಡೆ}', 'COVER {ಮುಚ್ಚು}', 'HIDE {ಅಡಗಿಸು}', 'MASK {ಮುಖವಾಡ}']
+CONCEAL {ಮುಚ್ಚಿಡು}: ['BLOCK {ಬ್ಲಾಕ್}', 'COVER {ಕವರ್}', 'HIDE {ಅಡಗಿಸು}', 'OBSCURE {ಮರೆಮಾಚು}']
+
+--- BALDERDASH ---
+BALDERDASH {ಅಸಂಬದ್ಧ}: ['BULL {ಬುಲ್}', 'HOGWASH {ಹೋಗ್ವಾಶ್}', 'NONSENSE {ಬಕ್ವಾಸ್}', 'ROT {ರಾಟ್}']
+BALDERDASH {ಮೂರ್ಖತನ}: ['BUNK {ಬಂಕ್}', 'CROCK {ಕ್ರಾಕ್}', 'HOGWASH {ಹೋಗ್ವಾಶ್}', 'HORSEFEATHERS {ಹಾರ್ಸ್\u200cಫೆದರ್ಸ್}']
+
+--- EAT VORACIOUSLY ---
+EAT VORACIOUSLY {ವೇಗವಾಗಿ ತಿನ್ನು}: ['GORGE {ಗಬಗಬನೆ ತಿನ್ನು}', 'GULP {ನುಂಗು}', 'SCARF {ಸ್ಕಾರ್ಫ್}', 'WOLF {ತೋಳದಂತೆ ತಿನ್ನು}']
+EAT VORACIOUSLY {ಗಬಗಬನೆ ತಿನ್ನು}: ['DOWN {ಡೌನ್}', 'INHALE {ನುಂಗು}', 'SCARF {ಸ್ಕಾರ್ಫ್}', 'WOLF {ತೋಳದಂತೆ ತಿನ್ನು}']
+
+--- CRITICIZE ---
+CRITICIZE {ಟೀಕಿಸು}: ['KNOCK {ಜರೆ}', 'PAN {ಬೈಯು}', 'ROAST {ಕಾಲೆಳೆ}', 'SLAM {ಹಂಗಿಸು}']
+CRITICIZE {ಟೀಕಿಸು}: ['BLAST {ಛೀಮಾರಿ ಹಾಕು}', 'KNOCK {ಜರೆ}', 'SLAM {ಹಂಗಿಸು}', 'TRASH {ನಿಂದಿಸು}']
+
+--- BRIEF MOMENT ---
+BRIEF MOMENT {ಕ್ಷಣ}: ['FLASH {ಮಿಂಚು}', 'JIFFY {ಕ್ಷಣ}', 'SECOND {ಸೆಕೆಂಡು}', 'WINK {ರೆಪ್ಪೆಬಡಿತ}']
+BRIEF MOMENT {ಕ್ಷಣ}: ['FLASH {ಮಿಂಚು}', 'HEARTBEAT {ಹೃದಯಬಡಿತ}', 'JIFF {ಕ್ಷಣ}', 'WINK {ರೆಪ್ಪೆಬಡಿತ}']
+
+--- TRADITIONAL SPORTS ---
+TRADITIONAL SPORTS {ದೇಸೀ ಕ್ರೀಡೆಗಳು}: ['BATON {ಖೋ-ಖೋ}', 'HAMMER {ಕಬಡ್ಡಿ}', 'HURDLE {ಕುಸ್ತಿ}', 'POLE {ಮಲ್ಲಕಂಬ}']
+TRADITIONAL SPORTS {ದೇಸೀ ಕ್ರೀಡೆಗಳು}: ['BATON {ಖೋ-ಖೋ}', 'HAMMER {ಕಬಡ್ಡಿ}', 'HURDLE {ಕುಸ್ತಿ}', 'POLE {ಮಲ್ಲಕಂಬ}']

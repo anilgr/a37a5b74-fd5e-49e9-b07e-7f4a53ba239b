@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <title>Connections Groups Editor</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 16px;
+            color: #222;
+            max-width: 900px;
+        }
+        .toolbar {
+            margin-bottom: 12px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 4px 10px;
+            cursor: pointer;
+        }
+        .search-box {
+            padding: 4px 8px;
+            font-size: 13px;
+            width: 180px;
+        }
+        .group-item {
+            border: 1px solid #ccc;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            background: #fff;
+        }
+        .group-header {
+            padding: 8px 12px;
+            background-color: #f7f7f7;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            gap: 12px;
+        }
+        .group-header:hover {
+            background-color: #eee;
+        }
+        .group-header .title {
+            font-weight: bold;
+            font-size: 14px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .level-badge {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        .lvl-bg-0 { background-color: #facc15; } /* Yellow */
+        .lvl-bg-1 { background-color: #4ade80; } /* Green */
+        .lvl-bg-2 { background-color: #60a5fa; } /* Blue */
+        .lvl-bg-3 { background-color: #c084fc; } /* Purple */
+
+        .group-header .actions {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .reviewed-label {
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            user-select: none;
+            color: #444;
+        }
+        .reviewed-label input[type="checkbox"] {
+            cursor: pointer;
+            width: 15px;
+            height: 15px;
+        }
+        .group-item.is-reviewed .group-header {
+            background-color: #f0fdf4;
+        }
+        .group-item.is-reviewed .title {
+            color: #15803d;
+        }
+        .group-body {
+            padding: 12px;
+            border-top: 1px solid #eee;
+            display: none;
+        }
+        .group-item.expanded .group-body {
+            display: block;
+        }
+        .group-item.expanded .group-header {
+            background-color: #e0f2fe;
+        }
+        .category-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        .category-card.lvl-0 { border-left: 6px solid #facc15; }
+        .category-card.lvl-1 { border-left: 6px solid #4ade80; }
+        .category-card.lvl-2 { border-left: 6px solid #60a5fa; }
+        .category-card.lvl-3 { border-left: 6px solid #c084fc; }
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .category-card input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 5px 8px;
+            margin-top: 4px;
+            margin-bottom: 8px;
+        }
+        .words-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+        }
+        .strip-btn {
+            font-size: 11px;
+            padding: 2px 8px;
+            background-color: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .strip-btn:hover {
+            background-color: #e2e8f0;
+        }
+        .del-btn {
+            background-color: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #b91c1c;
+            padding: 2px 8px;
+            font-size: 12px;
+            border-radius: 3px;
+        }
+        .del-btn:hover {
+            background-color: #fecaca;
+        }
+        @media (max-width: 650px) {
+            .words-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <h3 style="margin-top: 0; margin-bottom: 8px;">Connections Groups Editor</h3>
+
+    <div class="toolbar">
+        <label>
+            Open JSON: <input type="file" id="file-input" accept=".json" onchange="loadFile(event)">
+        </label>
+        <button onclick="downloadJson()">Download JSON</button>
+        <button onclick="addNewGroup()">+ Add New Group</button>
+        <input type="text" class="search-box" id="search-input" placeholder="Search groups or words..." oninput="onSearch()">
+        <span style="font-size: 13px; color: #555;">Total: <strong id="group-count">0</strong></span>
+        <span style="font-size: 13px; color: #15803d;">Reviewed: <strong id="reviewed-count">0</strong></span>
+        <span id="status-msg" style="color: green; font-size: 13px;"></span>
+    </div>
+
+    <!-- Collapsible Groups List -->
+    <div id="groups-container"></div>
+
+    <script>
+        let groupsData = [];
+        let expandedIndex = null;
+        let searchQuery = '';
+        let originalFileName = 'all_groups.json';
+
+        const defaultSample = [
+            {
+                "group": "WET WEATHER {ಮಳೆಯ ರೂಪಗಳು}",
+                "level": 0,
+                "members": ["HAIL {ಆಲಿಕಲ್ಲು}", "RAIN {ಮಳೆ}", "SLEET {ಸೋನೆ}", "SNOW {ಹಿಮ}"]
+            },
+            {
+                "group": "NBA TEAMS {ಐಪಿಎಲ್ ತಂಡಗಳು}",
+                "level": 1,
+                "members": ["BUCKS {ಆರ್‌ಸಿಬಿ}", "HEAT {ಸಿಎಸ್‌ಕೆ}", "JAZZ {ಮುಂಬೈ}", "NETS {ಕೆಕೆಆರ್}"]
+            }
+        ];
+
+        function showStatus(msg) {
+            const el = document.getElementById('status-msg');
+            el.innerText = msg;
+            setTimeout(() => el.innerText = '', 3000);
+        }
+
+        function loadFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            originalFileName = file.name;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    if (Array.isArray(parsed)) {
+                        // Check if it's already an array of groups
+                        if (parsed.length > 0 && parsed[0].answers) {
+                            // Converted from game-level format automatically
+                            const flat = [];
+                            parsed.forEach(g => {
+                                (g.answers || []).forEach(a => flat.push({
+                                    group: a.group || '',
+                                    level: a.level ?? 0,
+                                    members: a.members || ['', '', '', '']
+                                }));
+                            });
+                            groupsData = flat;
+                        } else {
+                            groupsData = parsed;
+                        }
+                    } else {
+                        alert('Uploaded JSON is not an array.');
+                        return;
+                    }
+                    expandedIndex = groupsData.length > 0 ? 0 : null;
+                    render();
+                    showStatus(`Loaded ${groupsData.length} groups from ${file.name}`);
+                } catch (err) {
+                    alert('Invalid JSON file: ' + err.message);
+                }
+            };
+            reader.readAsText(file, 'utf-8');
+        }
+
+        function toggleExpand(index) {
+            expandedIndex = (expandedIndex === index) ? null : index;
+            render();
+        }
+
+        function onSearch() {
+            searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
+            render();
+        }
+
+        function render() {
+            const container = document.getElementById('groups-container');
+            document.getElementById('group-count').innerText = groupsData.length;
+            const reviewedNum = groupsData.filter(g => g.reviewed).length;
+            const reviewedCountEl = document.getElementById('reviewed-count');
+            if (reviewedCountEl) reviewedCountEl.innerText = reviewedNum;
+            container.innerHTML = '';
+
+            const levelNames = ['Level 0 (Yellow 🟨)', 'Level 1 (Green 🟩)', 'Level 2 (Blue 🟦)', 'Level 3 (Purple 🟪)'];
+
+            let displayedCount = 0;
+
+            groupsData.forEach((item, index) => {
+                // Filter matching search query if any
+                if (searchQuery) {
+                    const matchGroup = (item.group || '').toLowerCase().includes(searchQuery);
+                    const matchWords = (item.members || []).some(w => (w || '').toLowerCase().includes(searchQuery));
+                    if (!matchGroup && !matchWords) return;
+                }
+
+                displayedCount++;
+                const isExpanded = (expandedIndex === index);
+                const isReviewed = Boolean(item.reviewed);
+                const el = document.createElement('div');
+                const lvl = (typeof item.level === 'number' && item.level >= 0 && item.level <= 3) ? item.level : 0;
+                el.className = 'group-item' + (isExpanded ? ' expanded' : '') + (isReviewed ? ' is-reviewed' : '');
+
+                // Ensure 4 members exist
+                if (!Array.isArray(item.members)) item.members = [];
+                while (item.members.length < 4) item.members.push('');
+
+                // Header
+                const header = document.createElement('div');
+                header.className = 'group-header';
+                header.onclick = () => toggleExpand(index);
+                header.innerHTML = `
+                    <div class="title">
+                        <span>${isExpanded ? '▼' : '▶'}</span>
+                        <span class="level-badge lvl-bg-${lvl}"></span>
+                        <span>#${index + 1} &nbsp; ${escapeHtml(item.group || 'Untitled Group')}</span>
+                    </div>
+                    <div class="actions">
+                        <label class="reviewed-label" onclick="event.stopPropagation();">
+                            <input type="checkbox" ${isReviewed ? 'checked' : ''} onchange="toggleReviewed(${index}, this.checked)">
+                            Reviewed
+                        </label>
+                        <button class="del-btn" onclick="event.stopPropagation(); deleteGroup(${index})">Delete</button>
+                    </div>
+                `;
+                el.appendChild(header);
+
+                // Body (rendered when expanded)
+                if (isExpanded) {
+                    const body = document.createElement('div');
+                    body.className = 'group-body';
+
+                    let wordsInputsHtml = '';
+                    for (let w = 0; w < 4; w++) {
+                        const wordVal = item.members[w] || '';
+                        wordsInputsHtml += `
+                            <input type="text" placeholder="Word ${w + 1}" value="${escapeHtml(wordVal)}"
+                                oninput="updateMember(${index}, ${w}, this.value)">
+                        `;
+                    }
+
+                    body.innerHTML = `
+                        <div class="category-card lvl-${lvl}">
+                            <div class="category-header">
+                                <label style="font-size: 13px; font-weight: bold; color: #555; display: flex; align-items: center; gap: 8px;">
+                                    Difficulty Tier:
+                                    <select onchange="updateLevel(${index}, this.value)" style="padding: 2px 6px;">
+                                        <option value="0" ${lvl === 0 ? 'selected' : ''}>Level 0 (Yellow 🟨)</option>
+                                        <option value="1" ${lvl === 1 ? 'selected' : ''}>Level 1 (Green 🟩)</option>
+                                        <option value="2" ${lvl === 2 ? 'selected' : ''}>Level 2 (Blue 🟦)</option>
+                                        <option value="3" ${lvl === 3 ? 'selected' : ''}>Level 3 (Purple 🟪)</option>
+                                    </select>
+                                </label>
+                                <button type="button" class="strip-btn" title="Extract text inside braces and remove English" onclick="stripCategoryBraces(${index})">
+                                    ✂️ Strip English &amp; Braces
+                                </button>
+                            </div>
+
+                            <label style="font-size: 12px; color: #666; font-weight: 500;">Group Name:</label>
+                            <input type="text" placeholder="Group / Category Name" value="${escapeHtml(item.group || '')}"
+                                oninput="updateGroupName(${index}, this.value)">
+
+                            <label style="font-size: 12px; color: #666; font-weight: 500;">Words (4):</label>
+                            <div class="words-grid">
+                                ${wordsInputsHtml}
+                            </div>
+                        </div>
+                    `;
+                    el.appendChild(body);
+                }
+
+                container.appendChild(el);
+            });
+
+            if (displayedCount === 0 && groupsData.length > 0) {
+                container.innerHTML = '<div style="color: #888; padding: 12px;">No matching groups found.</div>';
+            }
+        }
+
+        function escapeHtml(str) {
+            return String(str || '').replace(/"/g, '&quot;');
+        }
+
+        function toggleReviewed(index, isChecked) {
+            if (!groupsData[index]) return;
+            if (isChecked) {
+                groupsData[index].reviewed = true;
+            } else {
+                delete groupsData[index].reviewed;
+            }
+            render();
+        }
+
+        function updateGroupName(index, val) {
+            if (!groupsData[index]) return;
+            groupsData[index].group = val;
+            // update header title live
+            const headerTitle = document.querySelector(`.group-item:nth-child(${index + 1}) .group-header .title span:last-child`);
+            if (headerTitle) headerTitle.innerText = `#${index + 1}   ${val || 'Untitled Group'}`;
+        }
+
+        function updateLevel(index, val) {
+            if (!groupsData[index]) return;
+            groupsData[index].level = Number(val);
+            render();
+        }
+
+        function updateMember(index, memberIdx, val) {
+            if (!groupsData[index]) return;
+            if (!Array.isArray(groupsData[index].members)) groupsData[index].members = ['', '', '', ''];
+            groupsData[index].members[memberIdx] = val;
+        }
+
+        function stripBracesText(str) {
+            if (!str) return '';
+            const match = str.match(/\{([^}]+)\}/);
+            if (match && match[1]) return match[1].trim();
+
+            const parenMatch = str.match(/\(([^)]+)\)/);
+            if (parenMatch && parenMatch[1] && /[\u0C80-\u0CFF]/.test(parenMatch[1])) {
+                return parenMatch[1].trim();
+            }
+            return str.trim();
+        }
+
+        function stripCategoryBraces(index) {
+            const item = groupsData[index];
+            if (!item) return;
+
+            let modified = false;
+            const strippedGroup = stripBracesText(item.group);
+            if (strippedGroup !== item.group) {
+                item.group = strippedGroup;
+                modified = true;
+            }
+
+            if (Array.isArray(item.members)) {
+                item.members = item.members.map(m => {
+                    const sm = stripBracesText(m);
+                    if (sm !== m) modified = true;
+                    return sm;
+                });
+            }
+
+            render();
+            if (modified) {
+                showStatus('Stripped English & braces for group!');
+            } else {
+                showStatus('No braces found to strip.');
+            }
+        }
+
+        function addNewGroup() {
+            const newGroup = {
+                group: "",
+                level: 0,
+                members: ["", "", "", ""]
+            };
+
+            groupsData.push(newGroup);
+            expandedIndex = groupsData.length - 1;
+            render();
+            showStatus(`Added new group #${groupsData.length}`);
+
+            const lastItem = document.querySelector('.group-item:last-child');
+            if (lastItem) lastItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function deleteGroup(index) {
+            const item = groupsData[index];
+            if (!confirm(`Delete group #${index + 1} (${item.group || 'Untitled'})?`)) return;
+
+            groupsData.splice(index, 1);
+            if (expandedIndex === index) expandedIndex = null;
+            else if (expandedIndex > index) expandedIndex--;
+            render();
+            showStatus('Deleted group');
+        }
+
+        function downloadJson() {
+            if (groupsData.length === 0) {
+                alert('No data to download.');
+                return;
+            }
+            const jsonStr = JSON.stringify(groupsData, null, 2);
+            const blob = new Blob([jsonStr], { type: 'application/json;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = originalFileName || 'all_groups.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showStatus('Downloaded ' + a.download);
+        }
+
+        // Initialize with default sample or try loading all_groups.json if served
+        groupsData = defaultSample;
+        expandedIndex = 0;
+        render();
+
+        // Attempt fetch of all_groups.json if running via http/local server
+        fetch('data/padanantu/all_groups.json')
+            .then(res => res.ok ? res.json() : null)
+            .then(data => {
+                if (Array.isArray(data) && data.length > 0) {
+                    groupsData = data;
+                    expandedIndex = 0;
+                    render();
+                }
+            })
+            .catch(() => {});
+    </script>
+</body>
+</html>

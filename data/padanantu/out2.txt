@@ -1,0 +1,1 @@
+SOUTH INDIAN STATES {ದಕ್ಷಿಣ ಭಾರತದ ರಾಜ್ಯಗಳು} -> DENMARK {ಕರ್ನಾಟಕ}, GREECE {ಕೇರಳ}, POLAND {ಮಹಾರಾಷ್ಟ್ರ}, PORTUGAL {ತಮಿಳುನಾಡು}

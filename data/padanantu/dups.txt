@@ -1,0 +1,39 @@
+Duplicated groups:
+  UNITS OF LENGTH {ಉದ್ದದ ಅಳತೆಗಳು}: 2
+  SNEAKER BRANDS {ಶೂ ಬ್ರಾಂಡ್‌ಗಳು}: 2
+  BOARD GAMES {ಮಣೆ ಆಟಗಳು}: 3
+  THINGS THAT ARE RED {ಕೆಂಪು ಬಣ್ಣದ ವಸ್ತುಗಳು}: 2
+  BIRDS {ಪಕ್ಷಿಗಳು}: 2
+  ANIMAL GROUP NAMES {ಪ್ರಾಣಿಗಳ ಗುಂಪುಗಳು}: 2
+  AIRLINES {ಭಾರತೀಯ ವಿಮಾನಯಾನ ಸಂಸ್ಥೆಗಳು}: 2
+  NFL PLAYERS: 2
+  LOCAL MUSIC GENRES {ಸ್ಥಳೀಯ ಸಂಗೀತ ಪ್ರಕಾರಗಳು}: 2
+  MAGAZINES: 2
+  LOCAL SWEETS {ಸ್ಥಳೀಯ ಸಿಹಿತಿಂಡಿಗಳು}: 2
+  DESSERTS {ಸಿಹಿ ತಿಂಡಿಗಳು}: 2
+  ___ CAT: 2
+  PASTA SHAPES {ಪಾಸ್ತಾ ಆಕಾರಗಳು}: 2
+  MALE ANIMALS {ಗಂಡು ಪ್ರಾಣಿಗಳು}: 2
+  METAL ELEMENTS {ಲೋಹಗಳು}: 2
+  BIKE PARTS {ಸೈಕಲ್ ಭಾಗಗಳು}: 2
+  WOODWINDS {ಊದುವ ವಾದ್ಯಗಳು}: 2
+  STATES OF MATTER {ವಸ್ತುವಿನ ಸ್ಥಿತಿಗಳು}: 3
+  ANAGRAMS: 2
+  YOGA POSES {ಯೋಗಾಸನಗಳು}: 2
+  MUSICAL INSTRUMENTS {ಸಂಗೀತ ವಾದ್ಯಗಳು}: 2
+  MAKE HAPPY {ಸಂತೋಷಪಡಿಸು}: 2
+  STATE ABBREVIATIONS: 2
+  PURSUE {ಹಿಂಬಾಲಿಸು}: 2
+  FEMALE ANIMALS {ಹೆಣ್ಣು ಪ್ರಾಣಿಗಳು}: 2
+  PRONOUNS {ಸರ್ವನಾಮಗಳು}: 2
+  HOMOPHONES: 4
+  INTELLIGENT {ಬುದ್ಧಿವಂತ}: 2
+  SUMMARY {ಸಾರಾಂಶ}: 2
+  RHYMES: 2
+  PALINDROMES: 2
+  ORIGIN {ಮೂಲ}: 2
+  CRITICIZE {ಟೀಕಿಸು}: 2
+  BRIEF MOMENT {ಕ್ಷಣ}: 2
+  TRADITIONAL SPORTS {ದೇಸೀ ಕ್ರೀಡೆಗಳು}: 2
+
+Fixed PASTA SHAPES in game 296

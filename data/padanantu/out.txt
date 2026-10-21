@@ -1,0 +1,2 @@
+SNAKES {ಹಾವುಗಳು} -> BOA {ಕೆರೆಹಾವು}, MAMBA {ನಾಗರಹಾವು}, PYTHON {ಹೆಬ್ಬಾವು}, VIPER {ಮಂಡಲದ ಹಾವು}
+KINDS OF SNAKES {ಹಾವಿನ ವಿಧಗಳು} -> ADDER {ನಾಗರಹಾವು}, BOA {ಹೆಬ್ಬಾವು}, MAMBA {ಕಾಳಿಂಗ ಸರ್ಪ}, MOCCASIN {ಮಂಡಲದ ಹಾವು}

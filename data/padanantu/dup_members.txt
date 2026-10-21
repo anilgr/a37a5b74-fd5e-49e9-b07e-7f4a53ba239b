@@ -1,0 +1,174 @@
+Game 2 | Group: UNITS OF LENGTH {ಉದ್ದದ ಅಳತೆಗಳು}
+  Members: FOOT {ಅಡಿ}, LEAGUE {ಗಜ}, MILE {ಮೈಲಿ}, YARD {ಮೀಟರ್}
+
+Game 4 | Group: SNEAKER BRANDS {ಶೂ ಬ್ರಾಂಡ್‌ಗಳು}
+  Members: CONVERSE {ಬಾಟಾ}, JORDAN {ಪ್ಯಾರಾಗಾನ್}, PUMA {ಲಖಾನಿ}, VANS {ವಿ.ಕೆ.ಸಿ}
+
+Game 8 | Group: BOARD GAMES {ಮಣೆ ಆಟಗಳು}
+  Members: BACKGAMMON {ಚದುರಂಗ}, CHECKERS {ಚೌಕಾಬಾರ}, CHESS {ಅಳಗುಳಿ ಮನೆ}, GO {ಹಾವು ಏಣಿ}
+
+Game 8 | Group: THINGS THAT ARE RED {ಕೆಂಪು ಬಣ್ಣದ ವಸ್ತುಗಳು}
+  Members: CHERRY {ರಕ್ತ}, FIRE TRUCK {ಟೊಮೆಟೊ}, RUBY {ಕುಂಕುಮ}, STOP SIGN {ಸೇಬು}
+
+Game 10 | Group: BIRDS {ಪಕ್ಷಿಗಳು}
+  Members: CRANE {ಕಾಗೆ}, JAY {ಗಿಳಿ}, SWALLOW {ನವಿಲು}, TURKEY {ಕೋಗಿಲೆ}
+
+Game 12 | Group: ANIMAL GROUP NAMES {ಪ್ರಾಣಿಗಳ ಗುಂಪುಗಳು}
+  Members: FLOCK {ಹಿಂಡು}, PACK {ಮಂದೆ}, POD {ಗುಂಪು}, SCHOOL {ಪಾಳಯ}
+
+Game 13 | Group: AIRLINES {ಭಾರತೀಯ ವಿಮಾನಯಾನ ಸಂಸ್ಥೆಗಳು}
+  Members: FRONTIER {ಏರ್ ಇಂಡಿಯಾ}, SPIRIT {ಇಂಡಿಗೋ}, UNITED {ಸ್ಪೈಸ್‌ಜೆಟ್}, VIRGIN {ಆಕಾಶ ಏರ್}
+
+Game 21 | Group: LOCAL MUSIC GENRES {ಸ್ಥಳೀಯ ಸಂಗೀತ ಪ್ರಕಾರಗಳು}
+  Members: JAZZ {ಶಾಸ್ತ್ರೀಯ}, POP {ಭಾವಗೀತೆ}, PUNK {ಜಾನಪದ}, RAP {ಸುಗಮ ಸಂಗೀತ}
+
+Game 24 | Group: LOCAL SWEETS {ಸ್ಥಳೀಯ ಸಿಹಿತಿಂಡಿಗಳು}
+  Members: BOUNTY {ಕಡಲೆಕಾಯಿ ಮಿಠಾಯಿ}, CRUNCH {ಎಳ್ಳುಂಡೆ}, HEATH {ಕೊಬ್ಬರಿ ಮಿಠಾಯಿ}, MILKY WAY {ಬರ್ಫಿ}
+
+Game 25 | Group: DESSERTS {ಸಿಹಿ ತಿಂಡಿಗಳು}
+  Members: CHEESECAKE {ಪಾಯಸ}, FLAN {ಮೈಸೂರ್ ಪಾಕ್}, MOUSSE {ಹೋಳಿಗೆ}, TIRAMISU {ಲಾಡು}
+
+Game 30 | Group: PASTA SHAPES {ಪಾಸ್ತಾ ಆಕಾರಗಳು}
+  Members: BOWTIE {ಚಕ್ಕುಲಿ}, ELBOW {ಕೋಡುಬಳೆ}, SHELL {ನಿಪ್ಪಟ್ಟು}, SPIRAL {ಮುರುಕು}
+
+Game 32 | Group: BOARD GAMES {ಮಣೆ ಆಟಗಳು}
+  Members: CLUE {ಚೆಸ್}, RISK {ಲೂಡೋ}, SORRY {ಕ್ಯಾರಮ್}, TROUBLE {ಚೌಕಾಬಾರ}
+
+Game 34 | Group: LOCAL MUSIC GENRES {ಸ್ಥಳೀಯ ಸಂಗೀತ ಪ್ರಕಾರಗಳು}
+  Members: BLUES {ಹಿಂದೂಸ್ತಾನಿ}, COUNTRY {ಕರ್ನಾಟಕಿ}, FUNK {ಸುಗಮ ಸಂಗೀತ}, SOUL {ಜಾನಪದ}
+
+Game 34 | Group: MALE ANIMALS {ಗಂಡು ಪ್ರಾಣಿಗಳು}
+  Members: BOAR {ಕಾಡುಹಂದಿ}, BUCK {ಗಂಡು ಜಿಂಕೆ}, BULL {ಹೋರಿ}, JACK {ಗಂಡು ಕತ್ತೆ}
+
+Game 35 | Group: METAL ELEMENTS {ಲೋಹಗಳು}
+  Members: IRON {ಕಬ್ಬಿಣ}, LEAD {ಸೀಸ}, TIN {ತವರ}, ZINC {ಸತು}
+
+Game 37 | Group: BIKE PARTS {ಸೈಕಲ್ ಭಾಗಗಳು}
+  Members: BRAKE {ತಡೆಯು}, CHAIN {ಸರಪಳಿ}, SADDLE {ಸೀಟು}, SPOKE {ಕಡ್ಡಿ}
+
+Game 40 | Group: WOODWINDS {ಊದುವ ವಾದ್ಯಗಳು}
+  Members: BASSOON {ಶಂಖ}, CLARINET {ಶಹನಾಯ್}, FLUTE {ಕೊಳಲು}, OBOE {ಕಹಳೆ}
+
+Game 44 | Group: STATES OF MATTER {ವಸ್ತುವಿನ ಸ್ಥಿತಿಗಳು}
+  Members: GAS {ಅನಿಲ}, LIQUID {ದ್ರವ}, PLASMA {ಪ್ಲಾಸ್ಮಾ}, SOLID {ಘನ}
+
+Game 47 | Group: YOGA POSES {ಯೋಗಾಸನಗಳು}
+  Members: COBRA {ಭುಜಂಗಾಸನ}, LOTUS {ಪದ್ಮಾಸನ}, TREE {ವೃಕ್ಷಾಸನ}, WARRIOR {ವೀರಭದ್ರಾಸನ}
+
+Game 50 | Group: UNITS OF LENGTH {ಉದ್ದದ ಅಳತೆಗಳು}
+  Members: FOOT {ಅಡಿ}, INCH {ಇಂಚು}, MILE {ಮೈಲಿ}, YARD {ಗಜ}
+
+Game 52 | Group: MUSICAL INSTRUMENTS {ಸಂಗೀತ ವಾದ್ಯಗಳು}
+  Members: HARP {ವೀಣೆ}, HORN {ಕೊಂಬು}, ORGAN {ಹಾರ್ಮೋನಿಯಂ}, TRIANGLE {ತಾಳ}
+
+Game 53 | Group: ANIMAL GROUP NAMES {ಪ್ರಾಣಿಗಳ ಗುಂಪುಗಳು}
+  Members: COLONY {ವಸಾಹತು}, HERD {ಹಿಂಡು}, PRIDE {ಗುಂಪು}, SWARM {ಮುತ್ತಿಗೆ}
+
+Game 60 | Group: MAKE HAPPY {ಸಂತೋಷಪಡಿಸು}
+  Members: CHARM {ರಂಜಿಸು}, DELIGHT {ಖುಷಿಪಡಿಸು}, PLEASE {ಮುದನೀಡು}, TICKLE {ನಗಿಸು}
+
+Game 65 | Group: STATES OF MATTER {ವಸ್ತುವಿನ ಸ್ಥಿತಿಗಳು}
+  Members: GAS {ಅನಿಲ}, LIQUID {ದ್ರವ}, PLASMA {ಪ್ಲಾಸ್ಮಾ}, SOLID {ಘನ}
+
+Game 67 | Group: DESSERTS {ಸಿಹಿ ತಿಂಡಿಗಳು}
+  Members: CAKE {ಪೇಡ}, COBBLER {ಜಿಲೇಬಿ}, PIE {ರಸಗುಲ್ಲ}, TART {ಬರ್ಫಿ}
+
+Game 73 | Group: BIKE PARTS {ಸೈಕಲ್ ಭಾಗಗಳು}
+  Members: GEAR {ಗೇರ್}, HANDLEBAR {ಹ್ಯಾಂಡಲ್}, PEDAL {ಪೆಡಲ್}, WHEEL {ಚಕ್ರ}
+
+Game 73 | Group: PURSUE {ಹಿಂಬಾಲಿಸು}
+  Members: DOG {ಬೆನ್ನಟ್ಟು}, FOLLOW {ಹಿಂಬಾಲಿಸು}, TAIL {ಕಾವಲು}, TRACK {ಹುಡುಕು}
+
+Game 76 | Group: BOARD GAMES {ಮಣೆ ಆಟಗಳು}
+  Members: RISK {ಚೆಸ್}, SORRY {ಲೂಡೋ}, TABOO {ಕ್್ಯಾರಮ್}, TROUBLE {ಚೌಕಾಬಾರ}
+
+Game 82 | Group: WOODWINDS {ಊದುವ ವಾದ್ಯಗಳು}
+  Members: CLARINET {ಕ್ಲಾರಿನೆಟ್}, FLUTE {ಕೊಳಲು}, OBOE {ಶಹನಾಯ್}, SAXOPHONE {ಸ್ಯಾಕ್ಸೋಫೋನ್}
+
+Game 84 | Group: FEMALE ANIMALS {ಹೆಣ್ಣು ಪ್ರಾಣಿಗಳು}
+  Members: COW {ಹಸು}, DOE {ಹೆಣ್ಣು ಜಿಂಕೆ}, HEN {ಕೋಳಿ}, MARE {ಹೆಣ್ಣು ಕುದುರೆ}
+
+Game 84 | Group: PRONOUNS {ಸರ್ವನಾಮಗಳು}
+  Members: I {ನಾನು}, IT {ಅದು}, THEY {ಅವರು}, WE {ನಾವು}
+
+Game 94 | Group: PRONOUNS {ಸರ್ವನಾಮಗಳು}
+  Members: ME {ನಾನು}, THEM {ಅವರು}, US {ನಾವು}, YOU {ನೀವು}
+
+Game 99 | Group: INTELLIGENT {ಬುದ್ಧಿವಂತ}
+  Members: BRIGHT {ಪ್ರಕಾಶಮಾನ}, CLEVER {ಚಾಣಾಕ್ಷ}, QUICK {ಚುರುಕು}, SHARP {ತೀಕ್ಷ್ಣ}
+
+Game 99 | Group: AIRLINES {ಭಾರತೀಯ ವಿಮಾನಯಾನ ಸಂಸ್ಥೆಗಳು}
+  Members: ALASKA {ಇಂಡಿಗೋ}, FRONTIER {ವಿಸ್ತಾರಾ}, SOUTHWEST {ಏರ್ ಇಂಡಿಯಾ}, SPIRIT {ಸ್ಪೈಸ್‌ಜೆಟ್}
+
+Game 107 | Group: SUMMARY {ಸಾರಾಂಶ}
+  Members: ABSTRACT {ಸಾರ}, BRIEF {ಸಂಕ್ಷಿಪ್ತ}, DIGEST {ಸಂಗ್ರಹ}, RUNDOWN {ವಿವರಣೆ}
+
+Game 108 | Group: LOCAL SWEETS {ಸ್ಥಳೀಯ ಸಿಹಿತಿಂಡಿಗಳು}
+  Members: CHOCOLATE {ಕಡಲೆ ಮಿಠಾಯಿ}, GUM {ಬತ್ತಾಸು}, LICORICE {ಕೊಬ್ಬರಿ ಮಿಠಾಯಿ}, LOLLIPOP {ಬಾಂಬೆ ಮಿಠಾಯಿ}
+
+Game 112 | Group: THINGS THAT ARE RED {ಕೆಂಪು ಬಣ್ಣದ ವಸ್ತುಗಳು}
+  Members: BEET {ಬೀಟ್‌ರೂಟ್}, BRICK {ಇಟ್ಟಿಗೆ}, CARDINAL {ಕಾರ್ಡಿನಲ್ ಪಕ್ಷಿ}, POPPY {ಗಸಗಸೆ ಹೂವು}
+
+Game 114 | Group: SNEAKER BRANDS {ಶೂ ಬ್ರಾಂಡ್‌ಗಳು}
+  Members: CONVERSE {ಬಾಟಾ}, JORDAN {ಪ್ಯಾರಾಗಾನ್}, PUMA {ಲಖಾನಿ}, VANS {ವಿ.ಕೆ.ಸಿ}
+
+Game 121 | Group: ORIGIN {ಮೂಲ}
+  Members: GENESIS {ಉಗಮ}, GERM {ಅಂಕುರ}, SEED {ಬೀಜ}, SOURCE {ಮೂಲ}
+
+Game 138 | Group: METAL ELEMENTS {ಲೋಹಗಳು}
+  Members: COPPER {ತಾಮ್ರ}, GOLD {ಚಿನ್ನ}, NICKEL {ನಿಕಲ್}, SILVER {ಬೆಳ್ಳಿ}
+
+Game 152 | Group: INTELLIGENT {ಬುದ್ಧಿವಂತ}
+  Members: BRIGHT {ಪ್ರಕಾಶಮಾನ}, QUICK {ಚುರುಕು}, SHARP {ತೀಕ್ಷ್ಣ}, SMART {ಸ್ಮಾರ್ಟ್}
+
+Game 166 | Group: CRITICIZE {ಟೀಕಿಸು}
+  Members: KNOCK {ನಾಕ್}, PAN {ಪ್ಯಾನ್}, ROAST {ಕಾಲೆಳೆ}, SLAM {ಹಂಗಿಸು}
+
+Game 171 | Group: MUSICAL INSTRUMENTS {ಸಂಗೀತ ವಾದ್ಯಗಳು}
+  Members: BASS {ಬಾಸ್}, HARP {ಹಾರ್ಪ್}, HORN {ಹಾರ್ನ್}, ORGAN {ಆರ್ಗನ್}
+
+Game 188 | Group: MAKE HAPPY {ಸಂತೋಷಪಡಿಸು}
+  Members: AMUSE {ರಂಜಿಸು}, DELIGHT {ಆನಂದಿಸು}, PLEASE {ಮೆಚ್ಚಿಸು}, TICKLE {ಕಿಚಗುಳಿ}
+
+Game 190 | Group: BRIEF MOMENT {ಕ್ಷಣ}
+  Members: FLASH {ಮಿಂಚು}, JIFFY {ಜಿಫಿ}, SECOND {ಸೆಕೆಂಡ್}, WINK {ರೆಪ್ಪೆಬಡಿತ}
+
+Game 200 | Group: BIRDS {ಪಕ್ಷಿಗಳು}
+  Members: CARDINAL {ಕಾರ್ಡಿನಲ್}, JAY {ಜೇ}, LARK {ಲಾರ್ಕ್}, SWIFT {ಸ್ವಿಫ್ಟ್}
+
+Game 214 | Group: STATES OF MATTER {ವಸ್ತುವಿನ ಸ್ಥಿತಿಗಳು}
+  Members: GAS {ಅನಿಲ}, LIQUID {ದ್ರವ}, PLASMA {ಪ್ಲಾಸ್ಮಾ}, SOLID {ಘನ}
+
+Game 217 | Group: MALE ANIMALS {ಗಂಡು ಪ್ರಾಣಿಗಳು}
+  Members: BUCK {ಗಂಡು ಜಿಂಕೆ}, BULL {ಹೋರಿ}, JACK {ಗಂಡು ಕತ್ತೆ}, TOM {ಗಂಡು ಬೆಕ್ಕು}
+
+Game 244 | Group: YOGA POSES {ಯೋಗಾಸನಗಳು}
+  Members: CAT {ಮಾರ್ಜಾಲ}, COW {ಗೋಮುಖ}, MOUNTAIN {ತಾಡಾಸನ}, TRIANGLE {ತ್ರಿಕೋನಾಸನ}
+
+Game 256 | Group: ORIGIN {ಮೂಲ}
+  Members: CRADLE {ತೊಟ್ಟಿಲು}, FONT {ಫಾಂಟ್}, ROOT {ಬೇರು}, SOURCE {ಮೂಲ}
+
+Game 262 | Group: TRADITIONAL SPORTS {ದೇಸೀ ಕ್ರೀಡೆಗಳು}
+  Members: BATON {ಖೋ-ಖೋ}, HAMMER {ಕಬಡ್ಡಿ}, HURDLE {ಕುಸ್ತಿ}, POLE {ಮಲ್ಲಕಂಬ}
+
+Game 278 | Group: CRITICIZE {ಟೀಕಿಸು}
+  Members: BLAST {ಛೀಮಾರಿ ಹಾಕು}, KNOCK {ನಾಕ್}, SLAM {ಹಂಗಿಸು}, TRASH {ನಿಂದಿಸು}
+
+Game 284 | Group: FEMALE ANIMALS {ಹೆಣ್ಣು ಪ್ರಾಣಿಗಳು}
+  Members: COW {ಹಸು}, DOE {ಹೆಣ್ಣು ಜಿಂಕೆ}, EWE {ಹೆಣ್ಣು ಕುರಿ}, HEN {ಕೋಳಿ}
+
+Game 286 | Group: PURSUE {ಹಿಂಬಾಲಿಸು}
+  Members: CHASE {ಬೆನ್ನಟ್ಟು}, TAIL {ಬಾಲ}, TRACK {ಜಾಡು}, SHADOW {ನೆರಳು}
+
+Game 296 | Group: PASTA SHAPES {ಪಾಸ್ತಾ ಆಕಾರಗಳು}
+  Members: BOWTIE {ಮುರುಕು}, ELBOW {ಕೋಡುಬಳೆ}, TUBE {ಖಾರಾಸೇವ್}, WHEEL {ಚಕ್ಕುಲಿ}
+
+Game 302 | Group: BRIEF MOMENT {ಕ್ಷಣ}
+  Members: FLASH {ಮಿಂಚು}, HEARTBEAT {ಹೃದಯಬಡಿತ}, JIFF {ಜಿಫ್}, WINK {ರೆಪ್ಪೆಬಡಿತ}
+
+Game 314 | Group: TRADITIONAL SPORTS {ದೇಸೀ ಕ್ರೀಡೆಗಳು}
+  Members: BATON {ಖೋ-ಖೋ}, HAMMER {ಕಬಡ್ಡಿ}, HURDLE {ಕುಸ್ತಿ}, POLE {ಮಲ್ಲಕಂಬ}
+
+Game 321 | Group: SUMMARY {ಸಾರಾಂಶ}
+  Members: ABSTRACT {ಅಬ್ಸ್ಟ್ರಾಕ್ಟ್}, BRIEF {ಬ್ರೀಫ್}, DIGEST {ಡೈಜೆಸ್ಟ್}, OUTLINE {ಔಟ್‌ಲೈನ್}
+

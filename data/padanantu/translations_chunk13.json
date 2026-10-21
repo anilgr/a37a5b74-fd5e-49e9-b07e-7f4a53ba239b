@@ -1,0 +1,1685 @@
+{
+    "INTELLIGENCE OPERATIVE": [
+        "ಗುಪ್ತಚರ",
+        {
+            "AGENT": "ಏಜೆಂಟ್",
+            "ASSET": "ಆಸ್ತಿ",
+            "MOLE": "ಗೂಢಚಾರಿ",
+            "SLEEPER": "ಸ್ಲೀಪರ್"
+        }
+    ],
+    "UNITS IN POETRY": [
+        "ಕಾವ್ಯದ ಘಟಕಗಳು",
+        {
+            "FOOT": "ಗಣ",
+            "LINE": "ಸಾಲು",
+            "METER": "ಛಂದಸ್ಸು",
+            "VERSE": "ಪದ್ಯ"
+        }
+    ],
+    "EXPRESS INDIRECTLY": [
+        "ಪರೋಕ್ಷವಾಗಿ ವ್ಯಕ್ತಪಡಿಸು",
+        {
+            "COUCH": "ಮರೆಮಾಚು",
+            "IMPLY": "ಸೂಚಿಸು",
+            "INTIMATE": "ತಿಳಿಸು",
+            "SUGGEST": "ಸಲಹೆ"
+        }
+    ],
+    "LARGE AMOUNT": [
+        "ದೊಡ್ಡ ಪ್ರಮಾಣ",
+        {
+            "MASS": "ರಾಶಿ",
+            "SEA": "ಸಮುದ್ರ",
+            "SLEW": "ಸಾಕಷ್ಟು",
+            "TON": "ಟನ್"
+        }
+    ],
+    "FALL IN UNDER PRESSURE": [
+        "ಕುಸಿಯುವಿಕೆ",
+        {
+            "BUCKLE": "ಬಾಗು",
+            "CAVE": "ಕುಸಿಯು",
+            "COLLAPSE": "ಪತನ",
+            "GIVE": "ಸಡಿಲವಾಗು"
+        }
+    ],
+    "WAYS TO GET ATTENTION": [
+        "ಗಮನ ಸೆಳೆಯುವ ವಿಧಾನಗಳು",
+        {
+            "SHOUT": "ಕೂಗು",
+            "SNAP": "ಚಟಾಕಿ",
+            "WAVE": "ಕೈಬೀಸು",
+            "WHISTLE": "ಸಿಳ್ಳೆ"
+        }
+    ],
+    "ROOMS IN THE GAME CLUE": [
+        "ಆಟದ ಕೋಣೆಗಳು",
+        {
+            "HALL": "ಹಾಲ್",
+            "LIBRARY": "ಗ್ರಂಥಾಲಯ",
+            "LOUNGE": "ಲಾಂಜ್",
+            "STUDY": "ಓದುವ ಕೋಣೆ"
+        }
+    ],
+    "COLLEAGUE": [
+        "ಸಹೋದ್ಯೋಗಿ",
+        {
+            "ASSOCIATE": "ಸಹವರ್ತಿ",
+            "FELLOW": "ಫೆಲೋ",
+            "PARTNER": "ಪಾಲುದಾರ",
+            "PEER": "ಸಮಾನ"
+        }
+    ],
+    "SEEN DURING EASTER": [
+        "ಈಸ್ಟರ್ ಹಬ್ಬದ ವಸ್ತುಗಳು",
+        {
+            "BUNNY": "ಮೊಲ",
+            "EGG": "ಮೊಟ್ಟೆ",
+            "JELLY BEAN": "ಜೆಲ್ಲಿ ಬೀನ್",
+            "PEEP": "ಪೀಪ್"
+        }
+    ],
+    "POP MEGASTARS": [
+        "ಪಾಪ್ ತಾರೆಗಳು",
+        {
+            "GRANDE": "ಗ್ರಾಂಡೆ",
+            "MARS": "ಮಾರ್ಸ್",
+            "STYLES": "ಸ್ಟೈಲ್ಸ್",
+            "SWIFT": "ಸ್ವಿಫ್ಟ್"
+        }
+    ],
+    "METHOD": [
+        "ವಿಧಾನ",
+        {
+            "CHANNEL": "ಮಾರ್ಗ",
+            "MEANS": "ಸಾಧನ",
+            "MEDIUM": "ಮಾಧ್ಯಮ",
+            "VEHICLE": "ವಾಹನ"
+        }
+    ],
+    "UNLIKELY, AS CHANCES": [
+        "ಅಸಂಭವ",
+        {
+            "OUTSIDE": "ಹೊರಗಿನ",
+            "REMOTE": "ದೂರದ",
+            "SLIM": "ಸ್ಲಿಮ್",
+            "SMALL": "ಸಣ್ಣ"
+        }
+    ],
+    "PARTS OF AN AIRPORT": [
+        "ವಿಮಾನ ನಿಲ್ದಾಣದ ಭಾಗಗಳು",
+        {
+            "HANGAR": "ಹ್ಯಾಂಗರ್",
+            "RUNWAY": "ರನ್‌ವೇ",
+            "TARMAC": "ಟಾರ್ಮ್ಯಾಕ್",
+            "TERMINAL": "ಟರ್ಮಿನಲ್"
+        }
+    ],
+    "LEGAL TERMS": [
+        "ಕಾನೂನು ಪದಗಳು",
+        {
+            "ACTION": "ಕ್ರಮ",
+            "CLAIM": "ಹಕ್ಕು",
+            "COMPLAINT": "ದೂರು",
+            "LAWSUIT": "ಮೊಕದ್ದಮೆ"
+        }
+    ],
+    "THINGS A JUGGLER JUGGLES": [
+        "ಜಾದೂಗಾರನ ವಸ್ತುಗಳು",
+        {
+            "BEANBAG": "ಬೀನ್‌ಬ್ಯಾಗ್",
+            "CLUB": "ಕ್ಲಬ್",
+            "RING": "ಉಂಗುರ",
+            "TORCH": "ಬೆಂಕಿ"
+        }
+    ],
+    "SHARED": [
+        "ಹಂಚಿಕೊಂಡ",
+        {
+            "COLLECTIVE": "ಸಾಮೂಹಿಕ",
+            "COMMON": "ಸಾಮಾನ್ಯ",
+            "JOINT": "ಜಂಟಿ",
+            "MUTUAL": "ಪರಸ್ಪರ"
+        }
+    ],
+    "RID OF CONTENTS": [
+        "ಖಾಲಿ ಮಾಡು",
+        {
+            "CLEAR": "ಸ್ವಚ್ಛಗೊಳಿಸು",
+            "DRAIN": "ಬರಿದುಮಾಡು",
+            "EMPTY": "ಖಾಲಿ",
+            "FLUSH": "ಫ್ಲಶ್"
+        }
+    ],
+    "THINGS TO SEW": [
+        "ಹೊಲಿಯುವ ಪದಗಳು",
+        {
+            "DART": "ಡಾರ್ಟ್",
+            "HEM": "ಅಂಚು",
+            "PLEAT": "ನೆರಿಗೆ",
+            "SEAM": "ಸೀಮ್"
+        }
+    ],
+    "WAYS TO PRESERVE FOOD": [
+        "ಆಹಾರ ಸಂರಕ್ಷಣೆ",
+        {
+            "CAN": "ಕ್ಯಾನ್",
+            "CURE": "ಕ್ಯೂರ್",
+            "DRY": "ಒಣಗಿಸು",
+            "FREEZE": "ಫ್ರೀಜ್"
+        }
+    ],
+    "SHARP QUALITY": [
+        "ತೀಕ್ಷ್ಣ ಗುಣ",
+        {
+            "BITE": "ಬೈಟ್",
+            "EDGE": "ಅಂಚು",
+            "PUNCH": "ಪಂಚ್",
+            "SPICE": "ಸ್ಪೈಸ್"
+        }
+    ],
+    "EAT VORACIOUSLY": [
+        "ಗಬಗಬನೆ ತಿನ್ನು",
+        {
+            "DOWN": "ಡೌನ್",
+            "INHALE": "ನುಂಗು",
+            "SCARF": "ಸ್ಕಾರ್ಫ್",
+            "WOLF": "ತೋಳದಂತೆ ತಿನ್ನು"
+        }
+    ],
+    "AREAS OF ACADEMIC FOCUS": [
+        "ಶೈಕ್ಷಣಿಕ ವಿಭಾಗಗಳು",
+        {
+            "CONCENTRATION": "ಏಕಾಗ್ರತೆ",
+            "DEGREE": "ಪದವಿ",
+            "MAJOR": "ಮುಖ್ಯ",
+            "MINOR": "ಉಪ"
+        }
+    ],
+    "UNIVERSAL": [
+        "ಸಾರ್ವತ್ರಿಕ",
+        {
+            "BLANKET": "ಬ್ಲಾಂಕೆಟ್",
+            "BROAD": "ವ್ಯಾಪಕ",
+            "GENERAL": "ಸಾಮಾನ್ಯ",
+            "SWEEPING": "ಸ್ವೀಪಿಂಗ್"
+        }
+    ],
+    "THINGS A DOG CAN FETCH": [
+        "ನಾಯಿ ತರುವ ವಸ್ತುಗಳು",
+        {
+            "BALL": "ಚೆಂಡು",
+            "BONE": "ಮೂಳೆ",
+            "FRISBEE": "ಫ್ರಿಸ್ಬೀ",
+            "STICK": "ಕಡ್ಡಿ"
+        }
+    ],
+    "CONCEAL": [
+        "ಮುಚ್ಚಿಡು",
+        {
+            "BLOCK": "ಬ್ಲಾಕ್",
+            "COVER": "ಕವರ್",
+            "HIDE": "ಅಡಗಿಸು",
+            "OBSCURE": "ಮರೆಮಾಚು"
+        }
+    ],
+    "MAC KEYBOARD KEYS": [
+        "ಮ್ಯಾಕ್ ಕೀಗಳು",
+        {
+            "COMMAND": "ಕಮಾಂಡ್",
+            "CONTROL": "ಕಂಟ್ರೋಲ್",
+            "OPTION": "ಆಪ್ಷನ್",
+            "SHIFT": "ಶಿಫ್ಟ್"
+        }
+    ],
+    "EXPERIENCE A MEMORY LAPSE": [
+        "ಮರೆವು",
+        {
+            "BLANK": "ಬ್ಲಾಂಕ್",
+            "FLAKE": "ಫ್ಲೇಕ್",
+            "FORGET": "ಮರೆತುಹೋಗು",
+            "SPACE": "ಸ್ಪೇಸ್"
+        }
+    ],
+    "TREAT WITH EXCESSIVE CARE": [
+        "ಅತಿಯಾಗಿ ಆರೈಕೆ ಮಾಡು",
+        {
+            "BABY": "ಬೇಬಿ",
+            "MOTHER": "ತಾಯಿಯಂತೆ ನೋಡು",
+            "PAMPER": "ಪ್ಯಾಂಪರ್",
+            "SPOIL": "ಸ್ಪಾಯಿಲ್"
+        }
+    ],
+    "BACKSIDE": [
+        "ಹಿಂಭಾಗ",
+        {
+            "BOOTY": "ಬೂಟಿ",
+            "BUM": "ಬಮ್",
+            "CAN": "ಕ್ಯಾನ್",
+            "REAR": "ರಿಯರ್"
+        }
+    ],
+    "THINGS IN A SPA LOCKER ROOM": [
+        "ಸ್ಪಾ ವಸ್ತುಗಳು",
+        {
+            "ROBE": "ರೋಬ್",
+            "SLIPPERS": "ಸ್ಲಿಪ್ಪರ್",
+            "TOWEL": "ಟವಲ್",
+            "WASHCLOTH": "ವಾಶ್‌ಕ್ಲಾತ್"
+        }
+    ],
+    "SECTION": [
+        "ವಿಭಾಗ",
+        {
+            "CLASS": "ವರ್ಗ",
+            "DIVISION": "ವಿಭಾಗ",
+            "RANK": "ರ್ಯಾಂಕ್",
+            "TIER": "ಶ್ರೇಣಿ"
+        }
+    ],
+    "INCLUDING": [
+        "ಒಳಗೊಂಡು",
+        {
+            "ALSO": "ಸಹ",
+            "AND": "ಮತ್ತು",
+            "PLUS": "ಪ್ಲಸ್",
+            "WITH": "ಜೊತೆಗೆ"
+        }
+    ],
+    "DOG BREEDS, INFORMALLY": [
+        "ನಾಯಿ ತಳಿಗಳು",
+        {
+            "BOSTON": "ಬಾಸ್ಟನ್",
+            "GOLDEN": "ಗೋಲ್ಡನ್",
+            "LAB": "ಲ್ಯಾಬ್",
+            "PIT": "ಪಿಟ್"
+        }
+    ],
+    "FAMOUS POEMS": [
+        "ಪ್ರಸಿದ್ಧ ಕವನಗಳು",
+        {
+            "DADDY": "ಡ್ಯಾಡಿ",
+            "HARLEM": "ಹಾರ್ಲೆಮ್",
+            "HOWL": "ಹೌಲ್",
+            "IF": "ಇಫ್"
+        }
+    ],
+    "HALLOWEEN PURCHASES": [
+        "ಹ್ಯಾಲೋವೀನ್ ವಸ್ತುಗಳು",
+        {
+            "CANDY": "ಕ್ಯಾಂಡಿ",
+            "COSTUME": "ಧಿರಿಸು",
+            "DECORATIONS": "ಅಲಂಕಾರಗಳು",
+            "PUMPKIN": "ಕುಂಬಳಕಾಯಿ"
+        }
+    ],
+    "PLANTS WITH SIMILAR FLAVORS": [
+        "ಒಂದೇ ರುಚಿಯ ಸಸ್ಯಗಳು",
+        {
+            "ANISE": "ಸೋಂಪು",
+            "FENNEL": "ಫೆನ್ನೆಲ್",
+            "LICORICE": "ಲೈಕೋರೈಸ್",
+            "TARRAGON": "ಟ್ಯಾರಗನ್"
+        }
+    ],
+    "FOOD SLANG FOR HEAD": [
+        "ತಲೆಗೆ ಆಡುಮಾತುಗಳು",
+        {
+            "BEAN": "ಬೀನ್",
+            "MELON": "ಮೆಲನ್",
+            "NOODLE": "ನೂಡಲ್",
+            "NUT": "ನಟ್"
+        }
+    ],
+    "GEMSTONE CUTS": [
+        "ರತ್ನದ ಕಟ್ಸ್",
+        {
+            "BAGUETTE": "ಬ್ಯಾಗೆಟ್",
+            "EMERALD": "ಎಮೆರಾಲ್ಡ್",
+            "PRINCESS": "ಪ್ರಿನ್ಸೆಸ್",
+            "RADIANT": "ರೇಡಿಯಂಟ್"
+        }
+    ],
+    "BOX OFFICE VICTORY": [
+        "ಯಶಸ್ಸು",
+        {
+            "HIT": "ಹಿಟ್",
+            "SMASH": "ಸ್ಮ್ಯಾಶ್",
+            "SUCCESS": "ಯಶಸ್ಸು",
+            "WINNER": "ವಿನ್ನರ್"
+        }
+    ],
+    "VOLLEYBALL MOVES": [
+        "ವಾಲಿಬಾಲ್ ತಂತ್ರಗಳು",
+        {
+            "BUMP": "ಬಂಪ್",
+            "SERVE": "ಸರ್ವ್",
+            "SET": "ಸೆಟ್",
+            "SPIKE": "ಸ್ಪೈಕ್"
+        }
+    ],
+    "CRITICIZE": [
+        "ಟೀಕಿಸು",
+        {
+            "BLAST": "ಬ್ಲಾಸ್ಟ್",
+            "KNOCK": "ನಾಕ್",
+            "SLAM": "ಸ್ಲಾಮ್",
+            "TRASH": "ಟ್ರಾಶ್"
+        }
+    ],
+    "\"MY MISTAKE!\"": [
+        "ನನ್ನ ತಪ್ಪು",
+        {
+            "APOLOGIES": "ಕ್ಷಮೆ",
+            "OOPS": "ಉಪ್ಸ್",
+            "PARDON": "ಕ್ಷಮಿಸಿ",
+            "SORRY": "ಸಾರಿ"
+        }
+    ],
+    "ALIBI": [
+        "ನೆಪ",
+        {
+            "DEFENSE": "ರಕ್ಷಣೆ",
+            "EXCUSE": "ನೆಪ",
+            "OUT": "ಹೊರಗೆ",
+            "REASON": "ಕಾರಣ"
+        }
+    ],
+    "GET SMALLER": [
+        "ಚಿಕ್ಕದಾಗು",
+        {
+            "CONTRACT": "ಕುಗ್ಗುವಿಕೆ",
+            "LESSEN": "ಕಡಿಮೆಯಾಗು",
+            "REDUCE": "ಕಡಿಮೆಮಾಡು",
+            "SHRINK": "ಕುಗ್ಗಿಸು"
+        }
+    ],
+    "AIRLINE CLASSES": [
+        "ವಿಮಾನದ ಕ್ಲಾಸ್‌ಗಳು",
+        {
+            "BUSINESS": "ಬಿಸಿನೆಸ್",
+            "COACH": "ಕೋಚ್",
+            "FIRST": "ಫಸ್ಟ್",
+            "PREMIUM": "ಪ್ರೀಮಿಯಂ"
+        }
+    ],
+    "EXAMINE, AS AN APPLICANT": [
+        "ಪರಿಶೀಲಿಸು",
+        {
+            "CHECK": "ಚೆಕ್",
+            "REVIEW": "ವಿಮರ್ಶೆ",
+            "SCREEN": "ಸ್ಕ್ರೀನ್",
+            "VET": "ವೆಟ್"
+        }
+    ],
+    "NOTABLE TV EPISODES": [
+        "ಪ್ರಮುಖ ಟಿವಿ ಸಂಚಿಕೆಗಳು",
+        {
+            "FINALE": "ಫಿನಾಲೆ",
+            "PILOT": "ಪೈಲಟ್",
+            "PREMIERE": "ಪ್ರೀಮಿಯರ್",
+            "SPECIAL": "ಸ್ಪೆಷಲ್"
+        }
+    ],
+    "FOOLISHNESS": [
+        "ಮೂರ್ಖತನ",
+        {
+            "ABSURDITY": "ಅಸಂಬದ್ಧತೆ",
+            "FOLLY": "ಮೂರ್ಖತನ",
+            "MADNESS": "ಹುಚ್ಚುತನ",
+            "NONSENSE": "ಬಕ್ವಾಸ್"
+        }
+    ],
+    "MOVE FORWARD": [
+        "ಮುನ್ನಡೆ",
+        {
+            "ADVANCE": "ಮುನ್ನಡೆ",
+            "MARCH": "ಮಾರ್ಚ್",
+            "PROGRESS": "ಪ್ರಗತಿ",
+            "PUSH": "ಪುಶ್"
+        }
+    ],
+    "THINGS THAT MIGHT STINK": [
+        "ದುರ್ವಾಸನೆ ಸೂಸುವ ವಸ್ತುಗಳು",
+        {
+            "CHEESE": "ಚೀಸ್",
+            "FEET": "ಪಾದಗಳು",
+            "GARBAGE": "ಕಸ",
+            "SKUNK": "ಸ್ಕಂಕ್"
+        }
+    ],
+    "SEGMENT OF A PROCESS": [
+        "ಪ್ರಕ್ರಿಯೆಯ ಹಂತ",
+        {
+            "CYCLE": "ಚಕ್ರ",
+            "PHASE": "ಹಂತ",
+            "ROUND": "ರೌಂಡ್",
+            "STAGE": "ಘಟ್ಟ"
+        }
+    ],
+    "CONSTELLATIONS": [
+        "ನಕ್ಷತ್ರಪುಂಜಗಳು",
+        {
+            "CYGNUS": "ಸಿಗ್ನಸ್",
+            "GEMINI": "ಜೆಮಿನಿ",
+            "ORION": "ಓರಿಯನ್",
+            "PEGASUS": "ಪೆಗಾಸಸ್"
+        }
+    ],
+    "SPIRALS IN NATURE": [
+        "ಪ್ರಕೃತಿಯಲ್ಲಿ ಸುರುಳಿಗಳು",
+        {
+            "CYCLONE": "ಚಂಡಮಾರುತ",
+            "GALAXY": "ಗ್ಯಾಲಕ್ಸಿ",
+            "SNAIL": "ಬಸವನಹುಳು",
+            "SUNFLOWER": "ಸೂರ್ಯಕಾಂತಿ"
+        }
+    ],
+    "MOVIE SUMMARY INFO": [
+        "ಸಿನಿಮಾದ ವಿವರಗಳು",
+        {
+            "CAST": "ಪಾತ್ರವರ್ಗ",
+            "GENRE": "ಪ್ರಕಾರ",
+            "PLOT": "ಕಥೆ",
+            "TITLE": "ಶೀರ್ಷಿಕೆ"
+        }
+    ],
+    "PRETENSE": [
+        "ನಾಟಕ",
+        {
+            "AFFECT": "ಪರಿಣಾಮ",
+            "AIRS": "ಏರ್ಸ್",
+            "CHARADE": "ನಾಟಕ",
+            "FRONT": "ಮುಖವಾಡ"
+        }
+    ],
+    "FAMOUS GUITARISTS": [
+        "ಪ್ರಸಿದ್ಧ ಗಿಟಾರ್ ವಾದಕರು",
+        {
+            "BERRY": "ಬೆರ್ರಿ",
+            "KING": "ಕಿಂಗ್",
+            "PAGE": "ಪೇಜ್",
+            "WATERS": "ವಾಟರ್ಸ್"
+        }
+    ],
+    "SEEN AT A SPORTS STADIUM": [
+        "ಸ್ಟೇಡಿಯಂನಲ್ಲಿರುವ ವಸ್ತುಗಳು",
+        {
+            "ASTROTURF": "ಆಸ್ಟ್ರೋಟರ್ಫ್",
+            "JUMBOTRON": "ಜಂಬೋಟ್ರಾನ್",
+            "SCOREBOARD": "ಸ್ಕೋರ್‌ಬೋರ್ಡ್",
+            "SKYBOX": "ಸ್ಕೈಬಾಕ್ಸ್"
+        }
+    ],
+    "CAMERA BRANDS": [
+        "ಕ್ಯಾಮರಾ ಬ್ರಾಂಡ್‌ಗಳು",
+        {
+            "FUJIFILM": "ಫ್ಯೂಜಿಫಿಲ್ಮ್",
+            "HASSELBLAD": "ಹ್ಯಾಸೆಲ್‌ಬ್ಲಾಡ್",
+            "OLYMPUS": "ಒಲಿಂಪಸ್",
+            "POLAROID": "ಪೊಲಾರಾಯ್ಡ್"
+        }
+    ],
+    "ITALIAN DEMONYMS": [
+        "ಇಟಲಿಯ ಸ್ಥಳನಾಮಗಳು",
+        {
+            "BOLOGNESE": "ಬೊಲೊಗ್ನೀಸ್",
+            "NEAPOLITAN": "ನಿಯಾಪೊಲಿಟನ್",
+            "PARMESAN": "ಪಾರ್ಮಿಸನ್",
+            "VENETIAN": "ವೆನೆಷಿಯನ್"
+        }
+    ],
+    "CHAT, INFORMALLY": [
+        "ಹರಟೆ",
+        {
+            "GAB": "ಗ್ಯಾಬ್",
+            "JAW": "ಜಾ",
+            "YAK": "ಯಾಕ್",
+            "YAP": "ಯಾಪ್"
+        }
+    ],
+    "FEMALE ANIMALS": [
+        "ಹೆಣ್ಣು ಪ್ರಾಣಿಗಳು",
+        {
+            "COW": "ಹಸು",
+            "DOE": "ಹೆಣ್ಣು ಜಿಂಕೆ",
+            "EWE": "ಹೆಣ್ಣು ಕುರಿ",
+            "HEN": "ಕೋಳಿ"
+        }
+    ],
+    "JUMPING ANIMALS": [
+        "ಜಿಗಿಯುವ ಪ್ರಾಣಿಗಳು",
+        {
+            "CRICKET": "ಮಿಡತೆ",
+            "FROG": "ಕಪ್ಪೆ",
+            "HARE": "ಮೊಲ",
+            "KANGAROO": "ಕಾಂಗರೂ"
+        }
+    ],
+    "APPLY PRESSURE TO": [
+        "ಒತ್ತು",
+        {
+            "CRUSH": "ಕ್ರಶ್",
+            "MASH": "ಮ್ಯಾಶ್",
+            "PRESS": "ಪ್ರೆಸ್",
+            "SQUASH": "ಸ್ಕ್ವಾಶ್"
+        }
+    ],
+    "OLYMPIC SPORTS": [
+        "ಒಲಿಂಪಿಕ್ ಕ್ರೀಡೆಗಳು",
+        {
+            "BREAKING": "ಬ್ರೇಕಿಂಗ್",
+            "HOCKEY": "ಹಾಕಿ",
+            "SKELETON": "ಸ್ಕೆಲಿಟನ್",
+            "TRAMPOLINE": "ಟ್ರ್ಯಾಂಪೊಲಿನ್"
+        }
+    ],
+    "KUDOS": [
+        "ಪ್ರಶಂಸೆ",
+        {
+            "CREDIT": "ಕ್ರೆಡಿಟ್",
+            "GLORY": "ವೈಭವ",
+            "PRAISE": "ಹೊಗಳಿಕೆ",
+            "PROPS": "ಪ್ರಾಪ್ಸ್"
+        }
+    ],
+    "BECOME AWARE OF": [
+        "ಅರಿವು",
+        {
+            "DISCOVER": "ಹುಡುಕು",
+            "FIND": "ಕಂಡುಹಿಡಿ",
+            "LEARN": "ಕಲಿ",
+            "REALIZE": "ಅರಿತುಕೊ"
+        }
+    ],
+    "PURSUE": [
+        "ಹಿಂಬಾಲಿಸು",
+        {
+            "CHASE": "ಬೆನ್ನಟ್ಟು",
+            "SHADOW": "ನೆರಳು",
+            "TAIL": "ಬಾಲ",
+            "TRACK": "ಜಾಡು"
+        }
+    ],
+    "SEEN IN A PASSPORT": [
+        "ಪಾಸ್‌ಪೋರ್ಟ್‌ನಲ್ಲಿರುವ ವಸ್ತುಗಳು",
+        {
+            "NAME": "ಹೆಸರು",
+            "PHOTO": "ಫೋಟೋ",
+            "STAMP": "ಸ್ಟ್ಯಾಂಪ್",
+            "VISA": "ವೀಸಾ"
+        }
+    ],
+    "YELLOW-BROWN SHADES": [
+        "ಹಳದಿ-ಕಂದು ಛಾಯೆಗಳು",
+        {
+            "BEIGE": "ಬೀಜ್",
+            "CAMEL": "ಕ್ಯಾಮಲ್",
+            "KHAKI": "ಖಾಕಿ",
+            "TAN": "ಟ್ಯಾನ್"
+        }
+    ],
+    "FAIL TO ATTEND": [
+        "ಗೈರು",
+        {
+            "CUT": "ಕಟ್",
+            "DITCH": "ಕೈಕೊಡು",
+            "MISS": "ಮಿಸ್",
+            "SKIP": "ಸ್ಕಿಪ್"
+        }
+    ],
+    "DECISIVE VICTORY": [
+        "ನಿರ್ಣಾಯಕ ಗೆಲುವು",
+        {
+            "BLOWOUT": "ಬ್ಲೋಔಟ್",
+            "ROMP": "ರಾಂಪ್",
+            "ROUT": "ರೌಟ್",
+            "SWEEP": "ಸ್ವೀಪ್"
+        }
+    ],
+    "HOW FAST SOMETHING IS GOING": [
+        "ವೇಗ",
+        {
+            "CLIP": "ಕ್ಲಿಪ್",
+            "PACE": "ವೇಗ",
+            "RATE": "ದರ",
+            "SPEED": "ಸ್ಪೀಡ್"
+        }
+    ],
+    "\"STEP ON IT!\"": [
+        "ವೇಗವಾಗಿ ಹೋಗು",
+        {
+            "FASTER": "ವೇಗವಾಗಿ",
+            "GO": "ಹೋಗು",
+            "HURRY": "ತ್ವರೆ",
+            "MOVE": "ಮೂವ್"
+        }
+    ],
+    "MUSICAL INSTRUMENTS": [
+        "ವಾದ್ಯಗಳು",
+        {
+            "BASS": "ಬಾಸ್",
+            "BASSOON": "ಬಾಸೂನ್",
+            "HARP": "ಹಾರ್ಪ್",
+            "RECORDER": "ರೆಕಾರ್ಡರ್"
+        }
+    ],
+    "PLANT GROWTHS": [
+        "ಸಸ್ಯಗಳ ಬೆಳವಣಿಗೆ",
+        {
+            "BLOOM": "ಅರಳು",
+            "BUD": "ಮೊಗ್ಗು",
+            "SHOOT": "ಚಿಗುರು",
+            "SPROUT": "ಮೊಳಕೆ"
+        }
+    ],
+    "BRING UP": [
+        "ಬೆಳೆಸು",
+        {
+            "FOSTER": "ಪೋಷಿಸು",
+            "NURSE": "ಆರೈಕೆಮಾಡು",
+            "RAISE": "ಬೆಳೆಸು",
+            "REAR": "ಸಾಕು"
+        }
+    ],
+    "SOLAR EMANATIONS": [
+        "ಸೂರ್ಯನ ವಿಕಿರಣಗಳು",
+        {
+            "CORONA": "ಕೊರೊನಾ",
+            "FLARE": "ಜ್ವಾಲೆ",
+            "LIGHT": "ಬೆಳಕು",
+            "RADIATION": "ವಿಕಿರಣ"
+        }
+    ],
+    "UPDATE FOR ACCURACY": [
+        "ಸರಿಪಡಿಸು",
+        {
+            "AMEND": "ತಿದ್ದುಪಡಿ",
+            "CORRECT": "ಸರಿ",
+            "FIX": "ಫಿಕ್ಸ್",
+            "REVISE": "ಪರಿಷ್ಕರಿಸು"
+        }
+    ],
+    "QUARREL": [
+        "ಜಗಳ",
+        {
+            "FIGHT": "ಹೋರಾಟ",
+            "ROW": "ಜಗಳ",
+            "SCRAP": "ಸ್ಕ್ಯಾಪ್",
+            "TIFF": "ಟಿಫ್"
+        }
+    ],
+    "GAMES OF CHANCE": [
+        "ಅದೃಷ್ಟದ ಆಟಗಳು",
+        {
+            "BINGO": "ಬಿಂಗೊ",
+            "LOTTERY": "ಲಾಟರಿ",
+            "ROULETTE": "ರೂಲೆಟ್",
+            "WAR": "ವಾರ್"
+        }
+    ],
+    "EXITED": [
+        "ನಿರ್ಗಮಿಸಿದರು",
+        {
+            "DEPARTED": "ಹೊರಟರು",
+            "LEFT": "ಹೋದರು",
+            "SPLIT": "ಒಡೆದರು",
+            "WENT": "ಹೋದರು"
+        }
+    ],
+    "ONE FLYING AN AIRPLANE": [
+        "ವಿಮಾನ ಚಲಾಯಿಸುವವರು",
+        {
+            "ACE": "ಏಸ್",
+            "AVIATOR": "ಏವಿಯೇಟರ್",
+            "FLIER": "ಫ್ಲೈಯರ್",
+            "PILOT": "ಪೈಲಟ್"
+        }
+    ],
+    "KINDS OF WHALES": [
+        "ತಿಮಿಂಗಿಲದ ವಿಧಗಳು",
+        {
+            "BLUE": "ಬ್ಲೂ",
+            "FIN": "ಫಿನ್",
+            "GRAY": "ಗ್ರೇ",
+            "RIGHT": "ರೈಟ್"
+        }
+    ],
+    "THINGS WITH SLOTS": [
+        "ಸ್ಲಾಟ್ ಇರುವ ವಸ್ತುಗಳು",
+        {
+            "ATM": "ಎಟಿಎಂ",
+            "CASINO": "ಕ್ಯಾಸಿನೊ",
+            "SCHEDULE": "ವೇಳಾಪಟ್ಟಿ",
+            "SPATULA": "ಸ್ಪಾಟುಲಾ"
+        }
+    ],
+    "ESPECIALLY": [
+        "ವಿಶೇಷವಾಗಿ",
+        {
+            "MIGHTY": "ಮೈಟಿ",
+            "PRETTY": "ಸಾಕಷ್ಟು",
+            "REALLY": "ನಿಜವಾಗಿಯೂ",
+            "VERY": "ತುಂಬಾ"
+        }
+    ],
+    "DISNEY CHARACTERS": [
+        "ಡಿಸ್ನಿ ಪಾತ್ರಗಳು",
+        {
+            "DAISY": "ಡೈಸಿ",
+            "GOOFY": "ಗೂಫಿ",
+            "HAPPY": "ಹ್ಯಾಪಿ",
+            "LADY": "ಲೇಡಿ"
+        }
+    ],
+    "KINDS OF BLUE": [
+        "ನೀಲಿ ಛಾಯೆಗಳು",
+        {
+            "BABY": "ಬೇಬಿ",
+            "NAVY": "ನೇವಿ",
+            "SKY": "ಸ್ಕೈ",
+            "TIFFANY": "ಟಿಫಾನಿ"
+        }
+    ],
+    "BREATHES HEAVILY": [
+        "ಉಸಿರಾಟ",
+        {
+            "GASPS": "ಉಸಿರುಕಟ್ಟು",
+            "HUFFS": "ಹಫ್ಸ್",
+            "PANTS": "ಪ್ಯಾಂಟ್ಸ್",
+            "PUFFS": "ಪಫ್ಸ್"
+        }
+    ],
+    "PRESERVES, AS MEAT": [
+        "ಮಾಂಸ ಸಂರಕ್ಷಣೆ",
+        {
+            "CANS": "ಕ್ಯಾನ್ಸ್",
+            "CURES": "ಕ್ಯೂರ್ಸ್",
+            "SALTS": "ಸಾಲ್ಟ್ಸ್",
+            "SMOKES": "ಸ್ಮೋಕ್ಸ್"
+        }
+    ],
+    "PREDICAMENTS": [
+        "ಸಂಕಷ್ಟಗಳು",
+        {
+            "BINDS": "ಬೈಂಡ್ಸ್",
+            "JAMS": "ಜಾಮ್ಸ್",
+            "PICKLES": "ಪಿಕ್ಕಲ್ಸ್",
+            "SPOTS": "ಸ್ಪಾಟ್ಸ್"
+        }
+    ],
+    "TAKE A TUMBLE": [
+        "ಬೀಳು",
+        {
+            "FALL": "ಫಾಲ್",
+            "SLIP": "ಸ್ಲಿಪ್",
+            "SPILL": "ಸ್ಪಿಲ್",
+            "TRIP": "ಟ್ರಿಪ್"
+        }
+    ],
+    "KINDS OF WATER": [
+        "ನೀರಿನ ವಿಧಗಳು",
+        {
+            "MINERAL": "ಮಿನರಲ್",
+            "SPRING": "ಸ್ಪ್ರಿಂಗ್",
+            "STILL": "ಸ್ಟಿಲ್",
+            "TAP": "ಟ್ಯಾಪ್"
+        }
+    ],
+    "THINGS THAT ARE CINCHED IN THE MIDDLE": [
+        "ಮಧ್ಯದಲ್ಲಿ ಸಣ್ಣಗಿರುವ ವಸ್ತುಗಳು",
+        {
+            "CORSET": "ಕಾರ್ಸೆಟ್",
+            "DIABOLO": "ಡಯಾಬೊಲೊ",
+            "HOURGLASS": "ಅವರ್‌ಗ್ಲಾಸ್",
+            "WASP": "ವಾಸ್ಪ್"
+        }
+    ],
+    "THRUST": [
+        "ತಳ್ಳು",
+        {
+            "JAB": "ಜಾಬ್",
+            "POKE": "ಪೋಕ್",
+            "PROD": "ಪ್ರಾಡ್",
+            "STICK": "ಸ್ಟಿಕ್"
+        }
+    ],
+    "KINDS OF SNAKES": [
+        "ಹಾವಿನ ವಿಧಗಳು",
+        {
+            "ADDER": "ಆಡರ್",
+            "BOA": "ಬೋವಾ",
+            "MAMBA": "ಮಾಂಬಾ",
+            "MOCCASIN": "ಮೊಕಾಸಿನ್"
+        }
+    ],
+    "SEEN IN “CINDERELLA”": [
+        "'ಸಿಂಡರೆಲ್ಲಾ' ಕಥೆಯಲ್ಲಿರುವ ವಸ್ತುಗಳು",
+        {
+            "BALL": "ಬಾಲ್",
+            "PRINCE": "ರಾಜಕುಮಾರ",
+            "PUMPKIN": "ಕುಂಬಳಕಾಯಿ",
+            "SLIPPER": "ಸ್ಲಿಪ್ಪರ್"
+        }
+    ],
+    "PASTA SHAPES": [
+        "ಪಾಸ್ತಾ ಆಕಾರಗಳು",
+        {
+            "BOWTIE": "ಬೋಟೈ",
+            "ELBOW": "ಎಲ್ಬೋ",
+            "TUBE": "ಟ್ಯೂಬ್",
+            "WHEEL": "ವೀಲ್"
+        }
+    ],
+    "BENCHMARK": [
+        "ಮಾನದಂಡ",
+        {
+            "BENCHMARK": "ಬೆಂಚ್‌ಮಾರ್ಕ್",
+            "GAUGE": "ಗೇಜ್",
+            "STANDARD": "ಸ್ಟ್ಯಾಂಡರ್ಡ್",
+            "YARDSTICK": "ಯಾರ್ಡ್‌ಸ್ಟಿಕ್"
+        }
+    ],
+    "POKER ACTIONS": [
+        "ಪೋಕರ್ ಕ್ರಿಯೆಗಳು",
+        {
+            "BET": "ಬೆಟ್",
+            "CALL": "ಕಾಲ್",
+            "CHECK": "ಚೆಕ್",
+            "FOLD": "ಫೋಲ್ಡ್"
+        }
+    ],
+    "SKIN TYPES": [
+        "ಚರ್ಮದ ವಿಧಗಳು",
+        {
+            "COMBINATION": "ಕಾಂಬಿನೇಶನ್",
+            "DRY": "ಡ್ರೈ",
+            "NORMAL": "ನಾರ್ಮಲ್",
+            "OILY": "ಆಯಿಲಿ"
+        }
+    ],
+    "WAYS TO PREPARE EGGS": [
+        "ಮೊಟ್ಟೆ ಮಾಡುವ ವಿಧಾನಗಳು",
+        {
+            "BOIL": "ಬೇಯಿಸು",
+            "FRY": "ಫ್ರೈ",
+            "POACH": "ಪೋಚ್",
+            "SCRAMBLE": "ಸ್ಕ್ರ್ಯಾಂಬಲ್"
+        }
+    ],
+    "EXHILARATION": [
+        "ರೋಮಾಂಚನ",
+        {
+            "BUZZ": "ಬಝ್",
+            "KICK": "ಕಿಕ್",
+            "RUSH": "ರಶ್",
+            "THRILL": "ಥ್ರಿಲ್"
+        }
+    ],
+    "THROWN IN TARGET GAMES": [
+        "ಗುರಿ ಆಟದ ವಸ್ತುಗಳು",
+        {
+            "AXE": "ಕೊಡಲಿ",
+            "DART": "ಡಾರ್ಟ್",
+            "HORSESHOE": "ಲಾಳ",
+            "RING": "ಉಂಗುರ"
+        }
+    ],
+    "PIECES OF FURNITURE": [
+        "ಪೀಠೋಪಕರಣಗಳು",
+        {
+            "BED": "ಮಂಚ",
+            "CHAIR": "ಕುರ್ಚಿ",
+            "COUCH": "ಕೌಚ್",
+            "TABLE": "ಟೇಬಲ್"
+        }
+    ],
+    "CARRY, AS A FEELING": [
+        "ಭಾವನೆಯನ್ನು ಹೊಂದು",
+        {
+            "BEAR": "ಹೊಂದು",
+            "HARBOR": "ಆಶ್ರಯ ನೀಡು",
+            "HOLD": "ಹಿಡಿ",
+            "MAINTAIN": "ನಿರ್ವಹಿಸು"
+        }
+    ],
+    "WINE TASTING DESCRIPTORS": [
+        "ವೈನ್ ರುಚಿಗಳು",
+        {
+            "BALANCED": "ಬ್ಯಾಲೆನ್ಸ್ಡ್",
+            "DRY": "ಡ್ರೈ",
+            "FULL": "ಫುಲ್",
+            "SWEET": "ಸಿಹಿ"
+        }
+    ],
+    "INTRINSIC MOTIVATORS": [
+        "ಪ್ರೇರಣೆಗಳು",
+        {
+            "DESIRE": "ಆಸೆ",
+            "DRIVE": "ಡ್ರೈವ್",
+            "RESOLVE": "ದೃಢಸಂಕಲ್ಪ",
+            "WILL": "ಇಚ್ಛೆ"
+        }
+    ],
+    "SUMMER GEAR": [
+        "ಬೇಸಿಗೆಯ ವಸ್ತುಗಳು",
+        {
+            "HAT": "ಟೋಪಿ",
+            "SHORTS": "ಶಾರ್ಟ್ಸ್",
+            "SUNGLASSES": "ಸನ್‌ಗ್ಲಾಸ್",
+            "TEE": "ಟೀ-ಶರ್ಟ್"
+        }
+    ],
+    "COLLECTION": [
+        "ಸಂಗ್ರಹ",
+        {
+            "ARRAY": "ಅರೇ",
+            "BATTERY": "ಬ್ಯಾಟರಿ",
+            "SERIES": "ಸರಣಿ",
+            "SET": "ಸೆಟ್"
+        }
+    ],
+    "DISORDERLY PLACE": [
+        "ಗಲೀಜಾದ ಸ್ಥಳ",
+        {
+            "DUMP": "ಡಂಪ್",
+            "MESS": "ಮೆಸ್",
+            "PIGPEN": "ಪಿಗ್‌ಪೆನ್",
+            "STY": "ಹಂದಿಗೂಡು"
+        }
+    ],
+    "STURDY": [
+        "ದೃಢ",
+        {
+            "FIRM": "ಫರ್ಮ್",
+            "SOLID": "ಸಾಲಿಡ್",
+            "SOUND": "ಸೌಂಡ್",
+            "STABLE": "ಸ್ಥಿರ"
+        }
+    ],
+    "FOUND IN CRACKER JACKS": [
+        "ತಿನಿಸುಗಳು",
+        {
+            "CARAMEL": "ಕ್ಯಾರಮೆಲ್",
+            "PEANUTS": "ಶೇಂಗಾ",
+            "POPCORN": "ಪಾಪ್‌ಕಾರ್ನ್",
+            "PRIZE": "ಬಹುಮಾನ"
+        }
+    ],
+    "BRIEF MOMENT": [
+        "ಕ್ಷಣ",
+        {
+            "FLASH": "ಮಿಂಚು",
+            "HEARTBEAT": "ಹೃದಯಬಡಿತ",
+            "JIFF": "ಜಿಫ್",
+            "WINK": "ರೆಪ್ಪೆಬಡಿತ"
+        }
+    ],
+    "DISPUTE": [
+        "ಜಗಳ",
+        {
+            "CLASH": "ಕ್ಲ್ಯಾಶ್",
+            "SCRAP": "ಸ್ಕ್ರ್ಯಾಪ್",
+            "TANGLE": "ಟ್ಯಾಂಗಲ್",
+            "TIFF": "ಟಿಫ್"
+        }
+    ],
+    "SLANG FOR ZERO": [
+        "ಸೊನ್ನೆ",
+        {
+            "JACK": "ಜಾಕ್",
+            "LOVE": "ಲವ್",
+            "SQUAT": "ಸ್ಕ್ವಾಟ್",
+            "ZIP": "ಜಿಪ್"
+        }
+    ],
+    "BREADTH": [
+        "ವಿಸ್ತಾರ",
+        {
+            "EXTENT": "ವ್ಯಾಪ್ತಿ",
+            "RANGE": "ಶ್ರೇಣಿ",
+            "REACH": "ತಲುಪು",
+            "SCOPE": "ವ್ಯಾಪ್ತಿ"
+        }
+    ],
+    "HAIR TOOLS": [
+        "ಕೂದಲಿನ ಉಪಕರಣಗಳು",
+        {
+            "BRUSH": "ಬ್ರಷ್",
+            "COMB": "ಬಾಚಣಿಗೆ",
+            "DRYER": "ಡ್ರೈಯರ್",
+            "IRON": "ಐರನ್"
+        }
+    ],
+    "HERALDRY TERMS": [
+        "ಲಾಂಛನಗಳು",
+        {
+            "ARMS": "ಶಸ್ತ್ರ",
+            "COAT": "ಕೋಟ್",
+            "CREST": "ಕ್ರೆಸ್ಟ್",
+            "SHIELD": "ರಕ್ಷಾಕವಚ"
+        }
+    ],
+    "PERSON IN CHARGE": [
+        "ಉಸ್ತುವಾರಿ",
+        {
+            "CHAIR": "ಅಧ್ಯಕ್ಷ",
+            "CHIEF": "ಮುಖ್ಯಸ್ಥ",
+            "DIRECTOR": "ನಿರ್ದೇಶಕ",
+            "HEAD": "ತಲೆ"
+        }
+    ],
+    "GRASSY AREA": [
+        "ಹುಲ್ಲುಗಾವಲು",
+        {
+            "FIELD": "ಮೈದಾನ",
+            "GREEN": "ಹಸಿರು",
+            "GROUNDS": "ಮೈದಾನ",
+            "LAWN": "ಲಾನ್"
+        }
+    ],
+    "SECOND WORDS IN TARANTINO MOVIES": [
+        "ಟರೆಂಟಿನೊ ಸಿನಿಮಾಗಳ ಎರಡನೇ ಪದಗಳು",
+        {
+            "BROWN": "ಬ್ರೌನ್",
+            "DOGS": "ಡಾಗ್ಸ್",
+            "FICTION": "ಫಿಕ್ಷನ್",
+            "UNCHAINED": "ಅನ್‌ಚೈನ್ಡ್"
+        }
+    ],
+    "HAIRCUTS, WITH “CUT”": [
+        "ಕಟಿಂಗ್ ವಿಧಗಳು",
+        {
+            "BOWL": "ಬೌಲ್",
+            "BUZZ": "ಬಝ್",
+            "CREW": "ಕ್ರ್ಯೂ",
+            "PIXIE": "ಪಿಕ್ಸಿ"
+        }
+    ],
+    "MEASURING INSTRUMENTS": [
+        "ಅಳೆಯುವ ಉಪಕರಣಗಳು",
+        {
+            "COMPASS": "ದಿಕ್ಸೂಚಿ",
+            "RULER": "ಸ್ಕೇಲ್",
+            "SCALE": "ತೂಕದ ಯಂತ್ರ",
+            "WATCH": "ಗಡಿಯಾರ"
+        }
+    ],
+    "WATER AND GAS CONDUITS": [
+        "ನೀರು ಮತ್ತು ಗ್ಯಾಸ್ ಪೈಪ್‌ಗಳು",
+        {
+            "CHANNEL": "ಚಾನೆಲ್",
+            "LINE": "ಲೈನ್",
+            "MAIN": "ಮೈನ್",
+            "PIPE": "ಪೈಪ್"
+        }
+    ],
+    "FAST FOOD MASCOTS": [
+        "ಫಾಸ್ಟ್ ಫುಡ್ ಮ್ಯಾಸ್ಕಾಟ್‌ಗಳು",
+        {
+            "CLOWN": "ವಿದೂಷಕ",
+            "COLONEL": "ಕರ್ನಲ್",
+            "KING": "ರಾಜ",
+            "MERMAID": "ಮತ್ಸ್ಯಕನ್ಯೆ"
+        }
+    ],
+    "ORDERLY": [
+        "ಅಚ್ಚುಕಟ್ಟು",
+        {
+            "CLEAN": "ಸ್ವಚ್ಛ",
+            "NEAT": "ನೀಟ್",
+            "TIDY": "ಟೈಡಿ",
+            "TRIM": "ಟ್ರಿಮ್"
+        }
+    ],
+    "AUGMENTATIVE PREFIXES": [
+        "ಹೆಚ್ಚಿಸುವ ಪೂರ್ವಪ್ರತ್ಯಯಗಳು",
+        {
+            "HYPER": "ಹೈಪರ್",
+            "SUPER": "ಸೂಪರ್",
+            "UBER": "ಉಬರ್",
+            "ULTRA": "ಅಲ್ಟ್ರಾ"
+        }
+    ],
+    "BECOME LARGER": [
+        "ದೊಡ್ಡದಾಗು",
+        {
+            "BALLOON": "ಬಲೂನ್",
+            "MUSHROOM": "ಮಶ್ರೂಮ್",
+            "SNOWBALL": "ಸ್ನೋಬಾಲ್",
+            "SWELL": "ಊದು"
+        }
+    ],
+    "ITEMS IN CLASSIC KIDS’ GAMES": [
+        "ಮಕ್ಕಳ ಆಟದ ವಸ್ತುಗಳು",
+        {
+            "DOMINO": "ಡೊಮಿನೊ",
+            "JACK": "ಜಾಕ್",
+            "MARBLE": "ಗೋಲಿ",
+            "STICK": "ಕಡ್ಡಿ"
+        }
+    ],
+    "SEEN AT THE CIRCUS": [
+        "ಸರ್ಕಸ್‌ನಲ್ಲಿರುವ ವಸ್ತುಗಳು",
+        {
+            "CLOWN": "ವಿದೂಷಕ",
+            "RING": "ರಿಂಗ್",
+            "TENT": "ಟೆಂಟ್",
+            "TRAPEZE": "ಟ್ರೆಪೀಜ್"
+        }
+    ],
+    "“THE WIZARD OF OZ” FIGURES": [
+        "'ವಿಝಾರ್ಡ್ ಆಫ್ ಓಝ್' ಪಾತ್ರಗಳು",
+        {
+            "LION": "ಸಿಂಹ",
+            "SCARECROW": "ಬೆದರುಬೊಂಬೆ",
+            "WITCH": "ಮಾಟಗಾತಿ",
+            "WIZARD": "ಮಾಂತ್ರಿಕ"
+        }
+    ],
+    "FILM DEPARTMENTS": [
+        "ಸಿನಿಮಾದ ವಿಭಾಗಗಳು",
+        {
+            "HAIR": "ಹೇರ್",
+            "MAKEUP": "ಮೇಕಪ್",
+            "PROPS": "ಪ್ರಾಪ್ಸ್",
+            "WARDROBE": "ವಾರ್ಡ್‌ರೋಬ್"
+        }
+    ],
+    "PULL USING FORCE": [
+        "ಜಗ್ಗು",
+        {
+            "RIP": "ರಿಪ್",
+            "TEAR": "ಟಿಯರ್",
+            "WRENCH": "ರೆಂಚ್",
+            "YANK": "ಯಾಂಕ್"
+        }
+    ],
+    "BIT OF REPETITIVE TRAINING": [
+        "ತರಬೇತಿ",
+        {
+            "DRILL": "ಡ್ರಿಲ್",
+            "EXERCISE": "ವ್ಯಾಯಾಮ",
+            "PRACTICE": "ಅಭ್ಯಾಸ",
+            "ROUTINE": "ರೊಟೀನ್"
+        }
+    ],
+    "U.S.-BASED AIRLINES": [
+        "ಅಮೆರಿಕಾದ ವಿಮಾನಯಾನ ಸಂಸ್ಥೆಗಳು",
+        {
+            "AMERICAN": "ಅಮೆರಿಕನ್",
+            "FRONTIER": "ಫ್ರಾಂಟಿಯರ್",
+            "SPIRIT": "ಸ್ಪಿರಿಟ್",
+            "UNITED": "ಯುನೈಟೆಡ್"
+        }
+    ],
+    "INVENT AS YOU GO": [
+        "ಸುಧಾರಿಸು/ತಕ್ಷಣ ಮಾಡು",
+        {
+            "AD-LIB": "ಆಡ್-ಲಿಬ್",
+            "FREESTYLE": "ಫ್ರೀಸ್ಟೈಲ್",
+            "IMPROV": "ಇಂಪ್ರೊವ್",
+            "MAKE UP": "ಮೇಕಪ್"
+        }
+    ],
+    "THINGS BABIES DO": [
+        "ಮಕ್ಕಳು ಮಾಡುವ ಕೆಲಸಗಳು",
+        {
+            "BABBLE": "ತೊದಲು",
+            "COO": "ಕೂ",
+            "CRAWL": "ತೆವಳು",
+            "NURSE": "ಹಾಲುಕುಡಿ"
+        }
+    ],
+    "SUPERFICIAL": [
+        "ಮೇಲ್ನೋಟದ",
+        {
+            "COSMETIC": "ಕಾಸ್ಮೆಟಿಕ್",
+            "EXTERNAL": "ಹೊರಗಿನ",
+            "SHALLOW": "ಆಳವಿಲ್ಲದ",
+            "SURFACE": "ಮೇಲ್ಮೈ"
+        }
+    ],
+    "FLABBERGAST": [
+        "ಆಶ್ಚರ್ಯಚಕಿತಗೊಳಿಸು",
+        {
+            "FLOOR": "ಫ್ಲೋರ್",
+            "ROCK": "ರಾಕ್",
+            "SHOCK": "ಶಾಕ್",
+            "SURPRISE": "ಸರ್ಪ್ರೈಸ್"
+        }
+    ],
+    "BIT OF JOURNALISM": [
+        "ಪತ್ರಿಕೋದ್ಯಮ",
+        {
+            "ARTICLE": "ಲೇಖನ",
+            "FEATURE": "ಫೀಚರ್",
+            "REPORT": "ವರದಿ",
+            "STORY": "ಸ್ಟೋರಿ"
+        }
+    ],
+    "ON THE SAME PLANE": [
+        "ಸಮತಟ್ಟಾದ",
+        {
+            "EVEN": "ಸಮ",
+            "FLAT": "ಫ್ಲಾಟ್",
+            "FLUSH": "ಫ್ಲಶ್",
+            "LEVEL": "ಮಟ್ಟ"
+        }
+    ],
+    "THEATER SECTIONS": [
+        "ಥಿಯೇಟರ್ ವಿಭಾಗಗಳು",
+        {
+            "BALCONY": "ಬಾಲ್ಕನಿ",
+            "BOX": "ಬಾಕ್ಸ್",
+            "ORCHESTRA": "ಆರ್ಕೆಸ್ಟ್ರಾ",
+            "STAGE": "ಸ್ಟೇಜ್"
+        }
+    ],
+    "UPRIGHT SUPPORT": [
+        "ಆಧಾರ ಸ್ತಂಭ",
+        {
+            "COLUMN": "ಕಾಲಮ್",
+            "PILLAR": "ಪಿಲ್ಲರ್",
+            "POLE": "ಕಂಬ",
+            "POST": "ಪೋಸ್ಟ್"
+        }
+    ],
+    "HEED, AS RULES": [
+        "ನಿಯಮ ಪಾಲಿಸು",
+        {
+            "FOLLOW": "ಪಾಲಿಸು",
+            "MIND": "ಗಮನಿಸು",
+            "OBSERVE": "ವೀಕ್ಷಿಸು",
+            "REGARD": "ಗೌರವಿಸು"
+        }
+    ],
+    "ALLOTMENT": [
+        "ಪಾಲು",
+        {
+            "INTEREST": "ಆಸಕ್ತಿ",
+            "PERCENTAGE": "ಶೇಕಡಾವಾರು",
+            "SHARE": "ಶೇರ್",
+            "STAKE": "ಸ್ಟೇಕ್"
+        }
+    ],
+    "GATHERED BY SPIES": [
+        "ಗೂಢಚಾರರು ಸಂಗ್ರಹಿಸುವ ಮಾಹಿತಿ",
+        {
+            "DIRT": "ಡರ್ಟ್",
+            "INFORMATION": "ಮಾಹಿತಿ",
+            "INTELLIGENCE": "ಗುಪ್ತಮಾಹಿತಿ",
+            "SECRETS": "ರಹಸ್ಯಗಳು"
+        }
+    ],
+    "SIDEWALK SIGHTS": [
+        "ಫುಟ್‌ಪಾತ್ ವಸ್ತುಗಳು",
+        {
+            "CURB": "ಕರ್ಬ್",
+            "GRATE": "ಗ್ರೇಟ್",
+            "GUTTER": "ಗಟರ್",
+            "MANHOLE": "ಮ್ಯಾನ್‌ಹೋಲ್"
+        }
+    ],
+    "HAVE IN MIND": [
+        "ಉದ್ದೇಶಿಸು",
+        {
+            "AIM": "ಗುರಿ",
+            "INTEND": "ಉದ್ದೇಶ",
+            "MEAN": "ಅರ್ಥ",
+            "PLAN": "ಯೋಜನೆ"
+        }
+    ],
+    "UNIT ABBREVIATIONS": [
+        "ಅಳತೆಗಳ ಸಂಕ್ಷಿಪ್ತ ರೂಪಗಳು",
+        {
+            "CAL": "ಕ್ಯಾಲ್",
+            "GAL": "ಗ್ಯಾಲ್",
+            "IN": "ಇಂಚು",
+            "OZ": "ಔನ್ಸ್"
+        }
+    ],
+    "ATTACH WITH ADHESIVE": [
+        "ಅಂಟಿಸು",
+        {
+            "ADHERE": "ಅಡ್ಹಿಯರ್",
+            "GLUE": "ಗಮ್",
+            "PASTE": "ಪೇಸ್ಟ್",
+            "STICK": "ಸ್ಟಿಕ್"
+        }
+    ],
+    "PUBLISHED LINES": [
+        "ಪ್ರಕಟಿತ ಸಾಲುಗಳು",
+        {
+            "COPY": "ಕಾಪಿ",
+            "TEXT": "ಪಠ್ಯ",
+            "WORDS": "ಪದಗಳು",
+            "WRITING": "ಬರವಣಿಗೆ"
+        }
+    ],
+    "DIAMOND QUALITIES": [
+        "ವಜ್ರದ ಗುಣಗಳು",
+        {
+            "CARAT": "ಕ್ಯಾರಟ್",
+            "CLARITY": "ಸ್ಪಷ್ಟತೆ",
+            "COLOR": "ಬಣ್ಣ",
+            "CUT": "ಕಟ್"
+        }
+    ],
+    "BALDERDASH": [
+        "ಮೂರ್ಖತನ",
+        {
+            "BUNK": "ಬಂಕ್",
+            "CROCK": "ಕ್ರಾಕ್",
+            "HOGWASH": "ಹೋಗ್ವಾಶ್",
+            "HORSEFEATHERS": "ಹಾರ್ಸ್‌ಫೆದರ್ಸ್"
+        }
+    ],
+    "TRACK AND FIELD EQUIPMENT": [
+        "ಅಥ್ಲೆಟಿಕ್ಸ್ ಉಪಕರಣಗಳು",
+        {
+            "BATON": "ಬ್ಯಾಟನ್",
+            "HAMMER": "ಹ್ಯಾಮರ್",
+            "HURDLE": "ಹರ್ಡಲ್",
+            "POLE": "ಪೋಲ್"
+        }
+    ],
+    "PARTS OF A DEVIL COSTUME": [
+        "ದೆವ್ವದ ವೇಷಭೂಷಣಗಳು",
+        {
+            "GOATEE": "ಗೋಟಿ",
+            "HORNS": "ಕೊಂಬುಗಳು",
+            "PITCHFORK": "ತ್ರಿಶೂಲ",
+            "TAIL": "ಬಾಲ"
+        }
+    ],
+    "TYPES OF KNOTS": [
+        "ಗಂಟುಗಳ ವಿಧಗಳು",
+        {
+            "BEND": "ಬೆಂಡ್",
+            "BOWLINE": "ಬೋಲೈನ್",
+            "HITCH": "ಹಿಚ್",
+            "SHEEPSHANK": "ಶೀಪ್‌ಶಾಂಕ್"
+        }
+    ],
+    "EMBODIMENT": [
+        "ಸಾಕಾರ",
+        {
+            "EXAMPLE": "ಉದಾಹರಣೆ",
+            "IDEAL": "ಆದರ್ಶ",
+            "MODEL": "ಮಾದರಿ",
+            "SYMBOL": "ಚಿಹ್ನೆ"
+        }
+    ],
+    "RELATED TO TRAINS": [
+        "ರೈಲುಗಳಿಗೆ ಸಂಬಂಧಿಸಿದ",
+        {
+            "CAR": "ಕಾರ್",
+            "CONDUCTOR": "ಕಂಡಕ್ಟರ್",
+            "STATION": "ಸ್ಟೇಷನ್",
+            "TRACK": "ಟ್ರಾಕ್"
+        }
+    ],
+    "SLANG FOR FRIEND": [
+        "ಸ್ನೇಹಿತ",
+        {
+            "BUD": "ಬಡ್",
+            "CHUM": "ಚಮ್",
+            "MATE": "ಮೇಟ್",
+            "PAL": "ಪಾಲ್"
+        }
+    ],
+    "ADJECTIVES FOR A BASEMENT": [
+        "ನೆಲಮಾಳಿಗೆಯ ಗುಣವಾಚಕಗಳು",
+        {
+            "COLD": "ತಂಪು",
+            "DANK": "ತೇವ",
+            "DARK": "ಕತ್ತಲು",
+            "MUSTY": "ವಾಸನೆ"
+        }
+    ],
+    "STUBBLE": [
+        "ಗಡ್ಡದ ಕೂದಲು",
+        {
+            "FUZZ": "ಫಝ್",
+            "SCRUFF": "ಸ್ಕ್ರಫ್",
+            "SHADOW": "ಶಾಡೋ",
+            "WHISKERS": "ಮೀಸೆ"
+        }
+    ],
+    "COLLECTION OF MONEY": [
+        "ಹಣದ ಸಂಗ್ರಹ",
+        {
+            "FUND": "ಫಂಡ್",
+            "KITTY": "ಕಿಟ್ಟಿ",
+            "POOL": "ಪೂಲ್",
+            "POT": "ಪಾಟ್"
+        }
+    ],
+    "THROW OUT": [
+        "ಹೊರಹಾಕು",
+        {
+            "BOOT": "ಬೂಟ್",
+            "BOUNCE": "ಬೌನ್ಸ್",
+            "EJECT": "ಎಜೆಕ್ಟ್",
+            "TOSS": "ಟಾಸ್"
+        }
+    ],
+    "TERRA FIRMA": [
+        "ಭೂಮಿ",
+        {
+            "EARTH": "ಭೂಮಿ",
+            "GROUND": "ನೆಲ",
+            "LAND": "ಭೂಪ್ರದೇಶ",
+            "SOIL": "ಮಣ್ಣು"
+        }
+    ],
+    "SEAS": [
+        "ಸಮುದ್ರಗಳು",
+        {
+            "BALTIC": "ಬಾಲ್ಟಿಕ್",
+            "BLACK": "ಬ್ಲ್ಯಾಕ್",
+            "PHILIPPINE": "ಫಿಲಿಪೈನ್",
+            "RED": "ರೆಡ್"
+        }
+    ],
+    "TOM HANKS MOVIES": [
+        "ಟಾಮ್ ಹ್ಯಾಂಕ್ಸ್ ಸಿನಿಮಾಗಳು",
+        {
+            "BIG": "ಬಿಗ್",
+            "PHILADELPHIA": "ಫಿಲಡೆಲ್ಫಿಯಾ",
+            "SPLASH": "ಸ್ಪ್ಲಾಶ್",
+            "SULLY": "ಸಲ್ಲಿ"
+        }
+    ],
+    "TACO TOPPINGS": [
+        "ಟಾಕೋ ಪದಾರ್ಥಗಳು",
+        {
+            "CILANTRO": "ಕೊತ್ತಂಬರಿ",
+            "LIME": "ನಿಂಬೆ",
+            "ONION": "ಈರುಳ್ಳಿ",
+            "SALSA": "ಸಾಲ್ಸಾ"
+        }
+    ],
+    "METRIC PREFIXES": [
+        "ಮೆಟ್ರಿಕ್ ಪೂರ್ವಪ್ರತ್ಯಯಗಳು",
+        {
+            "KILO": "ಕಿಲೋ",
+            "MEGA": "ಮೆಗಾ",
+            "MICRO": "ಮೈಕ್ರೋ",
+            "PICO": "ಪಿಕೋ"
+        }
+    ],
+    "KINDS OF SKIRTS": [
+        "ಸ್ಕರ್ಟ್ ವಿಧಗಳು",
+        {
+            "MINI": "ಮಿನಿ",
+            "PENCIL": "ಪೆನ್ಸಿಲ್",
+            "POODLE": "ಪೂಡಲ್",
+            "WRAP": "ವ್ಯಾಪ್"
+        }
+    ],
+    "LAB EQUIPMENT": [
+        "ಲ್ಯಾಬ್ ಉಪಕರಣಗಳು",
+        {
+            "BEAKER": "ಬೀಕರ್",
+            "DROPPER": "ಡ್ರಾಪರ್",
+            "GOGGLES": "ಗಾಗಲ್ಸ್",
+            "MICROSCOPE": "ಸೂಕ್ಷ್ಮದರ್ಶಕ"
+        }
+    ],
+    "NEXUS": [
+        "ಕೇಂದ್ರ",
+        {
+            "CENTER": "ಕೇಂದ್ರ",
+            "HEART": "ಹೃದಯ",
+            "HUB": "ಹಬ್",
+            "NUCLEUS": "ನ್ಯೂಕ್ಲಿಯಸ್"
+        }
+    ],
+    "SPREADSHEET TERMS": [
+        "ಸ್ಪ್ರೆಡ್‌ಶೀಟ್ ಪದಗಳು",
+        {
+            "CELL": "ಸೆಲ್",
+            "FORMULA": "ಫಾರ್ಮುಲಾ",
+            "SHEET": "ಶೀಟ್",
+            "SORT": "ಸಾರ್ಟ್"
+        }
+    ],
+    "REFINED SENSIBILITY": [
+        "ಸೊಬಗು",
+        {
+            "ELEGANCE": "ಸೊಬಗು",
+            "GRACE": "ಕಳೆ",
+            "STYLE": "ಶೈಲಿ",
+            "TASTE": "ರುಚಿ"
+        }
+    ],
+    "CATCH SOME RAYS": [
+        "ಬಿಸಿಲಿಗೆ ಒಡ್ಡು",
+        {
+            "BAKE": "ಬೇಕ್",
+            "BASK": "ಬಿಸಿಲುಕಾಯಿಸು",
+            "SUN": "ಸನ್",
+            "TAN": "ಟ್ಯಾನ್"
+        }
+    ],
+    "EMOTIONALLY SWAY": [
+        "ಭಾವನಾತ್ಮಕವಾಗಿ ಪ್ರಭಾವಿಸು",
+        {
+            "AFFECT": "ಪರಿಣಾಮ",
+            "IMPACT": "ಪ್ರಭಾವ",
+            "MOVE": "ಮೂವ್",
+            "TOUCH": "ಸ್ಪರ್ಶಿಸು"
+        }
+    ],
+    "TRUST AS REAL": [
+        "ನಂಬು",
+        {
+            "ACCEPT": "ಸ್ವೀಕರಿಸು",
+            "BELIEVE": "ನಂಬು",
+            "BUY": "ಬೈ",
+            "SWALLOW": "ಸ್ವಾಲೋ"
+        }
+    ],
+    "POWER ISSUES": [
+        "ವಿದ್ಯುತ್ ಸಮಸ್ಯೆಗಳು",
+        {
+            "OUTAGE": "ಔಟೇಜ್",
+            "SHORT": "ಶಾರ್ಟ್",
+            "SPIKE": "ಸ್ಪೈಕ್",
+            "SURGE": "ಸರ್ಜ್"
+        }
+    ],
+    "SUMMARY": [
+        "ಸಾರಾಂಶ",
+        {
+            "ABSTRACT": "ಅಬ್ಸ್ಟ್ರಾಕ್ಟ್",
+            "BRIEF": "ಬ್ರೀಫ್",
+            "DIGEST": "ಡೈಜೆಸ್ಟ್",
+            "OUTLINE": "ಔಟ್‌ಲೈನ್"
+        }
+    ],
+    "PASSIONATE, AS A FEELING": [
+        "ತೀವ್ರವಾದ ಭಾವನೆ",
+        {
+            "DEEP": "ಆಳವಾದ",
+            "EXTREME": "ಅತಿಯಾದ",
+            "FIERCE": "ತೀವ್ರ",
+            "INTENSE": "ಇಂಟೆನ್ಸ್"
+        }
+    ],
+    "BANG INTO": [
+        "ಡಿಕ್ಕಿ ಹೊಡೆ",
+        {
+            "BUMP": "ಬಂಪ್",
+            "BUTT": "ಬಟ್",
+            "KNOCK": "ನಾಕ್",
+            "RAM": "ರಾಮ್"
+        }
+    ],
+    "ANALOG TV INTERFERENCE": [
+        "ಟಿವಿ ಸಿಗ್ನಲ್ ಸಮಸ್ಯೆಗಳು",
+        {
+            "FUZZ": "ಫಝ್",
+            "NOISE": "ನಾಯ್ಸ್",
+            "SNOW": "ಸ್ನೋ",
+            "STATIC": "ಸ್ಟ್ಯಾಟಿಕ್"
+        }
+    ],
+    "EXERCISES": [
+        "ವ್ಯಾಯಾಮಗಳು",
+        {
+            "BRIDGE": "ಬ್ರಿಡ್ಜ್",
+            "CRUNCH": "ಕ್ರಂಚ್",
+            "DIP": "ಡಿಪ್",
+            "SQUAT": "ಸ್ಕ್ವಾಟ್"
+        }
+    ],
+    "FEATURED IN WESTERNS": [
+        "ವೆಸ್ಟರ್ನ್ ಸಿನಿಮಾಗಳ ವಸ್ತುಗಳು",
+        {
+            "BOUNTY": "ಬೌಂಟಿ",
+            "COWBOY": "ಕೌಬಾಯ್",
+            "DUEL": "ಡ್ಯುಯಲ್",
+            "SALOON": "ಸಲೂನ್"
+        }
+    ],
+    "LEADERS WHO RECEIVED THE NOBEL PEACE PRIZE": [
+        "ನೊಬೆಲ್ ಶಾಂತಿ ಪ್ರಶಸ್ತಿ ವಿಜೇತರು",
+        {
+            "CARTER": "ಕಾರ್ಟರ್",
+            "GORE": "ಗೋರ್",
+            "KING": "ಕಿಂಗ್",
+            "TUTU": "ಟುಟು"
+        }
+    ],
+    "DIPPING SAUCES": [
+        "ಸಾಸ್‌ಗಳು",
+        {
+            "AIOLI": "ಅಯೋಲಿ",
+            "BARBECUE": "ಬಾರ್ಬೆಕ್ಯೂ",
+            "MARINARA": "ಮರಿನಾರಾ",
+            "RANCH": "ರಾಂಚ್"
+        }
+    ],
+    "INTERROGATE": [
+        "ಪ್ರಶ್ನಿಸು",
+        {
+            "EXAMINE": "ಪರಿಶೀಲಿಸು",
+            "GRILL": "ಗ್ರಿಲ್",
+            "PROBE": "ತನಿಖೆ",
+            "QUESTION": "ಪ್ರಶ್ನೆ"
+        }
+    ],
+    "TRANSACTION RECORD": [
+        "ವಹಿವಾಟು ದಾಖಲೆ",
+        {
+            "BILL": "ಬಿಲ್",
+            "INVOICE": "ಇನ್‌ವಾಯ್ಸ್",
+            "RECEIPT": "ರಸೀದಿ",
+            "STATEMENT": "ಸ್ಟೇಟ್‌ಮೆಂಟ್"
+        }
+    ]
+}
