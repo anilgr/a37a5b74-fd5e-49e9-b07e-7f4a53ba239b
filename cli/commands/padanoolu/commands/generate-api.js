@@ -29,7 +29,12 @@ function getNextAvailableDate(inApiPath, fallbackStartDateStr) {
 
         const dates = [];
         for (const line of inApiLines) {
-            const dateStr = line.split('|')[0].trim();
+            let parts = line.split('|');
+            const firstToken = (parts[0] || '').trim();
+            if (firstToken === '1' || firstToken === '0' || firstToken === '✓' || firstToken.toLowerCase() === 'true' || firstToken.toLowerCase() === 'false') {
+                parts = parts.slice(1);
+            }
+            const dateStr = (parts[0] || '').trim();
             if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
                 dates.push(dateStr);
             }
@@ -71,6 +76,19 @@ module.exports = new Command('generate-api')
             return;
         }
 
+        const isLineReviewed = (line) => {
+            const firstToken = (line.split('|')[0] || '').trim();
+            return firstToken === '1' || firstToken === '✓' || firstToken.toLowerCase() === 'true';
+        };
+
+        const reviewedLines = lines.filter(isLineReviewed);
+        const unreviewedLines = lines.filter(l => !isLineReviewed(l));
+
+        if (reviewedLines.length === 0) {
+            console.log(`No reviewed puzzles (starting with 1|) found to consume in ${inputPath} (${unreviewedLines.length} unreviewed puzzle(s) skipped).`);
+            return;
+        }
+
         // Determine starting date
         let currentDate;
         if (options.startDate) {
@@ -82,13 +100,17 @@ module.exports = new Command('generate-api')
         const [startYear, startMonth, startDay] = PADANOOLU_START_DATE.split('-').map(Number);
         const defaultStartDate = `${startYear}/${String(startMonth).padStart(2, '0')}/${String(startDay).padStart(2, '0')}`;
 
-        console.log(`Consuming ${lines.length} puzzle(s) from ${inputPath} starting from date ${formatDateKey(currentDate)}...`);
+        console.log(`Consuming ${reviewedLines.length} reviewed puzzle(s) from ${inputPath} starting from date ${formatDateKey(currentDate)} (${unreviewedLines.length} unreviewed kept)...`);
 
         let generatedCount = 0;
         const newInApiLines = [];
 
-        lines.forEach((line, index) => {
-            const parts = line.split('|');
+        reviewedLines.forEach((line, index) => {
+            let parts = line.split('|');
+            const firstToken = (parts[0] || '').trim();
+            if (firstToken === '1' || firstToken === '0' || firstToken === '✓' || firstToken.toLowerCase() === 'true' || firstToken.toLowerCase() === 'false') {
+                parts = parts.slice(1);
+            }
             const themeHint = parts[0] || '';
             const wordsList = (parts[2] || '').split(',').map(w => w.trim()).filter(w => w.length > 0);
             const themeWord = wordsList[0] || parts[1] || '';
@@ -117,7 +139,8 @@ module.exports = new Command('generate-api')
 
             console.log(`[Generated] ${dateStr} -> ${targetPath}`);
 
-            newInApiLines.push(`${dateStr}|${line}`);
+            const restOfLine = parts.join('|');
+            newInApiLines.push(`0|${dateStr}|${restOfLine}`);
 
             // Increment to next day
             currentDate.setDate(currentDate.getDate() + 1);
@@ -131,7 +154,7 @@ module.exports = new Command('generate-api')
         }
 
         // Append to in_api_puzzles.txt (or initialize with header if new)
-        const inApiHeader = '# Date|ThemeHint|ThemeWord|WordsList|Paths...\n';
+        const inApiHeader = '# Reviewed|Date|ThemeHint|ThemeWord|WordsList|Paths...\n';
         if (!fs.existsSync(outInApiPath) || fs.readFileSync(outInApiPath, 'utf-8').trim().length === 0) {
             fs.writeFileSync(outInApiPath, inApiHeader + newInApiLines.join('\n') + '\n', 'utf-8');
         } else {
@@ -141,11 +164,12 @@ module.exports = new Command('generate-api')
         }
         console.log(`[Appended] Added ${newInApiLines.length} puzzle(s) to ${outInApiPath}`);
 
-        // Consume (empty) input puzzles.txt file
+        // Consume reviewed puzzles from input puzzles.txt file, keeping any unreviewed ones
         if (options.consume !== false) {
-            const puzzlesHeader = '# ThemeHint|ThemeWord|WordsList|Paths...\n';
-            fs.writeFileSync(inputPath, puzzlesHeader, 'utf-8');
-            console.log(`[Consumed] Cleared ${lines.length} consumed puzzle(s) from ${inputPath}`);
+            const puzzlesHeader = '# Reviewed|ThemeHint|ThemeWord|WordsList|Paths...\n';
+            const remainingBody = unreviewedLines.length > 0 ? unreviewedLines.join('\n') + '\n' : '';
+            fs.writeFileSync(inputPath, puzzlesHeader + remainingBody, 'utf-8');
+            console.log(`[Consumed] Removed ${reviewedLines.length} reviewed puzzle(s) from ${inputPath} (${unreviewedLines.length} unreviewed remaining)`);
         }
 
         console.log(`\nSuccessfully processed and generated ${generatedCount} Padanoolu daily puzzle API file(s).`);

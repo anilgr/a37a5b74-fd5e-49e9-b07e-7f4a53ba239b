@@ -35,9 +35,13 @@ module.exports = new Command('update')
         let updatedCount = 0;
 
         lines.forEach((line, index) => {
-            const parts = line.split('|');
+            let parts = line.split('|');
+            const firstToken = (parts[0] || '').trim();
+            if (firstToken === '1' || firstToken === '0' || firstToken === '✓' || firstToken.toLowerCase() === 'true' || firstToken.toLowerCase() === 'false') {
+                parts = parts.slice(1);
+            }
             if (parts.length < 4) {
-                console.warn(`[Skip] Invalid line format (expected Date|ThemeHint|ThemeWord|WordsList|Paths...): ${line}`);
+                console.warn(`[Skip] Invalid line format (expected [Reviewed|]Date|ThemeHint|ThemeWord|WordsList|Paths...): ${line}`);
                 return;
             }
 

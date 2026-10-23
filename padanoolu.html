@@ -31,8 +31,15 @@
             background-color: #fff9c4 !important;
             cursor: text;
         }
+        tr.reviewed-row {
+            background-color: #f0fdf4;
+        }
+        tr.reviewed-row td:nth-child(2) {
+            color: #15803d;
+            font-weight: 500;
+        }
         tr.selected-row {
-            background-color: #e0f2fe;
+            background-color: #e0f2fe !important;
         }
         tr.preview-row {
             background-color: #f8fafc;
@@ -70,6 +77,7 @@
             <label style="font-size: 12px; display: flex; align-items: center; gap: 4px;">
                 Import: <input type="file" id="file-input" accept=".txt" onchange="importFile(event)" style="font-size: 11px; max-width: 140px;">
             </label>
+            <span style="font-size: 12px; color: #15803d; font-weight: 500;">Reviewed: <strong id="reviewed-count">0</strong>/<span id="total-count">0</span></span>
             <span id="copy-msg" style="color: #16a34a; font-size: 12px; font-weight: 500; min-height: 16px;"></span>
         </div>
 
@@ -711,6 +719,8 @@
 
             // Insert expanded preview row immediately under selected row
             const targetRow = document.getElementById(`puzzle-row-${index}`);
+            const p = parsedPuzzles[index];
+            const isReviewed = Boolean(p && p.reviewed);
             if (targetRow) {
                 const previewRow = document.createElement('tr');
                 previewRow.id = 'expanded-preview-row';
@@ -718,9 +728,15 @@
                 previewRow.innerHTML = `
                     <td colspan="4" style="padding: 12px 16px;">
                         <div style="border: 1px solid #cbd5e1; padding: 12px; background-color: #ffffff; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); max-width: 600px;">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; gap: 8px; flex-wrap: wrap;">
                                 <h3 id="grid-title" style="margin: 0; font-size: 15px;">Grid Preview</h3>
-                                <button class="icon-btn" id="generate-btn" title="Generate / Shuffle Grid" onclick="runGenerator()">🔄 Shuffle / Generate</button>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <label style="font-size: 13px; display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none; color: #444;">
+                                        <input type="checkbox" id="reviewed-checkbox" ${isReviewed ? 'checked' : ''} onchange="toggleReviewed(${index}, this.checked)" style="cursor: pointer; width: 15px; height: 15px;">
+                                        Reviewed
+                                    </label>
+                                    <button class="icon-btn" id="generate-btn" title="Generate / Shuffle Grid" onclick="runGenerator()">🔄 Shuffle / Generate</button>
+                                </div>
                             </div>
                             <div id="grid-meta" style="margin-bottom: 8px; font-size: 12px; color: #444;"></div>
                             <div id="grid-container" style="display: flex; justify-content: center; width: 100%; margin: 8px 0;"></div>
@@ -810,15 +826,49 @@
             if (wordLegendEl) wordLegendEl.innerHTML = legendHtml;
         }
 
+        function updateReviewedSummary() {
+            const reviewedCount = parsedPuzzles.filter(p => p.reviewed).length;
+            const revEl = document.getElementById('reviewed-count');
+            const totEl = document.getElementById('total-count');
+            if (revEl) revEl.innerText = reviewedCount;
+            if (totEl) totEl.innerText = parsedPuzzles.length;
+        }
+
+        function toggleReviewed(index, isChecked) {
+            const p = parsedPuzzles[index];
+            if (!p) return;
+            p.reviewed = Boolean(isChecked);
+            const row = document.getElementById(`puzzle-row-${index}`);
+            if (row) {
+                if (p.reviewed) row.classList.add('reviewed-row');
+                else row.classList.remove('reviewed-row');
+            }
+            updateReviewedSummary();
+        }
+
+        function getTodayStr() {
+            const now = new Date();
+            const y = now.getFullYear();
+            const m = String(now.getMonth() + 1).padStart(2, '0');
+            const d = String(now.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+        }
+
+        function serializePuzzleLine(p) {
+            const revCol = p.reviewed ? '1|' : '0|';
+            const hasPaths = p.pathsList && p.pathsList.length > 0 && p.pathsList.some(coords => coords.length > 0);
+            const pathsStr = hasPaths ? '|' + p.pathsList.map(coords => coords.map(c => c.join(',')).join(';')).join('|') : '';
+            if (currentLoadedSource === 'in_api' && p.assignedDate) {
+                return `${revCol}${p.assignedDate}|${p.themeHint}|${p.themeWord}|${p.wordsList.join(',')}${pathsStr}`;
+            }
+            return `${revCol}${p.themeHint}|${p.themeWord}|${p.wordsList.join(',')}${pathsStr}`;
+        }
+
         function getOutputText() {
-            return parsedPuzzles.map(p => {
-                const hasPaths = p.pathsList && p.pathsList.length > 0 && p.pathsList.some(coords => coords.length > 0);
-                const pathsStr = hasPaths ? '|' + p.pathsList.map(coords => coords.map(c => c.join(',')).join(';')).join('|') : '';
-                if (currentLoadedSource === 'in_api' && p.assignedDate) {
-                    return `${p.assignedDate}|${p.themeHint}|${p.themeWord}|${p.wordsList.join(',')}${pathsStr}`;
-                }
-                return `${p.themeHint}|${p.themeWord}|${p.wordsList.join(',')}${pathsStr}`;
-            }).join('\n');
+            const allPuzzles = currentLoadedSource === 'in_api'
+                ? [...hiddenPastPuzzles, ...parsedPuzzles]
+                : parsedPuzzles;
+            return allPuzzles.map(serializePuzzleLine).join('\n');
         }
 
         function downloadOutput() {
@@ -863,17 +913,31 @@
         }
 
         let currentLoadedSource = 'puzzles';
+        const hiddenPastPuzzles = [];
 
         function loadFromText(text) {
             parsedPuzzles.length = 0;
+            hiddenPastPuzzles.length = 0;
+            const todayStr = getTodayStr();
             const lines = text.trim().split('\n').filter(l => l.trim().length > 0 && !l.trim().startsWith('#'));
 
-            lines.forEach((line, index) => {
+            lines.forEach((line) => {
                 let parts = line.split('|');
+                let reviewed = false;
                 let assignedDate = '';
 
+                // Optional 1st column: Reviewed flag ('1', '0', '✓', 'true', 'false')
+                const firstToken = (parts[0] || '').trim();
+                if (firstToken === '1' || firstToken === '✓' || firstToken.toLowerCase() === 'true') {
+                    reviewed = true;
+                    parts = parts.slice(1);
+                } else if (firstToken === '0' || firstToken.toLowerCase() === 'false') {
+                    reviewed = false;
+                    parts = parts.slice(1);
+                }
+
                 // If loaded from in_api_puzzles.txt format: Date|ThemeHint|ThemeWord|WordsList|Paths...
-                if (/^\d{4}-\d{2}-\d{2}$/.test(parts[0].trim())) {
+                if (parts[0] && /^\d{4}-\d{2}-\d{2}$/.test(parts[0].trim())) {
                     assignedDate = parts[0].trim();
                     parts = parts.slice(1);
                 }
@@ -885,9 +949,16 @@
                     p.split(';').map(coord => coord.split(',').map(Number))
                 );
 
-                parsedPuzzles.push({ index, assignedDate, themeHint, themeWord, wordsList, pathsList });
+                const item = { index: 0, reviewed, assignedDate, themeHint, themeWord, wordsList, pathsList };
+                if (currentLoadedSource === 'in_api' && assignedDate && assignedDate <= todayStr) {
+                    hiddenPastPuzzles.push(item);
+                } else {
+                    item.index = parsedPuzzles.length;
+                    parsedPuzzles.push(item);
+                }
             });
 
+            selectedIndex = null;
             renderTable();
             if (parsedPuzzles.length > 0) {
                 selectPuzzle(0);
@@ -904,6 +975,9 @@
                 const row = document.createElement('tr');
                 row.id = `puzzle-row-${index}`;
                 row.style.cursor = 'pointer';
+                if (p.reviewed) {
+                    row.classList.add('reviewed-row');
+                }
                 if (index === selectedIndex) {
                     row.classList.add('selected-row');
                 }
@@ -932,6 +1006,7 @@
                 `;
                 tbody.appendChild(row);
             });
+            updateReviewedSummary();
         }
 
         let lastTapTime = 0;
@@ -1015,6 +1090,7 @@
             const newIndex = parsedPuzzles.length;
             const newPuzzle = {
                 index: newIndex,
+                reviewed: false,
                 themeHint: 'ಹೊಸ ಸುಳಿವು',
                 themeWord: 'ಉದಾಹರಣೆ',
                 wordsList: ['ಉದಾಹರಣೆ', 'ಪದ'],
@@ -1079,8 +1155,8 @@
 
             try {
                 const header = currentLoadedSource === 'in_api'
-                    ? '# Date|ThemeHint|ThemeWord|WordsList|Paths...\n'
-                    : '# ThemeHint|ThemeWord|WordsList|Paths...\n';
+                    ? '# Reviewed|Date|ThemeHint|ThemeWord|WordsList|Paths...\n'
+                    : '# Reviewed|ThemeHint|ThemeWord|WordsList|Paths...\n';
                 const content = header + getOutputText() + '\n';
 
                 const response = await fetch('/api/save-padanoolu', {
