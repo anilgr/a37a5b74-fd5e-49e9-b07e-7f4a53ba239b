@@ -735,7 +735,7 @@
                                         <input type="checkbox" id="reviewed-checkbox" ${isReviewed ? 'checked' : ''} onchange="toggleReviewed(${index}, this.checked)" style="cursor: pointer; width: 15px; height: 15px;">
                                         Reviewed
                                     </label>
-                                    <button class="icon-btn" id="generate-btn" title="Generate / Shuffle Grid" onclick="runGenerator()">🔄 Shuffle / Generate</button>
+                                    <button class="icon-btn" id="generate-btn" title="Generate / Shuffle Grid" onclick="runGenerator()">🔄</button>
                                 </div>
                             </div>
                             <div id="grid-meta" style="margin-bottom: 8px; font-size: 12px; color: #444;"></div>
@@ -748,6 +748,10 @@
             }
 
             renderGrid(index);
+
+            if (targetRow) {
+                targetRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         function renderGrid(index) {

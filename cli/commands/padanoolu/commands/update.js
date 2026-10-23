@@ -79,7 +79,7 @@ module.exports = new Command('update')
             }
 
             const response = {
-                id: `padanoolu_${index + 1}`,
+                id: `padanoolu_${dateStr.replace(/-/g, '_')}`,
                 themeHint,
                 themeWord,
                 words: wordsList,
